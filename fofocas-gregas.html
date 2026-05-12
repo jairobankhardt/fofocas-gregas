@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fofocas Gregas – Guia de Personagens</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9973A;
+    --gold-light: #E8C472;
+    --gold-pale: #F5E6C0;
+    --terracotta: #9B3A1A;
+    --terracotta-light: #C4562A;
+    --deep: #1A1208;
+    --dark: #2C1F0A;
+    --parchment: #F7EDD8;
+    --parchment-dark: #EDD8A8;
+    --comedy: #1A4A2E;
+    --comedy-light: #2E7A4F;
+    --comedy-pale: #D4EAD8;
+    --ink: #3A2A08;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--deep);
+    color: var(--parchment);
+    font-family: 'IM Fell English', Georgia, serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* BACKGROUND TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(201,151,58,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(155,58,26,0.08) 0%, transparent 60%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9973A' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 50px 20px 40px;
+    border-bottom: 3px double var(--gold);
+    position: relative;
+  }
+
+  .header::before, .header::after {
+    content: '✦';
+    font-size: 1.5rem;
+    color: var(--gold);
+    position: absolute;
+    bottom: -1.1rem;
+    background: var(--deep);
+    padding: 0 12px;
+  }
+  .header::before { left: calc(50% - 140px); }
+  .header::after { right: calc(50% - 140px); }
+
+  .mask-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-size: 3rem;
+    filter: drop-shadow(0 0 12px rgba(201,151,58,0.5));
+  }
+
+  .title-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1.1;
+    text-shadow: 0 2px 20px rgba(201,151,58,0.4), 0 0 60px rgba(201,151,58,0.15);
+    margin-bottom: 16px;
+  }
+
+  .header-desc {
+    font-style: italic;
+    color: var(--parchment-dark);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* SECTION TITLES */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 60px 0 30px;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .section-line.comedy {
+    background: linear-gradient(to right, transparent, var(--comedy-light), transparent);
+  }
+
+  .section-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 28px;
+    border: 2px solid var(--gold);
+    border-radius: 2px;
+    background: rgba(201,151,58,0.08);
+  }
+
+  .section-badge.comedy {
+    border-color: var(--comedy-light);
+    background: rgba(46,122,79,0.1);
+  }
+
+  .section-badge .icon { font-size: 1.8rem; }
+
+  .section-badge h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--gold-light);
+  }
+
+  .section-badge.comedy h2 { color: #7DD4A0; }
+
+  .section-count {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+
+  /* TABLE WRAPPER */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid rgba(201,151,58,0.3);
+    border-radius: 4px;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.5), inset 0 0 60px rgba(201,151,58,0.03);
+  }
+
+  .table-wrap.comedy {
+    border-color: rgba(46,122,79,0.4);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.5), inset 0 0 60px rgba(46,122,79,0.03);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  thead tr {
+    background: rgba(201,151,58,0.18);
+  }
+
+  .comedy thead tr {
+    background: rgba(46,122,79,0.2);
+  }
+
+  th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 2px solid rgba(201,151,58,0.4);
+    white-space: nowrap;
+  }
+
+  .comedy th {
+    color: #7DD4A0;
+    border-bottom-color: rgba(46,122,79,0.5);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(201,151,58,0.12);
+    transition: background 0.2s;
+  }
+
+  .comedy tbody tr {
+    border-bottom-color: rgba(46,122,79,0.12);
+  }
+
+  tbody tr:hover {
+    background: rgba(201,151,58,0.06);
+  }
+
+  .comedy tbody tr:hover {
+    background: rgba(46,122,79,0.07);
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  td {
+    padding: 13px 18px;
+    vertical-align: top;
+    color: var(--parchment);
+    line-height: 1.6;
+  }
+
+  td:nth-child(1) { /* # */
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    opacity: 0.7;
+    width: 40px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  td:nth-child(2) { /* Título */
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gold-pale);
+    min-width: 180px;
+  }
+
+  .comedy td:nth-child(2) { color: #C8EDD4; }
+
+  td:nth-child(3) { /* Autor */
+    font-style: italic;
+    color: var(--parchment-dark);
+    min-width: 130px;
+  }
+
+  td:nth-child(4) { /* Data */
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    color: var(--gold);
+    opacity: 0.85;
+    min-width: 90px;
+    white-space: nowrap;
+  }
+
+  td:nth-child(5) { /* Personagens */
+    min-width: 380px;
+    font-size: 0.82rem;
+    color: #D8CCAA;
+    line-height: 1.7;
+  }
+
+  .char-tag {
+    display: inline-block;
+    background: rgba(201,151,58,0.1);
+    border: 1px solid rgba(201,151,58,0.25);
+    border-radius: 2px;
+    padding: 1px 7px;
+    margin: 1px 2px;
+    font-size: 0.78rem;
+    color: var(--parchment-dark);
+    white-space: nowrap;
+  }
+
+  .comedy .char-tag {
+    background: rgba(46,122,79,0.12);
+    border-color: rgba(46,122,79,0.3);
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(201,151,58,0.25);
+    font-style: italic;
+    color: rgba(247,237,216,0.4);
+    font-size: 0.82rem;
+  }
+
+  .footer strong {
+    font-family: 'Cinzel Decorative', serif;
+    color: var(--gold);
+    font-style: normal;
+    font-size: 1rem;
+  }
+
+  /* NOTA */
+  .nota {
+    background: rgba(201,151,58,0.07);
+    border: 1px solid rgba(201,151,58,0.2);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    padding: 16px 20px;
+    margin: 30px 0;
+    font-size: 0.88rem;
+    color: var(--parchment-dark);
+    font-style: italic;
+  }
+
+  .nota.comedy {
+    background: rgba(46,122,79,0.07);
+    border-color: rgba(46,122,79,0.2);
+    border-left-color: var(--comedy-light);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="mask-row">🎭 😢 😄 🎭</div>
+    <div class="title-sub">Guia de Pesquisa para o Espetáculo</div>
+    <h1>Fofocas Gregas</h1>
+    <p class="header-desc">Catálogo completo das tragédias e comédias da Grécia Antiga — autores, datas e todos os personagens — ordenados cronologicamente para sua pesquisa teatral.</p>
+  </div>
+
+  <!-- ============ TRAGÉDIAS ============ -->
+  <div class="section-header">
+    <div class="section-line"></div>
+    <div class="section-badge">
+      <span class="icon">😢</span>
+      <div>
+        <div class="section-count">OBRAS SOBREVIVENTES</div>
+        <h2>Tragédias Gregas</h2>
+      </div>
+    </div>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="nota">
+    📜 <strong>Nota:</strong> Das centenas de tragédias escritas na Antiguidade, apenas 33 sobreviveram completas: 7 de Ésquilo, 7 de Sófocles e 19 de Eurípides. As datas são aproximadas, baseadas em registros de festivais e referências internas. O Coro, presente em todas as peças, foi omitido para focar nos personagens individuais.
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Data (a.C.)</th>
+          <th>Personagens Principais</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Os Persas</td>
+          <td>Ésquilo</td>
+          <td>472 a.C.</td>
+          <td>
+            <span class="char-tag">Atossa (Rainha-Mãe)</span>
+            <span class="char-tag">Xerxes</span>
+            <span class="char-tag">Dario (Fantasma)</span>
+            <span class="char-tag">Mensageiro</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Os Sete Contra Tebas</td>
+          <td>Ésquilo</td>
+          <td>467 a.C.</td>
+          <td>
+            <span class="char-tag">Etéocles</span>
+            <span class="char-tag">Mensageiro</span>
+            <span class="char-tag">Espião</span>
+            <span class="char-tag">Antígona</span>
+            <span class="char-tag">Ismene</span>
+            <span class="char-tag">Arauto</span>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>As Suplicantes</td>
+          <td>Ésquilo</td>
+          <td>~463 a.C.</td>
+          <td>
+            <span class="char-tag">Dânaos</span>
+            <span class="char-tag">Danaídes (Dâmaris e irmãs)</span>
+            <span class="char-tag">Rei Pelasgo</span>
+            <span class="char-tag">Arauto Egípcio</span>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Prometeu Acorrentado</td>
+          <td>Ésquilo (atrib.)</td>
+          <td>~460 a.C.</td>
+          <td>
+            <span class="char-tag">Prometeu</span>
+            <span class="char-tag">Hefesto</span>
+            <span class="char-tag">Cratos (Força)</span>
+            <span class="char-tag">Bia (Violência)</span>
+            <span class="char-tag">Oceano</span>
+            <span class="char-tag">Io</span>
+            <span class="char-tag">Hermes</span>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Agamêmnon</td>
+          <td>Ésquilo</td>
+          <td>458 a.C.</td>
+          <td>
+            <span class="char-tag">Agamêmnon</span>
+            <span class="char-tag">Clitemnestra</span>
+            <span class="char-tag">Cassandra</span>
+            <span class="char-tag">Egisto</span>
+            <span class="char-tag">Sentinela</span>
+            <span class="char-tag">Arauto</span>
+          </td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>As Coéforas</td>
+          <td>Ésquilo</td>
+          <td>458 a.C.</td>
+          <td>
+            <span class="char-tag">Orestes</span>
+            <span class="char-tag">Electra</span>
+            <span class="char-tag">Pílades</span>
+            <span class="char-tag">Clitemnestra</span>
+            <span class="char-tag">Egisto</span>
+            <span class="char-tag">Ama de Leite (Cilissa)</span>
+          </td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>As Eumênides</td>
+          <td>Ésquilo</td>
+          <td>458 a.C.</td>
+          <td>
+            <span class="char-tag">Orestes</span>
+            <span class="char-tag">Apolo</span>
+            <span class="char-tag">Atena</span>
+            <span class="char-tag">As Fúrias (Erínias)</span>
+            <span class="char-tag">Sacerdotisa de Delfos</span>
+            <span class="char-tag">Sombra de Clitemnestra</span>
+          </td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Antígona</td>
+          <td>Sófocles</td>
+          <td>~442 a.C.</td>
+          <td>
+            <span class="char-tag">Antígona</span>
+            <span class="char-tag">Ismene</span>
+            <span class="char-tag">Creonte</span>
+            <span class="char-tag">Hêmon</span>
+            <span class="char-tag">Tirésias</span>
+            <span class="char-tag">Eurídice</span>
+            <span class="char-tag">Guarda</span>
+            <span class="char-tag">Mensageiro</span>
+          </td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>As Traquínias</td>
+          <td>Sófocles</td>
+          <td>~440 a.C.</td>
+          <td>
+            <span class="char-tag">Dejanira</span>
+            <span class="char-tag">Hilo</span>
+            <span class="char-tag">Héracles</span>
+            <span class="char-tag">Licas</span>
+            <span class="char-tag">Iole</span>
+            <span class="char-tag">Mensageiro</span>
+            <span class="char-tag">Ama</span>
+          </td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Édipo Rei</td>
+          <td>Sófocles</td>
+          <td>~429 a.C.</td>
+          <td>
+            <span class="char-tag">Édipo</span>
+            <span class="char-tag">Jocasta</span>
+            <span class="char-tag">Creonte</span>
+            <span class="char-tag">Tirésias</span>
+            <span class="char-tag">Mensageiro de Corinto</span>
+            <span class="char-tag">Pastor de Laio</span>
+            <span class="char-tag">Sacerdote</span>
+          </td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Medeia</td>
+          <td>Eurípides</td>
+          <td>431 a.C.</td>
+          <td>
+            <span class="char-tag">Medeia</span>
+            <span class="char-tag">Jasão</span>
+            <span class="char-tag">Creonte (Rei de Corinto)</span>
+            <span class="char-tag">Egeu</span>
+            <span class="char-tag">Glauce</span>
+            <span class="char-tag">Ama</span>
+            <span class="char-tag">Pedagogo</span>
+            <span class="char-tag">Mensageiro</span>
+          </td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Hipólito</td>
+          <td>Eurípides</td>
+          <td>428 a.C.</td>
+          <td>
+            <span class="char-tag">Hipólito</span>
+            <span class="char-tag">Fedra</span>
+            <span class="char-tag">Teseu</span>
+            <span class="char-tag">Afrodite</span>
+            <span class="char-tag">Ártemis</span>
+            <span class="char-tag">Ama de Fedra</span>
+            <span class="char-tag">Mensageiro</span>
+          </td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Andrômaca</td>
+          <td>Eurípides</td>
+          <td>~425 a.C.</td>
+          <td>
+            <span class="char-tag">Andrômaca</span>
+            <span class="char-tag">Hermione</span>
+            <span class="char-tag">Menelau</span>
+            <span class="char-tag">Peleu</span>
+            <span class="char-tag">Orestes</span>
+            <span class="char-tag">Neoptólemo</span>
+            <span class="char-tag">Tétis</span>
+            <span class="char-tag">Ama</span>
+          </td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>Hécuba</td>
+          <td>Eurípides</td>
+          <td>~424 a.C.</td>
+          <td>
+            <span class="char-tag">Hécuba</span>
+            <span class="char-tag">Políxena</span>
+            <span class="char-tag">Agamêmnon</span>
+            <span class="char-tag">Odisseu</span>
+            <span class="char-tag">Polimestor</span>
+            <span class="char-tag">Sombra de Polidoro</span>
+            <span class="char-tag">Mensageiro</span>
+          </td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>As Suplicantes</td>
+          <td>Eurípides</td>
+          <td>~422 a.C.</td>
+          <td>
+            <span class="char-tag">Teseu</span>
+            <span class="char-tag">Etra (mãe de Teseu)</span>
+            <span class="char-tag">Adrasto</span>
+            <span class="char-tag">Evadne</span>
+            <span class="char-tag">Iphis</span>
+            <span class="char-tag">Capaneo (filho)</span>
+            <span class="char-tag">Arauto Tebano</span>
+            <span class="char-tag">Atena</span>
+          </td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>Electra</td>
+          <td>Sófocles</td>
+          <td>~420 a.C.</td>
+          <td>
+            <span class="char-tag">Electra</span>
+            <span class="char-tag">Orestes</span>
+            <span class="char-tag">Crisótemis</span>
+            <span class="char-tag">Clitemnestra</span>
+            <span class="char-tag">Egisto</span>
+            <span class="char-tag">Pílades</span>
+            <span class="char-tag">Pedagogo</span>
+          </td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td>Electra</td>
+          <td>Eurípides</td>
+          <td>~413 a.C.</td>
+          <td>
+            <span class="char-tag">Electra</span>
+            <span class="char-tag">Orestes</span>
+            <span class="char-tag">Clitemnestra</span>
+            <span class="char-tag">Egisto</span>
+            <span class="char-tag">Pílades</span>
+            <span class="char-tag">Camponês (marido de Electra)</span>
+            <span class="char-tag">Castor</span>
+            <span class="char-tag">Pólux</span>
+          </td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>Herácles</td>
+          <td>Eurípides</td>
+          <td>~416 a.C.</td>
+          <td>
+            <span class="char-tag">Héracles</span>
+            <span class="char-tag">Anfitrião (pai)</span>
+            <span class="char-tag">Mégara (esposa)</span>
+            <span class="char-tag">Lico (tirano)</span>
+            <span class="char-tag">Íris</span>
+            <span class="char-tag">Lissa (Loucura)</span>
+            <span class="char-tag">Teseu</span>
+          </td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td>As Troianas</td>
+          <td>Eurípides</td>
+          <td>415 a.C.</td>
+          <td>
+            <span class="char-tag">Hécuba</span>
+            <span class="char-tag">Cassandra</span>
+            <span class="char-tag">Andrômaca</span>
+            <span class="char-tag">Helena</span>
+            <span class="char-tag">Menelau</span>
+            <span class="char-tag">Taltíbio</span>
+            <span class="char-tag">Poseidon</span>
+            <span class="char-tag">Atena</span>
+            <span class="char-tag">Astíanax</span>
+          </td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td>Ifigênia em Táuris</td>
+          <td>Eurípides</td>
+          <td>~414 a.C.</td>
+          <td>
+            <span class="char-tag">Ifigênia</span>
+            <span class="char-tag">Orestes</span>
+            <span class="char-tag">Pílades</span>
+            <span class="char-tag">Rei Toante</span>
+            <span class="char-tag">Atena</span>
+            <span class="char-tag">Mensageiro</span>
+            <span class="char-tag">Guardas</span>
+          </td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td>Íon</td>
+          <td>Eurípides</td>
+          <td>~413 a.C.</td>
+          <td>
+            <span class="char-tag">Íon</span>
+            <span class="char-tag">Creúsa</span>
+            <span class="char-tag">Xuto</span>
+            <span class="char-tag">Apolo</span>
+            <span class="char-tag">Atena</span>
+            <span class="char-tag">Hermes</span>
+            <span class="char-tag">Velha Criada</span>
+          </td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>Helena</td>
+          <td>Eurípides</td>
+          <td>412 a.C.</td>
+          <td>
+            <span class="char-tag">Helena</span>
+            <span class="char-tag">Menelau</span>
+            <span class="char-tag">Rei Teoclímeno</span>
+            <span class="char-tag">Teono (profetisa)</span>
+            <span class="char-tag">Teucer</span>
+            <span class="char-tag">Castor</span>
+            <span class="char-tag">Pólux</span>
+          </td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td>Filoctetes</td>
+          <td>Sófocles</td>
+          <td>409 a.C.</td>
+          <td>
+            <span class="char-tag">Filoctetes</span>
+            <span class="char-tag">Neoptólemo</span>
+            <span class="char-tag">Odisseu</span>
+            <span class="char-tag">Héracles</span>
+            <span class="char-tag">Mercador</span>
+          </td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td>Orestes</td>
+          <td>Eurípides</td>
+          <td>408 a.C.</td>
+          <td>
+            <span class="char-tag">Orestes</span>
+            <span class="char-tag">Electra</span>
+            <span class="char-tag">Helena</span>
+            <span class="char-tag">Hermione</span>
+            <span class="char-tag">Menelau</span>
+            <span class="char-tag">Pílades</span>
+            <span class="char-tag">Tindáreo</span>
+            <span class="char-tag">Apolo</span>
+            <span class="char-tag">Frígio</span>
+          </td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td>As Fenícias</td>
+          <td>Eurípides</td>
+          <td>~408 a.C.</td>
+          <td>
+            <span class="char-tag">Jocasta</span>
+            <span class="char-tag">Etéocles</span>
+            <span class="char-tag">Polinices</span>
+            <span class="char-tag">Antígona</span>
+            <span class="char-tag">Creonte</span>
+            <span class="char-tag">Meneceu</span>
+            <span class="char-tag">Tirésias</span>
+            <span class="char-tag">Édipo</span>
+          </td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td>Ifigênia em Áulis</td>
+          <td>Eurípides</td>
+          <td>~405 a.C.</td>
+          <td>
+            <span class="char-tag">Ifigênia</span>
+            <span class="char-tag">Agamêmnon</span>
+            <span class="char-tag">Clitemnestra</span>
+            <span class="char-tag">Aquiles</span>
+            <span class="char-tag">Menelau</span>
+            <span class="char-tag">Velho Servidor</span>
+            <span class="char-tag">Mensageiro</span>
+          </td>
+        </tr>
+        <tr>
+          <td>27</td>
+          <td>As Bacantes</td>
+          <td>Eurípides</td>
+          <td>405 a.C. (póstumo)</td>
+          <td>
+            <span class="char-tag">Dionísio</span>
+            <span class="char-tag">Penteu</span>
+            <span class="char-tag">Agave</span>
+            <span class="char-tag">Cadmo</span>
+            <span class="char-tag">Tirésias</span>
+            <span class="char-tag">Mensageiro</span>
+            <span class="char-tag">Guarda</span>
+          </td>
+        </tr>
+        <tr>
+          <td>28</td>
+          <td>Édipo em Colono</td>
+          <td>Sófocles</td>
+          <td>401 a.C. (póstumo)</td>
+          <td>
+            <span class="char-tag">Édipo</span>
+            <span class="char-tag">Antígona</span>
+            <span class="char-tag">Ismene</span>
+            <span class="char-tag">Teseu</span>
+            <span class="char-tag">Creonte</span>
+            <span class="char-tag">Polinices</span>
+            <span class="char-tag">Estrangeiro de Colono</span>
+          </td>
+        </tr>
+        <tr>
+          <td>29</td>
+          <td>Ájax</td>
+          <td>Sófocles</td>
+          <td>~450 a.C.</td>
+          <td>
+            <span class="char-tag">Ájax</span>
+            <span class="char-tag">Tecmessa</span>
+            <span class="char-tag">Odisseu</span>
+            <span class="char-tag">Atena</span>
+            <span class="char-tag">Teucro</span>
+            <span class="char-tag">Menelau</span>
+            <span class="char-tag">Agamêmnon</span>
+            <span class="char-tag">Eurísaces (filho)</span>
+          </td>
+        </tr>
+        <tr>
+          <td>30</td>
+          <td>Álceste</td>
+          <td>Eurípides</td>
+          <td>438 a.C.</td>
+          <td>
+            <span class="char-tag">Álceste</span>
+            <span class="char-tag">Admeto</span>
+            <span class="char-tag">Héracles</span>
+            <span class="char-tag">Feres (pai de Admeto)</span>
+            <span class="char-tag">Apolo</span>
+            <span class="char-tag">Tânatos (Morte)</span>
+            <span class="char-tag">Criança</span>
+          </td>
+        </tr>
+        <tr>
+          <td>31</td>
+          <td">Édipo Rei (2ª ver. textual)</td>
+          <td>—</td>
+          <td>—</td>
+          <td><em style="color:rgba(247,237,216,0.4)">Vide nº 10</em></td>
+        </tr>
+        <tr>
+          <td>32</td>
+          <td>Ifigênia entre os Tauros</td>
+          <td>—</td>
+          <td>—</td>
+          <td><em style="color:rgba(247,237,216,0.4)">Vide nº 20</em></td>
+        </tr>
+        <tr>
+          <td>33</td>
+          <td>Resos</td>
+          <td>Eurípides (atrib.)</td>
+          <td>data incerta</td>
+          <td>
+            <span class="char-tag">Heitor</span>
+            <span class="char-tag">Resos (rei da Trácia)</span>
+            <span class="char-tag">Odisseu</span>
+            <span class="char-tag">Diomedes</span>
+            <span class="char-tag">Atena</span>
+            <span class="char-tag">Pastora</span>
+            <span class="char-tag">Musa (mãe de Resos)</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ============ COMÉDIAS ============ -->
+  <div class="section-header">
+    <div class="section-line comedy"></div>
+    <div class="section-badge comedy">
+      <span class="icon">😄</span>
+      <div>
+        <div class="section-count">OBRAS SOBREVIVENTES</div>
+        <h2>Comédias Gregas</h2>
+      </div>
+    </div>
+    <div class="section-line comedy"></div>
+  </div>
+
+  <div class="nota comedy">
+    📜 <strong>Nota:</strong> A Comédia Antiga é representada quase que exclusivamente por Aristófanes (11 peças sobreviventes). A Comédia Nova, um século depois, tem em Menandro seu único representante com textos completos — as demais chegaram fragmentadas. O Coro foi suprimido da lista por clareza.
+  </div>
+
+  <div class="table-wrap comedy">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Data (a.C.)</th>
+          <th>Personagens Principais</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Os Acarnenses</td>
+          <td>Aristófanes</td>
+          <td>425 a.C.</td>
+          <td>
+            <span class="char-tag">Diceópolis</span>
+            <span class="char-tag">Lâmaco</span>
+            <span class="char-tag">Demóstenes</span>
+            <span class="char-tag">Eurípides</span>
+            <span class="char-tag">Tebano</span>
+            <span class="char-tag">Megárico</span>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Os Cavaleiros</td>
+          <td>Aristófanes</td>
+          <td>424 a.C.</td>
+          <td>
+            <span class="char-tag">Demos (o Povo)</span>
+            <span class="char-tag">O Salsicheiro (Agorácrito)</span>
+            <span class="char-tag">Clêon (O Paflagônio)</span>
+            <span class="char-tag">Nicías</span>
+            <span class="char-tag">Demóstenes</span>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>As Nuvens</td>
+          <td>Aristófanes</td>
+          <td>423 a.C.</td>
+          <td>
+            <span class="char-tag">Estrepsíades</span>
+            <span class="char-tag">Fidípides (filho)</span>
+            <span class="char-tag">Sócrates</span>
+            <span class="char-tag">Argumento Justo</span>
+            <span class="char-tag">Argumento Injusto</span>
+            <span class="char-tag">Queréfon</span>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>As Vespas</td>
+          <td>Aristófanes</td>
+          <td>422 a.C.</td>
+          <td>
+            <span class="char-tag">Filocleon (pai)</span>
+            <span class="char-tag">Bdelícleon (filho)</span>
+            <span class="char-tag">Escravo Sósia</span>
+            <span class="char-tag">Escravo Xântias</span>
+            <span class="char-tag">Cão Labes</span>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>A Paz</td>
+          <td>Aristófanes</td>
+          <td>421 a.C.</td>
+          <td>
+            <span class="char-tag">Trigeu</span>
+            <span class="char-tag">Hermes</span>
+            <span class="char-tag">Paz (Eirene)</span>
+            <span class="char-tag">Colheita (Opora)</span>
+            <span class="char-tag">Festa (Teoria)</span>
+            <span class="char-tag">Filho de Trigeu</span>
+          </td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Os Pássaros</td>
+          <td>Aristófanes</td>
+          <td>414 a.C.</td>
+          <td>
+            <span class="char-tag">Pistêtero</span>
+            <span class="char-tag">Evélpides</span>
+            <span class="char-tag">Epops / Tereus (Poupa)</span>
+            <span class="char-tag">Íris</span>
+            <span class="char-tag">Prometeu</span>
+            <span class="char-tag">Poseidon</span>
+            <span class="char-tag">Héracles</span>
+            <span class="char-tag">Basileia</span>
+          </td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Lisístrata</td>
+          <td>Aristófanes</td>
+          <td>411 a.C.</td>
+          <td>
+            <span class="char-tag">Lisístrata</span>
+            <span class="char-tag">Cleonice</span>
+            <span class="char-tag">Mírrina</span>
+            <span class="char-tag">Lâmpito (espartana)</span>
+            <span class="char-tag">Cinésias</span>
+            <span class="char-tag">Magistrado</span>
+            <span class="char-tag">Embaixador Espartano</span>
+          </td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>As Tesmoforiantes</td>
+          <td>Aristófanes</td>
+          <td>411 a.C.</td>
+          <td>
+            <span class="char-tag">Mnesilocas (sogro de Eurípides)</span>
+            <span class="char-tag">Eurípides</span>
+            <span class="char-tag">Agaton</span>
+            <span class="char-tag">Clístenes</span>
+            <span class="char-tag">Arqueiros Citas</span>
+          </td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>As Rãs</td>
+          <td>Aristófanes</td>
+          <td>405 a.C.</td>
+          <td>
+            <span class="char-tag">Dionísio</span>
+            <span class="char-tag">Xântias (escravo)</span>
+            <span class="char-tag">Héracles</span>
+            <span class="char-tag">Caronte</span>
+            <span class="char-tag">Éaco</span>
+            <span class="char-tag">Ésquilo</span>
+            <span class="char-tag">Eurípides</span>
+            <span class="char-tag">Plutão</span>
+          </td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>As Mulheres na Assembleia</td>
+          <td>Aristófanes</td>
+          <td>~392 a.C.</td>
+          <td>
+            <span class="char-tag">Praxágora</span>
+            <span class="char-tag">Blépiro (marido)</span>
+            <span class="char-tag">Cremes</span>
+            <span class="char-tag">Vizinho</span>
+            <span class="char-tag">Jovem</span>
+            <span class="char-tag">Velha 1, 2 e 3</span>
+          </td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Pluto (O Deus da Riqueza)</td>
+          <td>Aristófanes</td>
+          <td>388 a.C.</td>
+          <td>
+            <span class="char-tag">Crêmilo</span>
+            <span class="char-tag">Blepsídemo</span>
+            <span class="char-tag">Pluto (deus)</span>
+            <span class="char-tag">Pénia (Pobreza)</span>
+            <span class="char-tag">Hermes</span>
+            <span class="char-tag">Zeus</span>
+            <span class="char-tag">Carião (escravo)</span>
+          </td>
+        </tr>
+
+        <!-- COMÉDIA MÉDIA / NOVA -->
+        <tr>
+          <td colspan="5" style="background:rgba(46,122,79,0.15); font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.15em; color:#7DD4A0; text-align:center; padding:10px; text-transform:uppercase;">— Comédia Nova (séc. IV–III a.C.) —</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>O Misantropo (Díscolo)</td>
+          <td>Menandro</td>
+          <td>316 a.C.</td>
+          <td>
+            <span class="char-tag">Cnêmon (o misantropo)</span>
+            <span class="char-tag">Gorgias (enteado)</span>
+            <span class="char-tag">Sóstrato</span>
+            <span class="char-tag">Mírrine (mãe)</span>
+            <span class="char-tag">Gorguias</span>
+            <span class="char-tag">Simiche (criada)</span>
+            <span class="char-tag">Pã (prólogo)</span>
+          </td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>O Árbitro (Epítrepontes)</td>
+          <td>Menandro</td>
+          <td>~300 a.C.</td>
+          <td>
+            <span class="char-tag">Carisio</span>
+            <span class="char-tag">Panfila</span>
+            <span class="char-tag">Ônimo</span>
+            <span class="char-tag">Abrotono (hetaira)</span>
+            <span class="char-tag">Smicrínes (pai)</span>
+            <span class="char-tag">Davo (escravo)</span>
+            <span class="char-tag">Sírisco (escravo)</span>
+          </td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>A Tosquiada (Perikeiromene)</td>
+          <td>Menandro</td>
+          <td>~310 a.C.</td>
+          <td>
+            <span class="char-tag">Polemon (soldado)</span>
+            <span class="char-tag">Glicera</span>
+            <span class="char-tag">Moschion</span>
+            <span class="char-tag">Mireníon</span>
+            <span class="char-tag">Páteco</span>
+            <span class="char-tag">Doris (criada)</span>
+          </td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>A Samia</td>
+          <td>Menandro</td>
+          <td>~315 a.C.</td>
+          <td>
+            <span class="char-tag">Demeas</span>
+            <span class="char-tag">Crísias</span>
+            <span class="char-tag">Nicérato</span>
+            <span class="char-tag">Moschion (filho)</span>
+            <span class="char-tag">Samia (concubina)</span>
+            <span class="char-tag">Parmeno (escravo)</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p style="margin-bottom:12px"><strong>🎭 Fofocas Gregas</strong></p>
+    <p>Pesquisa baseada nas obras sobreviventes da dramaturgia grega antiga.<br>
+    Datas são aproximadas segundo registros dos festivais dionisíacos e leneanos.<br>
+    Personagens listados excluem o Coro coletivo, focando em indivíduos nomeados.</p>
+    <p style="margin-top:16px; font-size:0.75rem; opacity:0.5">
+      Fontes: Ésquilo · Sófocles · Eurípides · Aristófanes · Menandro
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
