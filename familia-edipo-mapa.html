@@ -1,501 +1,1262 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fofocas Gregas — Família de Édipo</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
-:root {
-  --bg: #080610;
-  --purple: #7B5EA7;
-  --purple-l: #B49FD4;
-  --purple-p: #EDE8F5;
-  --blood: #8B1A1A;
-  --gold: #C9973A;
-  --gold-l: #E8C472;
-  --parch: #F0EAF8;
-  --green: #4A8A5A;
-  --green-l: #7ABD8A;
-  --red-l: #E87272;
-}
-body {
-  background: var(--bg);
-  font-family: 'IM Fell English', Georgia, serif;
-  overflow: hidden;
-  height: 100vh; width: 100vw;
-}
-body::before {
-  content:'';
-  position:fixed; inset:0;
-  background:
-    radial-gradient(ellipse at 30% 30%, rgba(123,94,167,0.1) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 70%, rgba(139,26,26,0.08) 0%, transparent 55%);
-  pointer-events:none;
-}
-/* HEADER */
-#header {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  padding:14px 24px 12px;
-  display:flex; align-items:center; justify-content:space-between;
-  background:linear-gradient(to bottom, rgba(8,6,16,0.98), rgba(8,6,16,0.7));
-  border-bottom:1px solid rgba(123,94,167,0.3);
-}
-.header-left h1 {
-  font-family:'Cinzel Decorative',serif;
-  font-size:1.1rem; color:var(--purple-l); line-height:1;
-}
-.header-left p {
-  font-family:'Cinzel',serif; font-size:0.65rem;
-  letter-spacing:0.2em; color:var(--purple); opacity:0.8;
-  margin-top:3px; text-transform:uppercase;
-}
-.header-controls { display:flex; gap:8px; align-items:center; }
-.btn {
-  font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:0.08em;
-  padding:5px 12px; border:1px solid rgba(123,94,167,0.4);
-  background:rgba(123,94,167,0.1); color:var(--purple-l);
-  border-radius:2px; cursor:pointer; transition:all 0.2s;
-}
-.btn:hover { background:rgba(123,94,167,0.25); border-color:var(--purple-l); }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fofocas Gregas — Família de Édipo</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            :root {
+                --bg: #080610;
+                --purple: #7b5ea7;
+                --purple-l: #b49fd4;
+                --purple-p: #ede8f5;
+                --blood: #8b1a1a;
+                --gold: #c9973a;
+                --gold-l: #e8c472;
+                --parch: #f0eaf8;
+                --green: #4a8a5a;
+                --green-l: #7abd8a;
+                --red-l: #e87272;
+            }
+            body {
+                background: var(--bg);
+                font-family: "IM Fell English", Georgia, serif;
+                overflow: hidden;
+                height: 100vh;
+                width: 100vw;
+            }
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background:
+                    radial-gradient(
+                        ellipse at 30% 30%,
+                        rgba(123, 94, 167, 0.1) 0%,
+                        transparent 55%
+                    ),
+                    radial-gradient(
+                        ellipse at 75% 70%,
+                        rgba(139, 26, 26, 0.08) 0%,
+                        transparent 55%
+                    );
+                pointer-events: none;
+            }
+            /* HEADER */
+            #header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                padding: 10px 24px 0;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                background: linear-gradient(
+                    to bottom,
+                    rgba(8, 6, 16, 0.98),
+                    rgba(8, 6, 16, 0.7)
+                );
+                border-bottom: 1px solid rgba(123, 94, 167, 0.3);
+            }
+            .header-top {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 8px;
+            }
+            .header-left h1 {
+                font-family: "Cinzel Decorative", serif;
+                font-size: 1.1rem;
+                color: var(--purple-l);
+                line-height: 1;
+            }
+            .header-left p {
+                font-family: "Cinzel", serif;
+                font-size: 0.65rem;
+                letter-spacing: 0.2em;
+                color: var(--purple);
+                opacity: 0.8;
+                margin-top: 3px;
+                text-transform: uppercase;
+            }
+            .header-controls {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+            }
+            .btn {
+                font-family: "Cinzel", serif;
+                font-size: 0.68rem;
+                letter-spacing: 0.08em;
+                padding: 5px 12px;
+                border: 1px solid rgba(123, 94, 167, 0.4);
+                background: rgba(123, 94, 167, 0.1);
+                color: var(--purple-l);
+                border-radius: 2px;
+                cursor: pointer;
+                transition: all 0.2s;
+            }
+            .btn:hover {
+                background: rgba(123, 94, 167, 0.25);
+                border-color: var(--purple-l);
+            }
 
-/* LEGEND */
-#legend {
-  position:fixed; bottom:20px; left:20px; z-index:100;
-  background:rgba(8,6,16,0.92); border:1px solid rgba(123,94,167,0.25);
-  border-radius:4px; padding:12px 16px; min-width:190px;
-}
-#legend h3 {
-  font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.15em;
-  color:var(--purple-l); text-transform:uppercase; margin-bottom:10px; opacity:0.9;
-}
-.leg-item { display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:0.75rem; color:var(--parch); opacity:0.8; }
-.leg-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
-.leg-line { width:24px; height:2px; flex-shrink:0; border-radius:2px; }
+            .site-nav {
+                display: flex;
+                border-top: 1px solid rgba(123, 94, 167, 0.22);
+                padding: 4px 0;
+            }
+            .site-nav a {
+                font-family: "Cinzel", serif;
+                font-size: 0.62rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: rgba(180, 159, 212, 0.5);
+                padding: 4px 10px;
+                transition: color 0.2s;
+            }
+            .site-nav a:hover {
+                color: var(--purple-l);
+            }
+            .site-nav a.active {
+                color: var(--purple-l);
+            }
 
-/* INFO PANEL */
-#info-panel {
-  position:fixed; top:70px; right:20px; z-index:100;
-  width:270px; background:rgba(8,6,16,0.97);
-  border:1px solid rgba(123,94,167,0.35); border-radius:4px;
-  padding:18px; opacity:0; transform:translateX(20px);
-  transition:all 0.3s ease; pointer-events:none;
-}
-#info-panel.visible { opacity:1; transform:translateX(0); pointer-events:all; }
-#info-name { font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:var(--purple-l); margin-bottom:4px; }
-#info-role { font-style:italic; font-size:0.8rem; color:var(--purple); opacity:0.9; margin-bottom:10px; }
-#info-desc { font-size:0.8rem; color:var(--parch); opacity:0.85; line-height:1.65; margin-bottom:10px; }
-#info-obras { border-top:1px solid rgba(123,94,167,0.2); padding-top:10px; }
-#info-obras h4 { font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.15em; color:var(--purple); opacity:0.7; text-transform:uppercase; margin-bottom:6px; }
-.obra-tag { display:inline-block; background:rgba(123,94,167,0.12); border:1px solid rgba(123,94,167,0.3); border-radius:2px; padding:2px 7px; font-size:0.7rem; color:var(--parch); margin:2px; }
-#info-close { position:absolute; top:10px; right:12px; font-size:1rem; color:var(--purple-l); opacity:0.5; cursor:pointer; background:none; border:none; font-family:serif; }
-#info-close:hover { opacity:1; }
+            /* LEGEND */
+            #legend {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                z-index: 100;
+                background: rgba(8, 6, 16, 0.92);
+                border: 1px solid rgba(123, 94, 167, 0.25);
+                border-radius: 4px;
+                padding: 12px 16px;
+                min-width: 190px;
+            }
+            #legend h3 {
+                font-family: "Cinzel", serif;
+                font-size: 0.65rem;
+                letter-spacing: 0.15em;
+                color: var(--purple-l);
+                text-transform: uppercase;
+                margin-bottom: 10px;
+                opacity: 0.9;
+            }
+            .leg-item {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-bottom: 6px;
+                font-size: 0.75rem;
+                color: var(--parch);
+                opacity: 0.8;
+            }
+            .leg-dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
+            .leg-line {
+                width: 24px;
+                height: 2px;
+                flex-shrink: 0;
+                border-radius: 2px;
+            }
 
-/* GENERATION LABELS */
-.gen-label {
-  font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.2em;
-  text-transform:uppercase; fill:rgba(180,159,212,0.25);
-}
+            /* INFO PANEL */
+            #info-panel {
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                z-index: 100;
+                width: 270px;
+                background: rgba(8, 6, 16, 0.97);
+                border: 1px solid rgba(123, 94, 167, 0.35);
+                border-radius: 4px;
+                padding: 18px;
+                opacity: 0;
+                transform: translateX(20px);
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+            #info-panel.visible {
+                opacity: 1;
+                transform: translateX(0);
+                pointer-events: all;
+            }
+            #info-name {
+                font-family: "Cinzel", serif;
+                font-size: 1rem;
+                font-weight: 700;
+                color: var(--purple-l);
+                margin-bottom: 4px;
+            }
+            #info-role {
+                font-style: italic;
+                font-size: 0.8rem;
+                color: var(--purple);
+                opacity: 0.9;
+                margin-bottom: 10px;
+            }
+            #info-desc {
+                font-size: 0.8rem;
+                color: var(--parch);
+                opacity: 0.85;
+                line-height: 1.65;
+                margin-bottom: 10px;
+            }
+            #info-obras {
+                border-top: 1px solid rgba(123, 94, 167, 0.2);
+                padding-top: 10px;
+            }
+            #info-obras h4 {
+                font-family: "Cinzel", serif;
+                font-size: 0.62rem;
+                letter-spacing: 0.15em;
+                color: var(--purple);
+                opacity: 0.7;
+                text-transform: uppercase;
+                margin-bottom: 6px;
+            }
+            .obra-tag {
+                display: inline-block;
+                background: rgba(123, 94, 167, 0.12);
+                border: 1px solid rgba(123, 94, 167, 0.3);
+                border-radius: 2px;
+                padding: 2px 7px;
+                font-size: 0.7rem;
+                color: var(--parch);
+                margin: 2px;
+            }
+            #info-close {
+                position: absolute;
+                top: 10px;
+                right: 12px;
+                font-size: 1rem;
+                color: var(--purple-l);
+                opacity: 0.5;
+                cursor: pointer;
+                background: none;
+                border: none;
+                font-family: serif;
+            }
+            #info-close:hover {
+                opacity: 1;
+            }
 
-#hint {
-  position:fixed; bottom:20px; right:20px; z-index:100;
-  font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.1em;
-  color:var(--purple); opacity:0.4; text-align:right; line-height:1.8;
-}
-#canvas { position:fixed; inset:0; width:100%; height:100%; }
-</style>
-</head>
-<body>
+            /* GENERATION LABELS */
+            .gen-label {
+                font-family: "Cinzel", serif;
+                font-size: 0.62rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                fill: rgba(180, 159, 212, 0.25);
+            }
 
-<div id="header">
-  <div class="header-left">
-    <h1>🎭 Fofocas Gregas</h1>
-    <p>A Casa de Édipo — Maldição dos Labdácidas</p>
-  </div>
-  <div class="header-controls">
-    <button class="btn" onclick="resetView()">⟳ Resetar</button>
-    <button class="btn" onclick="toggleLabels()">Rótulos</button>
-  </div>
-</div>
+            #hint {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 100;
+                font-family: "Cinzel", serif;
+                font-size: 0.62rem;
+                letter-spacing: 0.1em;
+                color: var(--purple);
+                opacity: 0.4;
+                text-align: right;
+                line-height: 1.8;
+            }
+            #canvas {
+                position: fixed;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <div class="header-top">
+                <div class="header-left">
+                    <h1>🎭 Fofocas Gregas</h1>
+                    <p>A Casa de Édipo — Maldição dos Labdácidas</p>
+                </div>
+                <div class="header-controls">
+                    <button class="btn" onclick="resetView()">
+                        &#8635; Resetar
+                    </button>
+                    <button class="btn" onclick="toggleLabels()">
+                        Rótulos
+                    </button>
+                </div>
+            </div>
+            <nav class="site-nav">
+                <a href="index.html">Início</a>
+                <a href="deuses-mapa.html">Deuses</a>
+                <a href="atridas-mapa.html">Atridas</a>
+                <a href="familia-edipo-mapa.html" class="active"
+                    >Casa de Édipo</a
+                >
+                <a href="ciclo-troiano-mapa.html">Ciclo Troiano</a>
+            </nav>
+        </div>
 
-<div id="legend">
-  <h3>Legenda</h3>
-  <div class="leg-item"><div class="leg-dot" style="background:#B49FD4"></div> Labdácidas (linhagem)</div>
-  <div class="leg-item"><div class="leg-dot" style="background:#E8C472"></div> Casa Real de Tebas</div>
-  <div class="leg-item"><div class="leg-dot" style="background:#7ABD8A"></div> Figuras externas</div>
-  <div class="leg-item"><div class="leg-dot" style="background:#C8A0D4"></div> Deuses / Profetas</div>
-  <div style="margin-top:10px">
-  <div class="leg-item"><div class="leg-line" style="background:#E8C472"></div> Família (sangue)</div>
-  <div class="leg-item"><div class="leg-line" style="background:#E87272"></div> Conflito / Tragédia</div>
-  <div class="leg-item"><div class="leg-line" style="background:#7EB8D4; border-top:2px dashed #7EB8D4; background:none; height:0"></div> Amor / Casamento</div>
-  <div class="leg-item"><div class="leg-line" style="background:#C8A0D4; border-top:2px dotted #C8A0D4; background:none; height:0"></div> Intervenção / Profecia</div>
-  </div>
-</div>
+        <div id="legend">
+            <h3>Legenda</h3>
+            <div class="leg-item">
+                <div class="leg-dot" style="background: #b49fd4"></div>
+                Labdácidas (linhagem)
+            </div>
+            <div class="leg-item">
+                <div class="leg-dot" style="background: #e8c472"></div>
+                Casa Real de Tebas
+            </div>
+            <div class="leg-item">
+                <div class="leg-dot" style="background: #7abd8a"></div>
+                Figuras externas
+            </div>
+            <div class="leg-item">
+                <div class="leg-dot" style="background: #c8a0d4"></div>
+                Deuses / Profetas
+            </div>
+            <div style="margin-top: 10px">
+                <div class="leg-item">
+                    <div class="leg-line" style="background: #e8c472"></div>
+                    Família (sangue)
+                </div>
+                <div class="leg-item">
+                    <div class="leg-line" style="background: #e87272"></div>
+                    Conflito / Tragédia
+                </div>
+                <div class="leg-item">
+                    <div
+                        class="leg-line"
+                        style="
+                            background: #7eb8d4;
+                            border-top: 2px dashed #7eb8d4;
+                            background: none;
+                            height: 0;
+                        "
+                    ></div>
+                    Amor / Casamento
+                </div>
+                <div class="leg-item">
+                    <div
+                        class="leg-line"
+                        style="
+                            background: #c8a0d4;
+                            border-top: 2px dotted #c8a0d4;
+                            background: none;
+                            height: 0;
+                        "
+                    ></div>
+                    Intervenção / Profecia
+                </div>
+            </div>
+        </div>
 
-<div id="info-panel">
-  <button id="info-close" onclick="closeInfo()">✕</button>
-  <div id="info-name"></div>
-  <div id="info-role"></div>
-  <div id="info-desc"></div>
-  <div id="info-obras">
-    <h4>Aparece em</h4>
-    <div id="info-obras-list"></div>
-  </div>
-</div>
+        <div id="info-panel">
+            <button id="info-close" onclick="closeInfo()">✕</button>
+            <div id="info-name"></div>
+            <div id="info-role"></div>
+            <div id="info-desc"></div>
+            <div id="info-obras">
+                <h4>Aparece em</h4>
+                <div id="info-obras-list"></div>
+            </div>
+        </div>
 
-<div id="hint">
-  Arraste para mover · Scroll para zoom<br>
-  Clique num personagem para detalhes
-</div>
+        <div id="hint">
+            Arraste para mover · Scroll para zoom<br />
+            Clique num personagem para detalhes
+        </div>
 
-<svg id="canvas"></svg>
+        <svg id="canvas"></svg>
 
-<script>
-// ─── LAYOUT: disposição em gerações ────────────────────────────────────────
-// Geração 0: Antepassados / Deuses
-// Geração 1: Laio e Jocasta
-// Geração 2: Édipo
-// Geração 3: Filhos de Édipo
-// Geração 4: Netos / outros
+        <script>
+            // ─── LAYOUT: disposição em gerações ────────────────────────────────────────
+            // Geração 0: Antepassados / Deuses
+            // Geração 1: Laio e Jocasta
+            // Geração 2: Édipo
+            // Geração 3: Filhos de Édipo
+            // Geração 4: Netos / outros
 
-const CX = 680, GY = [130, 250, 390, 530, 670];
+            const CX = 680,
+                GY = [130, 250, 390, 530, 670];
 
-const nodes = [
-  // GEN 0 — antepassados / deuses
-  { id:'labdaco',   label:'Lábdaco',    role:'Rei de Tebas (avô de Édipo)', group:'labdacida', x:CX,     y:GY[0],
-    desc:'Rei de Tebas, filho de Polidoro e neto de Cadmo. Pai de Laio. Deu nome à dinastia Labdácida, marcada desde o início pela maldição divina.',
-    obras:['Referenciado em Édipo Rei','Os Sete Contra Tebas'] },
-  { id:'apolo',     label:'Apolo',      role:'Deus — autor da maldição',    group:'deus',      x:CX+320, y:GY[0],
-    desc:'Deus da profecia. O oráculo de Delfos, voz de Apolo, pronunciou todas as maldições que perseguiram os Labdácidas — de Laio a Édipo. Figura central sem aparecer em cena na maioria das peças.',
-    obras:['Édipo Rei (Sófocles)','Édipo em Colono','As Fenícias'] },
-  { id:'tiresias',  label:'Tirésias',   role:'Profeta cego de Tebas',       group:'deus',      x:CX-320, y:GY[0],
-    desc:'O mais famoso adivinho da Antiguidade. Cego, mas dotado de visão profética por Apolo. Aparece em quatro peças diferentes, sempre portando verdades que ninguém quer ouvir.',
-    obras:['Édipo Rei','Antígona','As Fenícias','As Bacantes'] },
+            const nodes = [
+                // GEN 0 — antepassados / deuses
+                {
+                    id: "labdaco",
+                    label: "Lábdaco",
+                    role: "Rei de Tebas (avô de Édipo)",
+                    group: "labdacida",
+                    x: CX,
+                    y: GY[0],
+                    desc: "Rei de Tebas, filho de Polidoro e neto de Cadmo. Pai de Laio. Deu nome à dinastia Labdácida, marcada desde o início pela maldição divina.",
+                    obras: [
+                        "Referenciado em Édipo Rei",
+                        "Os Sete Contra Tebas",
+                    ],
+                },
+                {
+                    id: "apolo",
+                    label: "Apolo",
+                    role: "Deus — autor da maldição",
+                    group: "deus",
+                    x: CX + 320,
+                    y: GY[0],
+                    desc: "Deus da profecia. O oráculo de Delfos, voz de Apolo, pronunciou todas as maldições que perseguiram os Labdácidas — de Laio a Édipo. Figura central sem aparecer em cena na maioria das peças.",
+                    obras: [
+                        "Édipo Rei (Sófocles)",
+                        "Édipo em Colono",
+                        "As Fenícias",
+                    ],
+                },
+                {
+                    id: "tiresias",
+                    label: "Tirésias",
+                    role: "Profeta cego de Tebas",
+                    group: "deus",
+                    x: CX - 320,
+                    y: GY[0],
+                    desc: "O mais famoso adivinho da Antiguidade. Cego, mas dotado de visão profética por Apolo. Aparece em quatro peças diferentes, sempre portando verdades que ninguém quer ouvir.",
+                    obras: [
+                        "Édipo Rei",
+                        "Antígona",
+                        "As Fenícias",
+                        "As Bacantes",
+                    ],
+                },
 
-  // GEN 1 — Laio e Jocasta
-  { id:'laio',      label:'Laio',       role:'Rei de Tebas / pai de Édipo', group:'labdacida', x:CX-180, y:GY[1],
-    desc:'Rei de Tebas, pai biológico de Édipo. Recebeu do oráculo a profecia de que seria morto pelo próprio filho. Tentou matar o bebê Édipo, mas foi ele próprio assassinado por Édipo numa encruzilhada — sem que nenhum dos dois soubesse.',
-    obras:['Édipo Rei (Sófocles)','As Fenícias (Eurípides)','Os Sete Contra Tebas (Ésquilo)'] },
-  { id:'jocasta',   label:'Jocasta',    role:'Rainha / mãe e esposa de Édipo', group:'labdacida', x:CX+180, y:GY[1],
-    desc:'Rainha de Tebas, mãe de Édipo que, sem saber, tornou-se também sua esposa. Ao descobrir a verdade, enforcou-se. Figura de extraordinária complexidade trágica — vítima e involuntária cúmplice da maldição.',
-    obras:['Édipo Rei (Sófocles)','As Fenícias (Eurípides)'] },
+                // GEN 1 — Laio e Jocasta
+                {
+                    id: "laio",
+                    label: "Laio",
+                    role: "Rei de Tebas / pai de Édipo",
+                    group: "labdacida",
+                    x: CX - 180,
+                    y: GY[1],
+                    desc: "Rei de Tebas, pai biológico de Édipo. Recebeu do oráculo a profecia de que seria morto pelo próprio filho. Tentou matar o bebê Édipo, mas foi ele próprio assassinado por Édipo numa encruzilhada — sem que nenhum dos dois soubesse.",
+                    obras: [
+                        "Édipo Rei (Sófocles)",
+                        "As Fenícias (Eurípides)",
+                        "Os Sete Contra Tebas (Ésquilo)",
+                    ],
+                },
+                {
+                    id: "jocasta",
+                    label: "Jocasta",
+                    role: "Rainha / mãe e esposa de Édipo",
+                    group: "labdacida",
+                    x: CX + 180,
+                    y: GY[1],
+                    desc: "Rainha de Tebas, mãe de Édipo que, sem saber, tornou-se também sua esposa. Ao descobrir a verdade, enforcou-se. Figura de extraordinária complexidade trágica — vítima e involuntária cúmplice da maldição.",
+                    obras: ["Édipo Rei (Sófocles)", "As Fenícias (Eurípides)"],
+                },
 
-  // GEN 2 — Édipo
-  { id:'edipo',     label:'Édipo',      role:'Rei de Tebas / filho e marido de Jocasta', group:'labdacida', x:CX, y:GY[2],
-    desc:'O protagonista mais famoso da tragédia grega. Matou o pai sem saber, casou com a mãe sem saber, desvendou o enigma da Esfinge, governou Tebas e, ao descobrir sua verdadeira identidade, cegou a si mesmo. Morreu em Colono após anos de exílio acompanhado por Antígona.',
-    obras:['Édipo Rei (Sófocles)','Édipo em Colono (Sófocles)','As Fenícias (Eurípides)'] },
-  { id:'merope',    label:'Mérope',     role:'Mãe adotiva de Édipo',        group:'externo',   x:CX-340, y:GY[2],
-    desc:'Rainha de Corinto, mãe adotiva de Édipo. Criou-o como filho próprio sem revelar sua origem. Sua aparição indireta no enredo de Édipo Rei é o gatilho que desencadeia a busca da verdade.',
-    obras:['Édipo Rei (Sófocles)'] },
-  { id:'polibo',    label:'Pólibo',     role:'Rei de Corinto / pai adotivo', group:'externo',   x:CX-480, y:GY[2],
-    desc:'Rei de Corinto que adotou Édipo bebê. Édipo foge de Corinto exatamente para evitar matar o pai — sem saber que Pólibo não era seu pai verdadeiro.',
-    obras:['Édipo Rei (Sófocles)'] },
-  { id:'creonte',   label:'Creonte',    role:'Rei de Tebas / irmão de Jocasta', group:'tebas',  x:CX+400, y:GY[2],
-    desc:'Irmão de Jocasta e cunhado/tio de Édipo. Governa Tebas interinamente várias vezes. Em Antígona, sua rigidez política — recusar enterro a Polinices — provoca uma cadeia de mortes que destrói sua própria família.',
-    obras:['Édipo Rei','Édipo em Colono','Antígona (Sófocles)','As Fenícias (Eurípides)'] },
+                // GEN 2 — Édipo
+                {
+                    id: "edipo",
+                    label: "Édipo",
+                    role: "Rei de Tebas / filho e marido de Jocasta",
+                    group: "labdacida",
+                    x: CX,
+                    y: GY[2],
+                    desc: "O protagonista mais famoso da tragédia grega. Matou o pai sem saber, casou com a mãe sem saber, desvendou o enigma da Esfinge, governou Tebas e, ao descobrir sua verdadeira identidade, cegou a si mesmo. Morreu em Colono após anos de exílio acompanhado por Antígona.",
+                    obras: [
+                        "Édipo Rei (Sófocles)",
+                        "Édipo em Colono (Sófocles)",
+                        "As Fenícias (Eurípides)",
+                    ],
+                },
+                {
+                    id: "merope",
+                    label: "Mérope",
+                    role: "Mãe adotiva de Édipo",
+                    group: "externo",
+                    x: CX - 340,
+                    y: GY[2],
+                    desc: "Rainha de Corinto, mãe adotiva de Édipo. Criou-o como filho próprio sem revelar sua origem. Sua aparição indireta no enredo de Édipo Rei é o gatilho que desencadeia a busca da verdade.",
+                    obras: ["Édipo Rei (Sófocles)"],
+                },
+                {
+                    id: "polibo",
+                    label: "Pólibo",
+                    role: "Rei de Corinto / pai adotivo",
+                    group: "externo",
+                    x: CX - 480,
+                    y: GY[2],
+                    desc: "Rei de Corinto que adotou Édipo bebê. Édipo foge de Corinto exatamente para evitar matar o pai — sem saber que Pólibo não era seu pai verdadeiro.",
+                    obras: ["Édipo Rei (Sófocles)"],
+                },
+                {
+                    id: "creonte",
+                    label: "Creonte",
+                    role: "Rei de Tebas / irmão de Jocasta",
+                    group: "tebas",
+                    x: CX + 400,
+                    y: GY[2],
+                    desc: "Irmão de Jocasta e cunhado/tio de Édipo. Governa Tebas interinamente várias vezes. Em Antígona, sua rigidez política — recusar enterro a Polinices — provoca uma cadeia de mortes que destrói sua própria família.",
+                    obras: [
+                        "Édipo Rei",
+                        "Édipo em Colono",
+                        "Antígona (Sófocles)",
+                        "As Fenícias (Eurípides)",
+                    ],
+                },
 
-  // GEN 3 — filhos de Édipo
-  { id:'antigona',  label:'Antígona',   role:'Filha de Édipo / heroína',    group:'labdacida', x:CX-280, y:GY[3],
-    desc:'A mais célebre filha de Édipo. Acompanhou o pai cego no exílio até Colono. Desafiou o édito de Creonte e enterrou o irmão Polinices, pagando com a vida. Símbolo eterno do conflito entre lei humana e lei divina.',
-    obras:['Antígona (Sófocles)','Édipo em Colono (Sófocles)','As Fenícias (Eurípides)','Os Sete Contra Tebas (Ésquilo)'] },
-  { id:'ismene',    label:'Ismene',     role:'Filha de Édipo / irmã de Antígona', group:'labdacida', x:CX-100, y:GY[3],
-    desc:'Irmã de Antígona, mais cautelosa e pragmática. Recusa-se a participar do enterro de Polinices por medo — contraste que define a heroicidade de Antígona. Mais tarde quer compartilhar o martírio da irmã.',
-    obras:['Antígona (Sófocles)','Édipo em Colono (Sófocles)','Os Sete Contra Tebas (Ésquilo)'] },
-  { id:'eteocles',  label:'Etéocles',   role:'Filho de Édipo / Rei de Tebas', group:'labdacida', x:CX+100, y:GY[3],
-    desc:'Filho de Édipo que assumiu o trono de Tebas. Quebrou o acordo com Polinices de alternarem o reinado. Morreu em combate singular contra o próprio irmão — os dois se mataram mutuamente.',
-    obras:['Os Sete Contra Tebas (Ésquilo)','As Fenícias (Eurípides)'] },
-  { id:'polinices', label:'Polinices',  role:'Filho de Édipo / atacante de Tebas', group:'labdacida', x:CX+280, y:GY[3],
-    desc:'Filho de Édipo expulso do trono por Etéocles. Organizou o exército dos Sete Contra Tebas para reconquistar a cidade. Morreu em duelo com o irmão. Seu cadáver insepulto é o centro da tragédia Antígona.',
-    obras:['Os Sete Contra Tebas (Ésquilo)','As Fenícias (Eurípides)','Édipo em Colono','Antígona (Sófocles)'] },
+                // GEN 3 — filhos de Édipo
+                {
+                    id: "antigona",
+                    label: "Antígona",
+                    role: "Filha de Édipo / heroína",
+                    group: "labdacida",
+                    x: CX - 280,
+                    y: GY[3],
+                    desc: "A mais célebre filha de Édipo. Acompanhou o pai cego no exílio até Colono. Desafiou o édito de Creonte e enterrou o irmão Polinices, pagando com a vida. Símbolo eterno do conflito entre lei humana e lei divina.",
+                    obras: [
+                        "Antígona (Sófocles)",
+                        "Édipo em Colono (Sófocles)",
+                        "As Fenícias (Eurípides)",
+                        "Os Sete Contra Tebas (Ésquilo)",
+                    ],
+                },
+                {
+                    id: "ismene",
+                    label: "Ismene",
+                    role: "Filha de Édipo / irmã de Antígona",
+                    group: "labdacida",
+                    x: CX - 100,
+                    y: GY[3],
+                    desc: "Irmã de Antígona, mais cautelosa e pragmática. Recusa-se a participar do enterro de Polinices por medo — contraste que define a heroicidade de Antígona. Mais tarde quer compartilhar o martírio da irmã.",
+                    obras: [
+                        "Antígona (Sófocles)",
+                        "Édipo em Colono (Sófocles)",
+                        "Os Sete Contra Tebas (Ésquilo)",
+                    ],
+                },
+                {
+                    id: "eteocles",
+                    label: "Etéocles",
+                    role: "Filho de Édipo / Rei de Tebas",
+                    group: "labdacida",
+                    x: CX + 100,
+                    y: GY[3],
+                    desc: "Filho de Édipo que assumiu o trono de Tebas. Quebrou o acordo com Polinices de alternarem o reinado. Morreu em combate singular contra o próprio irmão — os dois se mataram mutuamente.",
+                    obras: [
+                        "Os Sete Contra Tebas (Ésquilo)",
+                        "As Fenícias (Eurípides)",
+                    ],
+                },
+                {
+                    id: "polinices",
+                    label: "Polinices",
+                    role: "Filho de Édipo / atacante de Tebas",
+                    group: "labdacida",
+                    x: CX + 280,
+                    y: GY[3],
+                    desc: "Filho de Édipo expulso do trono por Etéocles. Organizou o exército dos Sete Contra Tebas para reconquistar a cidade. Morreu em duelo com o irmão. Seu cadáver insepulto é o centro da tragédia Antígona.",
+                    obras: [
+                        "Os Sete Contra Tebas (Ésquilo)",
+                        "As Fenícias (Eurípides)",
+                        "Édipo em Colono",
+                        "Antígona (Sófocles)",
+                    ],
+                },
 
-  // GEN 4 — netos / personagens relacionados
-  { id:'hemon',     label:'Hêmon',      role:'Filho de Creonte / noivo de Antígona', group:'tebas', x:CX-420, y:GY[4],
-    desc:'Filho de Creonte e noivo de Antígona. Tentou convencer o pai a libertar Antígona, em vão. Encontrou-a morta na caverna e suicidou-se sobre seu corpo. Sua morte destrói também a mãe Eurídice.',
-    obras:['Antígona (Sófocles)'] },
-  { id:'euridice',  label:'Eurídice',   role:'Esposa de Creonte',           group:'tebas',     x:CX-220, y:GY[4],
-    desc:'Esposa de Creonte, mãe de Hêmon. Ao receber a notícia da morte do filho, suicidou-se amaldiçoando Creonte. Aparece brevemente mas sua morte sela a ruína total do rei.',
-    obras:['Antígona (Sófocles)'] },
-  { id:'meneceu',   label:'Meneceu',    role:'Filho de Creonte / sacrifício', group:'tebas',   x:CX-60,  y:GY[4],
-    desc:'Jovem filho de Creonte que, ao saber que Tirésias exigiu um sacrifício para salvar Tebas, atirou-se das muralhas voluntariamente — ato de heroísmo que contrasta com a rigidez do pai.',
-    obras:['As Fenícias (Eurípides)'] },
-  { id:'argos',     label:'Adrasto',    role:'Rei de Argos / sogro de Polinices', group:'externo', x:CX+450, y:GY[3],
-    desc:'Rei de Argos que liderou a expedição dos Sete Contra Tebas em apoio ao genro Polinices. O único dos sete a sobreviver à derrota. Reaparece em As Suplicantes de Eurípides pedindo ajuda a Teseu.',
-    obras:['Os Sete Contra Tebas (Ésquilo)','As Suplicantes (Eurípides)','As Fenícias'] },
-  { id:'argeia',    label:'Argeia',     role:'Esposa de Polinices',         group:'externo',   x:CX+420, y:GY[4],
-    desc:'Filha de Adrasto e esposa de Polinices. Aparece em As Fenícias junto de outras esposas dos Sete, esperando notícias do cerco a Tebas.',
-    obras:['As Fenícias (Eurípides)'] },
-  { id:'esfinge',   label:'Esfinge',    role:'Monstro / guardião de Tebas', group:'deus',      x:CX+150, y:GY[2]-70,
-    desc:'Monstro com cabeça de mulher e corpo de leão enviado pelos deuses para flagelar Tebas. Propunha enigmas e devorava quem errasse. Édipo a venceu respondendo corretamente, libertando Tebas e tornando-se rei.',
-    obras:['Édipo Rei (referenciado)'] },
-];
+                // GEN 4 — netos / personagens relacionados
+                {
+                    id: "hemon",
+                    label: "Hêmon",
+                    role: "Filho de Creonte / noivo de Antígona",
+                    group: "tebas",
+                    x: CX - 420,
+                    y: GY[4],
+                    desc: "Filho de Creonte e noivo de Antígona. Tentou convencer o pai a libertar Antígona, em vão. Encontrou-a morta na caverna e suicidou-se sobre seu corpo. Sua morte destrói também a mãe Eurídice.",
+                    obras: ["Antígona (Sófocles)"],
+                },
+                {
+                    id: "euridice",
+                    label: "Eurídice",
+                    role: "Esposa de Creonte",
+                    group: "tebas",
+                    x: CX - 220,
+                    y: GY[4],
+                    desc: "Esposa de Creonte, mãe de Hêmon. Ao receber a notícia da morte do filho, suicidou-se amaldiçoando Creonte. Aparece brevemente mas sua morte sela a ruína total do rei.",
+                    obras: ["Antígona (Sófocles)"],
+                },
+                {
+                    id: "meneceu",
+                    label: "Meneceu",
+                    role: "Filho de Creonte / sacrifício",
+                    group: "tebas",
+                    x: CX - 60,
+                    y: GY[4],
+                    desc: "Jovem filho de Creonte que, ao saber que Tirésias exigiu um sacrifício para salvar Tebas, atirou-se das muralhas voluntariamente — ato de heroísmo que contrasta com a rigidez do pai.",
+                    obras: ["As Fenícias (Eurípides)"],
+                },
+                {
+                    id: "argos",
+                    label: "Adrasto",
+                    role: "Rei de Argos / sogro de Polinices",
+                    group: "externo",
+                    x: CX + 450,
+                    y: GY[3],
+                    desc: "Rei de Argos que liderou a expedição dos Sete Contra Tebas em apoio ao genro Polinices. O único dos sete a sobreviver à derrota. Reaparece em As Suplicantes de Eurípides pedindo ajuda a Teseu.",
+                    obras: [
+                        "Os Sete Contra Tebas (Ésquilo)",
+                        "As Suplicantes (Eurípides)",
+                        "As Fenícias",
+                    ],
+                },
+                {
+                    id: "argeia",
+                    label: "Argeia",
+                    role: "Esposa de Polinices",
+                    group: "externo",
+                    x: CX + 420,
+                    y: GY[4],
+                    desc: "Filha de Adrasto e esposa de Polinices. Aparece em As Fenícias junto de outras esposas dos Sete, esperando notícias do cerco a Tebas.",
+                    obras: ["As Fenícias (Eurípides)"],
+                },
+                {
+                    id: "esfinge",
+                    label: "Esfinge",
+                    role: "Monstro / guardião de Tebas",
+                    group: "deus",
+                    x: CX + 150,
+                    y: GY[2] - 70,
+                    desc: "Monstro com cabeça de mulher e corpo de leão enviado pelos deuses para flagelar Tebas. Propunha enigmas e devorava quem errasse. Édipo a venceu respondendo corretamente, libertando Tebas e tornando-se rei.",
+                    obras: ["Édipo Rei (referenciado)"],
+                },
+            ];
 
-const edges = [
-  // antepassados
-  { s:'labdaco',   t:'laio',      type:'familia',  label:'pai/filho' },
-  { s:'apolo',     t:'laio',      type:'divino',   label:'amaldiçoou / profecia' },
-  { s:'apolo',     t:'edipo',     type:'divino',   label:'profecia do parricídio' },
-  { s:'tiresias',  t:'edipo',     type:'divino',   label:'revelou a verdade' },
-  { s:'tiresias',  t:'creonte',   type:'divino',   label:'avisou / ignorado' },
+            const edges = [
+                // antepassados
+                {
+                    s: "labdaco",
+                    t: "laio",
+                    type: "familia",
+                    label: "pai/filho",
+                },
+                {
+                    s: "apolo",
+                    t: "laio",
+                    type: "divino",
+                    label: "amaldiçoou / profecia",
+                },
+                {
+                    s: "apolo",
+                    t: "edipo",
+                    type: "divino",
+                    label: "profecia do parricídio",
+                },
+                {
+                    s: "tiresias",
+                    t: "edipo",
+                    type: "divino",
+                    label: "revelou a verdade",
+                },
+                {
+                    s: "tiresias",
+                    t: "creonte",
+                    type: "divino",
+                    label: "avisou / ignorado",
+                },
 
-  // Laio-Jocasta-Édipo
-  { s:'laio',      t:'jocasta',   type:'amor',     label:'casamento' },
-  { s:'laio',      t:'edipo',     type:'familia',  label:'pai/filho (sem saber)' },
-  { s:'jocasta',   t:'edipo',     type:'familia',  label:'mãe e esposa (tragédia)' },
-  { s:'edipo',     t:'laio',      type:'conflito', label:'matou o pai (sem saber)' },
+                // Laio-Jocasta-Édipo
+                { s: "laio", t: "jocasta", type: "amor", label: "casamento" },
+                {
+                    s: "laio",
+                    t: "edipo",
+                    type: "familia",
+                    label: "pai/filho (sem saber)",
+                },
+                {
+                    s: "jocasta",
+                    t: "edipo",
+                    type: "familia",
+                    label: "mãe e esposa (tragédia)",
+                },
+                {
+                    s: "edipo",
+                    t: "laio",
+                    type: "conflito",
+                    label: "matou o pai (sem saber)",
+                },
 
-  // Édipo filhos
-  { s:'edipo',     t:'antigona',  type:'familia',  label:'pai/filha' },
-  { s:'edipo',     t:'ismene',    type:'familia',  label:'pai/filha' },
-  { s:'edipo',     t:'eteocles',  type:'familia',  label:'pai/filho' },
-  { s:'edipo',     t:'polinices', type:'familia',  label:'pai/filho' },
+                // Édipo filhos
+                {
+                    s: "edipo",
+                    t: "antigona",
+                    type: "familia",
+                    label: "pai/filha",
+                },
+                {
+                    s: "edipo",
+                    t: "ismene",
+                    type: "familia",
+                    label: "pai/filha",
+                },
+                {
+                    s: "edipo",
+                    t: "eteocles",
+                    type: "familia",
+                    label: "pai/filho",
+                },
+                {
+                    s: "edipo",
+                    t: "polinices",
+                    type: "familia",
+                    label: "pai/filho",
+                },
 
-  // pais adotivos
-  { s:'polibo',    t:'edipo',     type:'amor',     label:'adotou / criou' },
-  { s:'merope',    t:'edipo',     type:'amor',     label:'mãe adotiva' },
+                // pais adotivos
+                {
+                    s: "polibo",
+                    t: "edipo",
+                    type: "amor",
+                    label: "adotou / criou",
+                },
+                { s: "merope", t: "edipo", type: "amor", label: "mãe adotiva" },
 
-  // Creonte
-  { s:'jocasta',   t:'creonte',   type:'familia',  label:'irmãos' },
-  { s:'creonte',   t:'hemon',     type:'familia',  label:'pai/filho' },
-  { s:'creonte',   t:'euridice',  type:'amor',     label:'casamento' },
-  { s:'creonte',   t:'meneceu',   type:'familia',  label:'pai/filho' },
-  { s:'creonte',   t:'antigona',  type:'conflito', label:'condenou à morte' },
-  { s:'euridice',  t:'hemon',     type:'familia',  label:'mãe/filho' },
+                // Creonte
+                {
+                    s: "jocasta",
+                    t: "creonte",
+                    type: "familia",
+                    label: "irmãos",
+                },
+                {
+                    s: "creonte",
+                    t: "hemon",
+                    type: "familia",
+                    label: "pai/filho",
+                },
+                {
+                    s: "creonte",
+                    t: "euridice",
+                    type: "amor",
+                    label: "casamento",
+                },
+                {
+                    s: "creonte",
+                    t: "meneceu",
+                    type: "familia",
+                    label: "pai/filho",
+                },
+                {
+                    s: "creonte",
+                    t: "antigona",
+                    type: "conflito",
+                    label: "condenou à morte",
+                },
+                {
+                    s: "euridice",
+                    t: "hemon",
+                    type: "familia",
+                    label: "mãe/filho",
+                },
 
-  // irmãos filhos de Édipo
-  { s:'eteocles',  t:'polinices', type:'conflito', label:'mataram-se mutuamente' },
-  { s:'antigona',  t:'ismene',    type:'familia',  label:'irmãs' },
-  { s:'antigona',  t:'polinices', type:'familia',  label:'enterrou o irmão' },
-  { s:'antigona',  t:'hemon',     type:'amor',     label:'noivado' },
-  { s:'hemon',     t:'euridice',  type:'familia',  label:'filho/mãe' },
+                // irmãos filhos de Édipo
+                {
+                    s: "eteocles",
+                    t: "polinices",
+                    type: "conflito",
+                    label: "mataram-se mutuamente",
+                },
+                { s: "antigona", t: "ismene", type: "familia", label: "irmãs" },
+                {
+                    s: "antigona",
+                    t: "polinices",
+                    type: "familia",
+                    label: "enterrou o irmão",
+                },
+                { s: "antigona", t: "hemon", type: "amor", label: "noivado" },
+                {
+                    s: "hemon",
+                    t: "euridice",
+                    type: "familia",
+                    label: "filho/mãe",
+                },
 
-  // externos
-  { s:'polinices', t:'argos',     type:'amor',     label:'genro/sogro' },
-  { s:'polinices', t:'argeia',    type:'amor',     label:'casamento' },
-  { s:'argos',     t:'eteocles',  type:'conflito', label:'atacou Tebas' },
-  { s:'esfinge',   t:'edipo',     type:'conflito', label:'Édipo a venceu' },
-  { s:'edipo',     t:'creonte',   type:'conflito', label:'conflito / exílio' },
-];
+                // externos
+                {
+                    s: "polinices",
+                    t: "argos",
+                    type: "amor",
+                    label: "genro/sogro",
+                },
+                {
+                    s: "polinices",
+                    t: "argeia",
+                    type: "amor",
+                    label: "casamento",
+                },
+                {
+                    s: "argos",
+                    t: "eteocles",
+                    type: "conflito",
+                    label: "atacou Tebas",
+                },
+                {
+                    s: "esfinge",
+                    t: "edipo",
+                    type: "conflito",
+                    label: "Édipo a venceu",
+                },
+                {
+                    s: "edipo",
+                    t: "creonte",
+                    type: "conflito",
+                    label: "conflito / exílio",
+                },
+            ];
 
-// ─── RENDER ─────────────────────────────────────────────────────────────────
-const svg = document.getElementById('canvas');
-const W = window.innerWidth, H = window.innerHeight;
-svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+            // ─── RENDER ─────────────────────────────────────────────────────────────────
+            const svg = document.getElementById("canvas");
+            const W = window.innerWidth,
+                H = window.innerHeight;
+            svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
 
-let transform = { x:0, y:0, scale:1 };
-let showLabels = true;
-let dragging = false, dragStart = null, transformStart = null;
-let selectedNode = null;
+            let transform = { x: 0, y: 0, scale: 1 };
+            let showLabels = true;
+            let dragging = false,
+                dragStart = null,
+                transformStart = null;
+            let selectedNode = null;
 
-const groupColors = {
-  labdacida: '#B49FD4',
-  tebas:     '#C9973A',
-  externo:   '#7ABD8A',
-  deus:      '#D4A0D4',
-};
-const groupFill = {
-  labdacida: 'rgba(180,159,212,0.15)',
-  tebas:     'rgba(201,151,58,0.15)',
-  externo:   'rgba(122,189,138,0.13)',
-  deus:      'rgba(212,160,212,0.15)',
-};
-const edgeColors = {
-  familia:  '#C9973A',
-  amor:     '#7EB8D4',
-  conflito: '#E87272',
-  divino:   '#C8A0D4',
-};
+            const groupColors = {
+                labdacida: "#B49FD4",
+                tebas: "#C9973A",
+                externo: "#7ABD8A",
+                deus: "#D4A0D4",
+            };
+            const groupFill = {
+                labdacida: "rgba(180,159,212,0.15)",
+                tebas: "rgba(201,151,58,0.15)",
+                externo: "rgba(122,189,138,0.13)",
+                deus: "rgba(212,160,212,0.15)",
+            };
+            const edgeColors = {
+                familia: "#C9973A",
+                amor: "#7EB8D4",
+                conflito: "#E87272",
+                divino: "#C8A0D4",
+            };
 
-function ns(tag, attrs={}) {
-  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
-  for (const [k,v] of Object.entries(attrs)) el.setAttribute(k,v);
-  return el;
-}
+            function ns(tag, attrs = {}) {
+                const el = document.createElementNS(
+                    "http://www.w3.org/2000/svg",
+                    tag,
+                );
+                for (const [k, v] of Object.entries(attrs))
+                    el.setAttribute(k, v);
+                return el;
+            }
 
-const defs = ns('defs');
-['familia','amor','conflito','divino'].forEach(type => {
-  const mk = ns('marker',{ id:`arr-${type}`, markerWidth:8, markerHeight:8, refX:20, refY:3, orient:'auto' });
-  const p = ns('path',{ d:'M0,0 L0,6 L8,3 z', fill:edgeColors[type], opacity:'0.75' });
-  mk.appendChild(p); defs.appendChild(mk);
-});
-const flt = ns('filter',{id:'glow',x:'-30%',y:'-30%',width:'160%',height:'160%'});
-flt.appendChild(ns('feGaussianBlur',{stdDeviation:'5',result:'blur'}));
-flt.appendChild(ns('feComposite',{in:'SourceGraphic',in2:'blur',operator:'over'}));
-defs.appendChild(flt);
-svg.appendChild(defs);
+            const defs = ns("defs");
+            ["familia", "amor", "conflito", "divino"].forEach((type) => {
+                const mk = ns("marker", {
+                    id: `arr-${type}`,
+                    markerWidth: 8,
+                    markerHeight: 8,
+                    refX: 20,
+                    refY: 3,
+                    orient: "auto",
+                });
+                const p = ns("path", {
+                    d: "M0,0 L0,6 L8,3 z",
+                    fill: edgeColors[type],
+                    opacity: "0.75",
+                });
+                mk.appendChild(p);
+                defs.appendChild(mk);
+            });
+            const flt = ns("filter", {
+                id: "glow",
+                x: "-30%",
+                y: "-30%",
+                width: "160%",
+                height: "160%",
+            });
+            flt.appendChild(
+                ns("feGaussianBlur", { stdDeviation: "5", result: "blur" }),
+            );
+            flt.appendChild(
+                ns("feComposite", {
+                    in: "SourceGraphic",
+                    in2: "blur",
+                    operator: "over",
+                }),
+            );
+            defs.appendChild(flt);
+            svg.appendChild(defs);
 
-const g = ns('g',{id:'main'});
-svg.appendChild(g);
-const edgeGroup = ns('g');
-const nodeGroup = ns('g');
-g.appendChild(edgeGroup);
-g.appendChild(nodeGroup);
+            const g = ns("g", { id: "main" });
+            svg.appendChild(g);
+            const edgeGroup = ns("g");
+            const nodeGroup = ns("g");
+            g.appendChild(edgeGroup);
+            g.appendChild(nodeGroup);
 
-// generation bands
-const genLabels = ['Antepassados','Geração de Laio','Édipo','Filhos de Édipo','Netos / Aliados'];
-genLabels.forEach((lbl,i) => {
-  const t = ns('text',{ x:18, y: GY[i]+5, class:'gen-label' });
-  t.textContent = `— ${lbl}`;
-  t.setAttribute('font-family','Cinzel, serif');
-  t.setAttribute('font-size','9');
-  t.setAttribute('letter-spacing','0.15em');
-  t.setAttribute('fill','rgba(180,159,212,0.2)');
-  edgeGroup.appendChild(t);
+            // generation bands
+            const genLabels = [
+                "Antepassados",
+                "Geração de Laio",
+                "Édipo",
+                "Filhos de Édipo",
+                "Netos / Aliados",
+            ];
+            genLabels.forEach((lbl, i) => {
+                const t = ns("text", {
+                    x: 18,
+                    y: GY[i] + 5,
+                    class: "gen-label",
+                });
+                t.textContent = `— ${lbl}`;
+                t.setAttribute("font-family", "Cinzel, serif");
+                t.setAttribute("font-size", "9");
+                t.setAttribute("letter-spacing", "0.15em");
+                t.setAttribute("fill", "rgba(180,159,212,0.2)");
+                edgeGroup.appendChild(t);
 
-  const line = ns('line',{ x1:0, y1:GY[i]-38, x2:W*3, y2:GY[i]-38,
-    stroke:'rgba(180,159,212,0.07)', 'stroke-width':'1' });
-  edgeGroup.appendChild(line);
-});
+                const line = ns("line", {
+                    x1: 0,
+                    y1: GY[i] - 38,
+                    x2: W * 3,
+                    y2: GY[i] - 38,
+                    stroke: "rgba(180,159,212,0.07)",
+                    "stroke-width": "1",
+                });
+                edgeGroup.appendChild(line);
+            });
 
-// edges
-const edgeEls = {};
-edges.forEach(e => {
-  const src = nodes.find(n=>n.id===e.s);
-  const tgt = nodes.find(n=>n.id===e.t);
-  if(!src||!tgt) return;
-  const dx=tgt.x-src.x, dy=tgt.y-src.y;
-  const mx=src.x+dx*0.5+dy*0.18;
-  const my=src.y+dy*0.5-dx*0.18;
+            // edges
+            const edgeEls = {};
+            edges.forEach((e) => {
+                const src = nodes.find((n) => n.id === e.s);
+                const tgt = nodes.find((n) => n.id === e.t);
+                if (!src || !tgt) return;
+                const dx = tgt.x - src.x,
+                    dy = tgt.y - src.y;
+                const mx = src.x + dx * 0.5 + dy * 0.18;
+                const my = src.y + dy * 0.5 - dx * 0.18;
 
-  const dash = e.type==='amor' ? '5,4' : e.type==='divino' ? '2,4' : 'none';
-  const path = ns('path',{
-    d:`M${src.x},${src.y} Q${mx},${my} ${tgt.x},${tgt.y}`,
-    fill:'none', stroke:edgeColors[e.type],
-    'stroke-width': e.type==='conflito'?2.2:1.5,
-    'stroke-dasharray':dash, opacity:0.38,
-    'marker-end':`url(#arr-${e.type})`,
-  });
-  edgeGroup.appendChild(path);
+                const dash =
+                    e.type === "amor"
+                        ? "5,4"
+                        : e.type === "divino"
+                          ? "2,4"
+                          : "none";
+                const path = ns("path", {
+                    d: `M${src.x},${src.y} Q${mx},${my} ${tgt.x},${tgt.y}`,
+                    fill: "none",
+                    stroke: edgeColors[e.type],
+                    "stroke-width": e.type === "conflito" ? 2.2 : 1.5,
+                    "stroke-dasharray": dash,
+                    opacity: 0.38,
+                    "marker-end": `url(#arr-${e.type})`,
+                });
+                edgeGroup.appendChild(path);
 
-  const lbl = ns('text',{ x:mx, y:my, 'text-anchor':'middle',
-    'font-family':'IM Fell English, serif', 'font-size':'9',
-    'font-style':'italic', fill:edgeColors[e.type], opacity:0, 'pointer-events':'none' });
-  lbl.textContent = e.label;
-  edgeGroup.appendChild(lbl);
-  edgeEls[`${e.s}-${e.t}`] = { path, lbl };
-});
+                const lbl = ns("text", {
+                    x: mx,
+                    y: my,
+                    "text-anchor": "middle",
+                    "font-family": "IM Fell English, serif",
+                    "font-size": "9",
+                    "font-style": "italic",
+                    fill: edgeColors[e.type],
+                    opacity: 0,
+                    "pointer-events": "none",
+                });
+                lbl.textContent = e.label;
+                edgeGroup.appendChild(lbl);
+                edgeEls[`${e.s}-${e.t}`] = { path, lbl };
+            });
 
-// nodes
-const nodeEls = {};
-nodes.forEach(node => {
-  const grp = ns('g',{ cursor:'pointer' });
-  grp.dataset.id = node.id;
+            // nodes
+            const nodeEls = {};
+            nodes.forEach((node) => {
+                const grp = ns("g", { cursor: "pointer" });
+                grp.dataset.id = node.id;
 
-  const ring = ns('circle',{ cx:node.x, cy:node.y, r:27,
-    fill:'none', stroke:groupColors[node.group], 'stroke-width':1.5, opacity:0, filter:'url(#glow)' });
-  grp.appendChild(ring);
+                const ring = ns("circle", {
+                    cx: node.x,
+                    cy: node.y,
+                    r: 27,
+                    fill: "none",
+                    stroke: groupColors[node.group],
+                    "stroke-width": 1.5,
+                    opacity: 0,
+                    filter: "url(#glow)",
+                });
+                grp.appendChild(ring);
 
-  const circle = ns('circle',{ cx:node.x, cy:node.y, r:20,
-    fill:groupFill[node.group], stroke:groupColors[node.group], 'stroke-width':1.5 });
-  grp.appendChild(circle);
+                const circle = ns("circle", {
+                    cx: node.x,
+                    cy: node.y,
+                    r: 20,
+                    fill: groupFill[node.group],
+                    stroke: groupColors[node.group],
+                    "stroke-width": 1.5,
+                });
+                grp.appendChild(circle);
 
-  const icon = ns('text',{ x:node.x, y:node.y+5, 'text-anchor':'middle',
-    'font-family':'Cinzel, serif', 'font-size':'13', 'font-weight':'700',
-    fill:groupColors[node.group], 'pointer-events':'none' });
-  icon.textContent = node.label[0];
-  grp.appendChild(icon);
+                const icon = ns("text", {
+                    x: node.x,
+                    y: node.y + 5,
+                    "text-anchor": "middle",
+                    "font-family": "Cinzel, serif",
+                    "font-size": "13",
+                    "font-weight": "700",
+                    fill: groupColors[node.group],
+                    "pointer-events": "none",
+                });
+                icon.textContent = node.label[0];
+                grp.appendChild(icon);
 
-  const label = ns('text',{ x:node.x, y:node.y+35, 'text-anchor':'middle',
-    'font-family':'Cinzel, serif', 'font-size':'10', 'font-weight':'600',
-    fill:'#EDE8F5', opacity:showLabels?0.9:0, 'pointer-events':'none' });
-  label.textContent = node.label;
-  grp.appendChild(label);
+                const label = ns("text", {
+                    x: node.x,
+                    y: node.y + 35,
+                    "text-anchor": "middle",
+                    "font-family": "Cinzel, serif",
+                    "font-size": "10",
+                    "font-weight": "600",
+                    fill: "#EDE8F5",
+                    opacity: showLabels ? 0.9 : 0,
+                    "pointer-events": "none",
+                });
+                label.textContent = node.label;
+                grp.appendChild(label);
 
-  const role = ns('text',{ x:node.x, y:node.y+47, 'text-anchor':'middle',
-    'font-family':'IM Fell English, serif', 'font-size':'8', 'font-style':'italic',
-    fill:groupColors[node.group], opacity:showLabels?0.55:0, 'pointer-events':'none' });
-  role.textContent = node.role.length > 28 ? node.role.slice(0,28)+'…' : node.role;
-  grp.appendChild(role);
+                const role = ns("text", {
+                    x: node.x,
+                    y: node.y + 47,
+                    "text-anchor": "middle",
+                    "font-family": "IM Fell English, serif",
+                    "font-size": "8",
+                    "font-style": "italic",
+                    fill: groupColors[node.group],
+                    opacity: showLabels ? 0.55 : 0,
+                    "pointer-events": "none",
+                });
+                role.textContent =
+                    node.role.length > 28
+                        ? node.role.slice(0, 28) + "…"
+                        : node.role;
+                grp.appendChild(role);
 
-  nodeGroup.appendChild(grp);
-  nodeEls[node.id] = { grp, circle, ring, label, role };
+                nodeGroup.appendChild(grp);
+                nodeEls[node.id] = { grp, circle, ring, label, role };
 
-  grp.addEventListener('mouseenter',()=>{
-    if(selectedNode===node.id) return;
-    circle.setAttribute('r',23); ring.setAttribute('opacity',0.5);
-    highlightEdges(node.id, 0.88);
-  });
-  grp.addEventListener('mouseleave',()=>{
-    if(selectedNode===node.id) return;
-    circle.setAttribute('r',20); ring.setAttribute('opacity',0);
-    resetEdges();
-  });
-  grp.addEventListener('click',ev=>{ ev.stopPropagation(); selectNode(node); });
-});
+                grp.addEventListener("mouseenter", () => {
+                    if (selectedNode === node.id) return;
+                    circle.setAttribute("r", 23);
+                    ring.setAttribute("opacity", 0.5);
+                    highlightEdges(node.id, 0.88);
+                });
+                grp.addEventListener("mouseleave", () => {
+                    if (selectedNode === node.id) return;
+                    circle.setAttribute("r", 20);
+                    ring.setAttribute("opacity", 0);
+                    resetEdges();
+                });
+                grp.addEventListener("click", (ev) => {
+                    ev.stopPropagation();
+                    selectNode(node);
+                });
+            });
 
-function highlightEdges(id, op) {
-  edges.forEach(e => {
-    const k=`${e.s}-${e.t}`;
-    if(!edgeEls[k]) return;
-    if(e.s===id||e.t===id) { edgeEls[k].path.setAttribute('opacity',op); edgeEls[k].lbl.setAttribute('opacity',op*0.9); }
-    else edgeEls[k].path.setAttribute('opacity',0.06);
-  });
-}
-function resetEdges() {
-  edges.forEach(e => {
-    const k=`${e.s}-${e.t}`;
-    if(!edgeEls[k]) return;
-    edgeEls[k].path.setAttribute('opacity',0.38);
-    edgeEls[k].lbl.setAttribute('opacity',0);
-  });
-}
-function selectNode(node) {
-  if(selectedNode && nodeEls[selectedNode]) {
-    nodeEls[selectedNode].circle.setAttribute('r',20);
-    nodeEls[selectedNode].ring.setAttribute('opacity',0);
-    nodeEls[selectedNode].circle.setAttribute('stroke-width',1.5);
-  }
-  if(selectedNode===node.id){ selectedNode=null; resetEdges(); closeInfo(); return; }
-  selectedNode=node.id;
-  nodeEls[node.id].circle.setAttribute('r',24);
-  nodeEls[node.id].ring.setAttribute('opacity',0.85);
-  nodeEls[node.id].circle.setAttribute('stroke-width',2.5);
-  highlightEdges(node.id,0.92);
-  document.getElementById('info-name').textContent = node.label;
-  document.getElementById('info-role').textContent = node.role;
-  document.getElementById('info-desc').textContent = node.desc;
-  document.getElementById('info-obras-list').innerHTML = node.obras.map(o=>`<span class="obra-tag">${o}</span>`).join('');
-  document.getElementById('info-panel').classList.add('visible');
-}
-function closeInfo() {
-  document.getElementById('info-panel').classList.remove('visible');
-  if(selectedNode && nodeEls[selectedNode]) {
-    nodeEls[selectedNode].circle.setAttribute('r',20);
-    nodeEls[selectedNode].ring.setAttribute('opacity',0);
-    nodeEls[selectedNode].circle.setAttribute('stroke-width',1.5);
-  }
-  selectedNode=null; resetEdges();
-}
-svg.addEventListener('click',()=>closeInfo());
-window.closeInfo=closeInfo;
+            function highlightEdges(id, op) {
+                edges.forEach((e) => {
+                    const k = `${e.s}-${e.t}`;
+                    if (!edgeEls[k]) return;
+                    if (e.s === id || e.t === id) {
+                        edgeEls[k].path.setAttribute("opacity", op);
+                        edgeEls[k].lbl.setAttribute("opacity", op * 0.9);
+                    } else edgeEls[k].path.setAttribute("opacity", 0.06);
+                });
+            }
+            function resetEdges() {
+                edges.forEach((e) => {
+                    const k = `${e.s}-${e.t}`;
+                    if (!edgeEls[k]) return;
+                    edgeEls[k].path.setAttribute("opacity", 0.38);
+                    edgeEls[k].lbl.setAttribute("opacity", 0);
+                });
+            }
+            function selectNode(node) {
+                if (selectedNode && nodeEls[selectedNode]) {
+                    nodeEls[selectedNode].circle.setAttribute("r", 20);
+                    nodeEls[selectedNode].ring.setAttribute("opacity", 0);
+                    nodeEls[selectedNode].circle.setAttribute(
+                        "stroke-width",
+                        1.5,
+                    );
+                }
+                if (selectedNode === node.id) {
+                    selectedNode = null;
+                    resetEdges();
+                    closeInfo();
+                    return;
+                }
+                selectedNode = node.id;
+                nodeEls[node.id].circle.setAttribute("r", 24);
+                nodeEls[node.id].ring.setAttribute("opacity", 0.85);
+                nodeEls[node.id].circle.setAttribute("stroke-width", 2.5);
+                highlightEdges(node.id, 0.92);
+                document.getElementById("info-name").textContent = node.label;
+                document.getElementById("info-role").textContent = node.role;
+                document.getElementById("info-desc").textContent = node.desc;
+                document.getElementById("info-obras-list").innerHTML =
+                    node.obras
+                        .map((o) => `<span class="obra-tag">${o}</span>`)
+                        .join("");
+                document.getElementById("info-panel").classList.add("visible");
+            }
+            function closeInfo() {
+                document
+                    .getElementById("info-panel")
+                    .classList.remove("visible");
+                if (selectedNode && nodeEls[selectedNode]) {
+                    nodeEls[selectedNode].circle.setAttribute("r", 20);
+                    nodeEls[selectedNode].ring.setAttribute("opacity", 0);
+                    nodeEls[selectedNode].circle.setAttribute(
+                        "stroke-width",
+                        1.5,
+                    );
+                }
+                selectedNode = null;
+                resetEdges();
+            }
+            svg.addEventListener("click", () => closeInfo());
+            window.closeInfo = closeInfo;
 
-// ─── PAN & ZOOM ──────────────────────────────────────────────────────────────
-const bb = nodes.reduce((a,n)=>({
-  minX:Math.min(a.minX,n.x), maxX:Math.max(a.maxX,n.x),
-  minY:Math.min(a.minY,n.y), maxY:Math.max(a.maxY,n.y),
-}),{minX:Infinity,maxX:-Infinity,minY:Infinity,maxY:-Infinity});
-const cW=bb.maxX-bb.minX+120, cH=bb.maxY-bb.minY+120;
-const initScale=Math.min((W-60)/cW,(H-100)/cH,1)*0.88;
-transform.scale=initScale;
-transform.x=(W-cW*initScale)/2 - bb.minX*initScale+40;
-transform.y=(H-cH*initScale)/2 - bb.minY*initScale+55;
+            // ─── PAN & ZOOM ──────────────────────────────────────────────────────────────
+            const bb = nodes.reduce(
+                (a, n) => ({
+                    minX: Math.min(a.minX, n.x),
+                    maxX: Math.max(a.maxX, n.x),
+                    minY: Math.min(a.minY, n.y),
+                    maxY: Math.max(a.maxY, n.y),
+                }),
+                {
+                    minX: Infinity,
+                    maxX: -Infinity,
+                    minY: Infinity,
+                    maxY: -Infinity,
+                },
+            );
+            const cW = bb.maxX - bb.minX + 120,
+                cH = bb.maxY - bb.minY + 120;
+            const initScale = Math.min((W - 60) / cW, (H - 100) / cH, 1) * 0.88;
+            transform.scale = initScale;
+            transform.x = (W - cW * initScale) / 2 - bb.minX * initScale + 40;
+            transform.y = (H - cH * initScale) / 2 - bb.minY * initScale + 55;
 
-function applyT(){ g.setAttribute('transform',`translate(${transform.x},${transform.y}) scale(${transform.scale})`); }
-applyT();
+            function applyT() {
+                g.setAttribute(
+                    "transform",
+                    `translate(${transform.x},${transform.y}) scale(${transform.scale})`,
+                );
+            }
+            applyT();
 
-svg.addEventListener('mousedown',e=>{ if(e.target.closest('[data-id]')) return; dragging=true; dragStart={x:e.clientX,y:e.clientY}; transformStart={...transform}; svg.style.cursor='grabbing'; });
-window.addEventListener('mousemove',e=>{ if(!dragging) return; transform.x=transformStart.x+(e.clientX-dragStart.x); transform.y=transformStart.y+(e.clientY-dragStart.y); applyT(); });
-window.addEventListener('mouseup',()=>{ dragging=false; svg.style.cursor='default'; });
-svg.addEventListener('wheel',e=>{ e.preventDefault(); const f=e.deltaY<0?1.1:0.91; transform.x=e.clientX-(e.clientX-transform.x)*f; transform.y=e.clientY-(e.clientY-transform.y)*f; transform.scale*=f; applyT(); },{passive:false});
+            svg.addEventListener("mousedown", (e) => {
+                if (e.target.closest("[data-id]")) return;
+                dragging = true;
+                dragStart = { x: e.clientX, y: e.clientY };
+                transformStart = { ...transform };
+                svg.style.cursor = "grabbing";
+            });
+            window.addEventListener("mousemove", (e) => {
+                if (!dragging) return;
+                transform.x = transformStart.x + (e.clientX - dragStart.x);
+                transform.y = transformStart.y + (e.clientY - dragStart.y);
+                applyT();
+            });
+            window.addEventListener("mouseup", () => {
+                dragging = false;
+                svg.style.cursor = "default";
+            });
+            svg.addEventListener(
+                "wheel",
+                (e) => {
+                    e.preventDefault();
+                    const f = e.deltaY < 0 ? 1.1 : 0.91;
+                    transform.x = e.clientX - (e.clientX - transform.x) * f;
+                    transform.y = e.clientY - (e.clientY - transform.y) * f;
+                    transform.scale *= f;
+                    applyT();
+                },
+                { passive: false },
+            );
 
-let lastTouch=null;
-svg.addEventListener('touchstart',e=>{ if(e.touches.length===1){ dragging=true; lastTouch={x:e.touches[0].clientX,y:e.touches[0].clientY}; transformStart={...transform}; dragStart={...lastTouch}; } },{passive:true});
-svg.addEventListener('touchmove',e=>{ if(!dragging||e.touches.length!==1) return; const t=e.touches[0]; transform.x=transformStart.x+(t.clientX-dragStart.x); transform.y=transformStart.y+(t.clientY-dragStart.y); applyT(); },{passive:true});
-svg.addEventListener('touchend',()=>{ dragging=false; });
+            let lastTouch = null;
+            svg.addEventListener(
+                "touchstart",
+                (e) => {
+                    if (e.touches.length === 1) {
+                        dragging = true;
+                        lastTouch = {
+                            x: e.touches[0].clientX,
+                            y: e.touches[0].clientY,
+                        };
+                        transformStart = { ...transform };
+                        dragStart = { ...lastTouch };
+                    }
+                },
+                { passive: true },
+            );
+            svg.addEventListener(
+                "touchmove",
+                (e) => {
+                    if (!dragging || e.touches.length !== 1) return;
+                    const t = e.touches[0];
+                    transform.x = transformStart.x + (t.clientX - dragStart.x);
+                    transform.y = transformStart.y + (t.clientY - dragStart.y);
+                    applyT();
+                },
+                { passive: true },
+            );
+            svg.addEventListener("touchend", () => {
+                dragging = false;
+            });
 
-function resetView(){ transform.scale=initScale; transform.x=(W-cW*initScale)/2-bb.minX*initScale+40; transform.y=(H-cH*initScale)/2-bb.minY*initScale+55; applyT(); }
-function toggleLabels(){ showLabels=!showLabels; Object.values(nodeEls).forEach(({label,role})=>{ label.setAttribute('opacity',showLabels?0.9:0); role.setAttribute('opacity',showLabels?0.55:0); }); }
-window.resetView=resetView; window.toggleLabels=toggleLabels;
-</script>
-</body>
+            function resetView() {
+                transform.scale = initScale;
+                transform.x =
+                    (W - cW * initScale) / 2 - bb.minX * initScale + 40;
+                transform.y =
+                    (H - cH * initScale) / 2 - bb.minY * initScale + 55;
+                applyT();
+            }
+            function toggleLabels() {
+                showLabels = !showLabels;
+                Object.values(nodeEls).forEach(({ label, role }) => {
+                    label.setAttribute("opacity", showLabels ? 0.9 : 0);
+                    role.setAttribute("opacity", showLabels ? 0.55 : 0);
+                });
+            }
+            window.resetView = resetView;
+            window.toggleLabels = toggleLabels;
+        </script>
+    </body>
 </html>
