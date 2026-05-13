@@ -50,7 +50,7 @@
     z-index: 1;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 40px 24px 80px;
+    padding: 84px 24px 80px;
   }
 
   /* HEADER */
@@ -331,9 +331,45 @@
     border-color: rgba(46,122,79,0.2);
     border-left-color: var(--comedy-light);
   }
+
+  /* TOP NAV */
+  .topnav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(20,14,5,0.97);
+    border-bottom: 1px solid rgba(201,151,58,0.28);
+    padding: 0 24px;
+  }
+  .topnav a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(200,175,120,0.55);
+    padding: 11px 14px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s;
+  }
+  .topnav a:hover { color: var(--gold-light); }
+  .topnav a.active {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold);
+  }
 </style>
 </head>
 <body>
+<nav class="topnav">
+  <a href="index.html" class="active">Início</a>
+  <a href="deuses-mapa.html">Deuses</a>
+  <a href="atridas-mapa.html">Atridas</a>
+  <a href="familia-edipo-mapa.html">Casa de Édipo</a>
+  <a href="ciclo-troiano-mapa.html">Ciclo Troiano</a>
+</nav>
 <div class="container">
 
   <!-- HEADER -->

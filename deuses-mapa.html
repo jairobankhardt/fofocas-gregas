@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fofocas Gregas — Os Deuses</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg: #03050F;
+  --zeus: #2A4A8A;
+  --zeus-l: #6A9AE0;
+  --gold: #C9973A;
+  --gold-l: #E8C472;
+  --olymp: #1A3A6A;
+  --chthon: #3A1A5A;
+  --chthon-l: #9A60D4;
+  --nature: #1A4A2E;
+  --nature-l: #6ABD8A;
+  --parch: #E8F0FF;
+  --white: #D0DCFF;
+}
+body {
+  background: var(--bg);
+  font-family: 'IM Fell English', Georgia, serif;
+  overflow: hidden; height:100vh; width:100vw;
+}
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(42,74,138,0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(58,26,90,0.15) 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 70%, rgba(26,58,106,0.12) 0%, transparent 45%);
+  pointer-events:none;
+}
+/* stars */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 10%, rgba(255,255,255,0.35) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 30%, rgba(255,255,255,0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 70%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 5% 85%, rgba(255,255,255,0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 90%, rgba(255,255,255,0.2) 0%, transparent 100%),
+    radial-gradient(2px 2px at 35% 20%, rgba(200,220,255,0.3) 0%, transparent 100%),
+    radial-gradient(2px 2px at 55% 55%, rgba(200,220,255,0.2) 0%, transparent 100%);
+  pointer-events:none;
+}
+#header {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:14px 24px 12px;
+  display:flex; align-items:center; justify-content:space-between;
+  background:linear-gradient(to bottom,rgba(3,5,15,0.98),rgba(3,5,15,0.6));
+  border-bottom:1px solid rgba(106,154,224,0.25);
+}
+.header-left h1 { font-family:'Cinzel Decorative',serif; font-size:1.1rem; color:var(--zeus-l); line-height:1; }
+.header-left p { font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.2em; color:var(--gold); opacity:0.8; margin-top:3px; text-transform:uppercase; }
+.header-controls { display:flex; gap:8px; }
+.btn { font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:0.08em; padding:5px 12px; border:1px solid rgba(106,154,224,0.3); background:rgba(42,74,138,0.12); color:var(--zeus-l); border-radius:2px; cursor:pointer; transition:all 0.2s; }
+.btn:hover { background:rgba(42,74,138,0.28); border-color:var(--zeus-l); }
+
+#legend {
+  position:fixed; bottom:20px; left:20px; z-index:100;
+  background:rgba(3,5,15,0.93); border:1px solid rgba(106,154,224,0.2); border-radius:4px; padding:12px 16px; min-width:195px;
+}
+#legend h3 { font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--zeus-l); text-transform:uppercase; margin-bottom:10px; opacity:0.9; }
+.leg-item { display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:0.75rem; color:var(--parch); opacity:0.8; }
+.leg-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+.leg-line { width:24px; height:2px; flex-shrink:0; border-radius:2px; }
+
+#info-panel {
+  position:fixed; top:70px; right:20px; z-index:100; width:275px;
+  background:rgba(3,5,15,0.97); border:1px solid rgba(106,154,224,0.3); border-radius:4px;
+  padding:18px; opacity:0; transform:translateX(20px); transition:all 0.3s ease; pointer-events:none;
+}
+#info-panel.visible { opacity:1; transform:translateX(0); pointer-events:all; }
+#info-name { font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:var(--zeus-l); margin-bottom:4px; }
+#info-role { font-style:italic; font-size:0.8rem; color:var(--gold-l); opacity:0.9; margin-bottom:10px; }
+#info-desc { font-size:0.8rem; color:var(--parch); opacity:0.85; line-height:1.65; margin-bottom:10px; }
+#info-obras { border-top:1px solid rgba(106,154,224,0.18); padding-top:10px; }
+#info-obras h4 { font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.15em; color:var(--zeus-l); opacity:0.7; text-transform:uppercase; margin-bottom:6px; }
+.obra-tag { display:inline-block; background:rgba(42,74,138,0.18); border:1px solid rgba(106,154,224,0.28); border-radius:2px; padding:2px 7px; font-size:0.7rem; color:var(--parch); margin:2px; }
+#info-close { position:absolute; top:10px; right:12px; font-size:1rem; color:var(--zeus-l); opacity:0.5; cursor:pointer; background:none; border:none; font-family:serif; }
+#info-close:hover { opacity:1; }
+#hint { position:fixed; bottom:20px; right:20px; z-index:100; font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.1em; color:var(--zeus-l); opacity:0.35; text-align:right; line-height:1.8; }
+#canvas { position:fixed; inset:0; width:100%; height:100%; }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div class="header-left">
+    <h1>🌩️ Fofocas Gregas</h1>
+    <p>O Olimpo — Deuses nas Tragédias e Comédias</p>
+  </div>
+  <div class="header-controls">
+    <button class="btn" onclick="resetView()">⟳ Resetar</button>
+    <button class="btn" onclick="toggleLabels()">Rótulos</button>
+  </div>
+</div>
+
+<div id="legend">
+  <h3>Legenda</h3>
+  <div class="leg-item"><div class="leg-dot" style="background:#E8C472; border:1px solid #C9973A"></div> Zeus — Pai dos deuses</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#6A9AE0"></div> Olímpicos</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#9A60D4"></div> Ctônicos / Mundo subterrâneo</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#6ABD8A"></div> Natureza / Semideuses</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#E08080"></div> Personificações</div>
+  <div style="margin-top:10px">
+  <div class="leg-item"><div class="leg-line" style="background:#C9973A"></div> Parentesco divino</div>
+  <div class="leg-item"><div class="leg-line" style="background:none; border-top:2px dashed #7EB8D4; height:0"></div> Amor / União</div>
+  <div class="leg-item"><div class="leg-line" style="background:#E87272"></div> Conflito / Rivalidade</div>
+  <div class="leg-item"><div class="leg-line" style="background:none; border-top:2px dotted #C8A0D4; height:0"></div> Intervenção em mortais</div>
+  </div>
+</div>
+
+<div id="info-panel">
+  <button id="info-close" onclick="closeInfo()">✕</button>
+  <div id="info-name"></div>
+  <div id="info-role"></div>
+  <div id="info-desc"></div>
+  <div id="info-obras">
+    <h4>Aparece em</h4>
+    <div id="info-obras-list"></div>
+  </div>
+</div>
+
+<div id="hint">
+  Arraste para mover · Scroll para zoom<br>
+  Clique num deus para detalhes
+</div>
+
+<svg id="canvas"></svg>
+
+<script>
+// Layout: Zeus no centro-topo, olímpicos ao redor, ctônicos abaixo, personificações nas bordas
+const CX = 680, CY = 300;
+
+const nodes = [
+  // ── ZEUS — centro absoluto ──
+  { id:'zeus', label:'Zeus', role:'Rei dos Deuses / Pai do Olimpo', group:'zeus', x:CX, y:CY,
+    desc:'Senhor do Olimpo, deus do raio e do trovão. Pai de incontáveis mortais e deuses — Apolo, Ártemis, Atena, Hermes, Dionísio, Héracles, Helena e muitos outros. Nos dramas aparece como árbitro da ordem cósmica, mas também como pai ausente cujas decisões movem tragédias inteiras. Em Pluto de Aristófanes é satirizado.',
+    obras:['As Suplicantes (Ésquilo)','Prometeu Acorrentado','As Eumênides','Pluto (Aristófanes)','Os Pássaros','As Troianas'] },
+
+  // ── OLÍMPICOS ──
+  { id:'hera', label:'Hera', role:'Rainha do Olimpo / esposa de Zeus', group:'olimpico', x:CX-300, y:CY-120,
+    desc:'Rainha do Olimpo, deusa do casamento e da família. Eternamente ciumenta das aventuras amorosas de Zeus. Perseguiu Héracles — filho bastardo do marido — durante toda a sua vida. Nos dramas raramente aparece em cena mas sua influência é constante.',
+    obras:['Herácles (Eurípides)','referenciada em As Troianas'] },
+  { id:'apolo', label:'Apolo', role:'Deus da profecia, lira e sol', group:'olimpico', x:CX+260, y:CY-180,
+    desc:'Filho de Zeus e Leto, irmão gêmeo de Ártemis. O mais presente de todos os deuses nas tragédias gregas. Seu oráculo em Delfos é a fonte de todas as profecias que desencadeiam as grandes tragédias — de Édipo a Orestes. Amaldiçoou Cassandra, ordenou o matricídio de Orestes e defendeu-o no tribunal.',
+    obras:['As Eumênides (Ésquilo)','Édipo Rei','Orestes (Eurípides)','Alceste','Íon','Andrômaca','Ifigênia em Táuris'] },
+  { id:'atena', label:'Atena', role:'Deusa da sabedoria e da guerra', group:'olimpico', x:CX-260, y:CY-180,
+    desc:'Filha de Zeus, nascida armada de sua cabeça. Protetora de Atenas e dos heróis. Nos dramas é a voz da razão e da lei: preside o julgamento de Orestes nas Eumênides, inventa o voto de minerva e transforma as Fúrias em guardiãs da justiça. Em As Troianas vira-se contra os gregos pelo sacrilégio no seu templo.',
+    obras:['As Eumênides (Ésquilo)','As Troianas','As Suplicantes','Orestes','Ájax','Íon','Ifigênia em Táuris'] },
+  { id:'hermes', label:'Hermes', role:'Mensageiro / guia dos mortos', group:'olimpico', x:CX+300, y:CY+80,
+    desc:'Mensageiro dos deuses, guia das almas ao mundo dos mortos (psicopompo), deus dos ladrões e viajantes. Aparece como interlocutor divino que transmite ordens de Zeus ou conduz almas. Em As Rãs de Aristófanes é parodiado; em Pluto dialoga com os mortais.',
+    obras:['As Eumênides (Ésquilo)','Prometeu Acorrentado','Íon (Eurípides)','A Paz (Aristófanes)','Pluto (Aristófanes)'] },
+  { id:'afrodite', label:'Afrodite', role:'Deusa do amor e da beleza', group:'olimpico', x:CX-300, y:CY+120,
+    desc:'Deusa do amor nascida do mar. Causou a Guerra de Troia ao prometer Helena a Páris no Julgamento das Deusas. Em Hipólito de Eurípides abre a peça declarando que vai destruir Hipólito por ele desprezar o amor — e cumpre a ameaça com precisão fria.',
+    obras:['Hipólito (Eurípides)','referenciada em As Troianas','Os Pássaros (Aristófanes)'] },
+  { id:'artemis', label:'Ártemis', role:'Deusa da caça e da lua', group:'olimpico', x:CX+160, y:CY-260,
+    desc:'Irmã gêmea de Apolo, deusa da caça, da lua e da virgindade. Exigiu o sacrifício de Ifigênia em Áulis e depois a salvou levando-a à Táuris. Em Hipólito é a protetora do jovem caçador virgem — e assiste impotente à sua destruição por Afrodite.',
+    obras:['Ifigênia em Áulis','Ifigênia em Táuris (Eurípides)','Hipólito (Eurípides)'] },
+  { id:'dionisio', label:'Dionísio', role:'Deus do vinho, teatro e êxtase', group:'olimpico', x:CX-160, y:CY-260,
+    desc:'Filho de Zeus e da mortal Sêmele. Deus do vinho, do teatro, da loucura sagrada e da fertilidade. Protagonista único em As Bacantes, onde se vinga brutalmente de Penteu por rejeitar seu culto. Em As Rãs de Aristófanes desce ao Hades para trazer de volta Eurípides — e é comicamente covarde.',
+    obras:['As Bacantes (Eurípides)','As Rãs (Aristófanes)','referenciado em As Tesmoforiantes'] },
+  { id:'hefesto', label:'Hefesto', role:'Deus do fogo e da forja', group:'olimpico', x:CX-100, y:CY+260,
+    desc:'Deus da forja e do fogo, filho de Zeus e Hera (ou só de Hera). Acorrentou Prometeu ao rochedo por ordem de Zeus em Prometeu Acorrentado — tarefa que executa com visível relutância e piedade. Esposo de Afrodite, eternamente traído.',
+    obras:['Prometeu Acorrentado (Ésquilo)'] },
+  { id:'poseidon', label:'Posêidon', role:'Deus do mar e dos terremotos', group:'olimpico', x:CX+100, y:CY+260,
+    desc:'Irmão de Zeus, senhor dos mares e dos terremotos. Em As Troianas dialoga com Atena logo após a queda de Troia — de protetor da cidade torna-se seu co-destruidor. Construiu as muralhas de Troia junto com Apolo.',
+    obras:['As Troianas (Eurípides)','Os Pássaros (Aristófanes)','referenciado em Ájax'] },
+  { id:'ares', label:'Ares', role:'Deus da guerra', group:'olimpico', x:CX+380, y:CY-80,
+    desc:'Deus da guerra e da violência bruta. Raramente aparece em cena nos dramas, mas é invocado e temido. Em Os Sete Contra Tebas é a força que impulsiona ambos os lados. Em As Rãs é mencionado como adversário.',
+    obras:['Os Sete Contra Tebas (Ésquilo)','referenciado em Andrômaca','Orestes'] },
+
+  // ── CTÔNICOS / MUNDO SUBTERRÂNEO ──
+  { id:'hades', label:'Hades', role:'Deus do mundo dos mortos', group:'chthon', x:CX-200, y:CY+420,
+    desc:'Irmão de Zeus e Posêidon, senhor do mundo subterrâneo. Não aparece em cena na maior parte dos dramas, mas sua presença é constante: é para onde vão os mortos, é quem retém ou libera almas. Em Alceste de Eurípides, Tânatos (a Morte personificada) age como seu agente.',
+    obras:['Alceste (Eurípides — indiretamente)','As Rãs (Aristófanes)','referenciado em As Eumênides'] },
+  { id:'persephone', label:'Perséfone', role:'Rainha do Hades', group:'chthon', x:CX+200, y:CY+420,
+    desc:'Filha de Zeus e Deméter, rainha do mundo subterrâneo e esposa de Hades. Nos dramas aparece raramente em cena mas é invocada em rituais fúnebres e contextos de morte. Em As Rãs de Aristófanes, Dionísio chega ao seu reino em busca de Eurípides.',
+    obras:['As Rãs (Aristófanes)','referenciada em Hécuba (Eurípides)'] },
+  { id:'tanatos', label:'Tânatos', role:'Personificação da Morte', group:'chthon', x:CX-380, y:CY+340,
+    desc:'Personificação da morte, irmão gêmeo de Hipnos (o sono). Em Alceste de Eurípides aparece como antagonista concreto — Héracles luta fisicamente com ele junto ao túmulo de Alceste e o vence, devolvendo a heroína ao marido.',
+    obras:['Alceste (Eurípides)'] },
+  { id:'caronte', label:'Caronte', role:'Barqueiro dos mortos', group:'chthon', x:CX+380, y:CY+340,
+    desc:'O barqueiro que transporta as almas dos mortos pelo rio Estige ao Hades. Em As Rãs de Aristófanes é personagem cômico que obriga Dionísio a remar — e recebe o famoso coro das rãs. Uma das raras aparições em cena desta figura.',
+    obras:['As Rãs (Aristófanes)'] },
+  { id:'erinias', label:'Erínias / Eumênides', role:'Deusas da vingança familiar', group:'chthon', x:CX, y:CY+460,
+    desc:'As Fúrias — Alecto, Megera e Tisífone. Nascidas do sangue de Urano. Perseguem quem derrama sangue de parentes. São as protagonistas coletivas das Eumênides de Ésquilo, onde perseguem Orestes até Atenas. Transformadas por Atena nas "Eumênides" — as benevolentes — tornam-se guardiãs da justiça ateniense.',
+    obras:['As Eumênides (Ésquilo)','As Coéforas','Orestes (Eurípides)'] },
+
+  // ── NATUREZA / SEMIDEUSES ──
+  { id:'prometeu', label:'Prometeu', role:'Titã — roubou o fogo para os homens', group:'natureza', x:CX-460, y:CY+120,
+    desc:'Titã que roubou o fogo dos deuses e o deu aos humanos. Punido por Zeus com o suplício eterno — acorrentado a uma rocha enquanto uma águia lhe devora o fígado. Protagonista de Prometeu Acorrentado. Em Os Pássaros de Aristófanes aparece secretamente como aliado dos mortais contra Zeus.',
+    obras:['Prometeu Acorrentado (Ésquilo)','Os Pássaros (Aristófanes)'] },
+  { id:'iris', label:'Íris', role:'Mensageira dos deuses / arco-íris', group:'natureza', x:CX+460, y:CY+120,
+    desc:'Deusa do arco-íris e mensageira dos deuses (especialmente de Hera). Em Herácles de Eurípides aparece junto de Lissa para entregar Héracles à loucura a mando de Hera — uma das cenas mais perturbadoras da tragédia grega.',
+    obras:['Herácles (Eurípides)','Os Pássaros (Aristófanes)'] },
+  { id:'lissa', label:'Lissa', role:'Personificação da Loucura', group:'natureza', x:CX+460, y:CY+240,
+    desc:'Personificação da loucura e da raiva. Aparece ao lado de Íris em Herácles de Eurípides, enviada por Hera para enlouquecer o herói. Reluta em cumprir a missão — sua hesitação torna o mal ainda mais impactante quando se concretiza.',
+    obras:['Herácles (Eurípides)'] },
+  { id:'eos', label:'Éos', role:'Personificação da Aurora', group:'natureza', x:CX-460, y:CY+240,
+    desc:'Deusa da aurora que traz o dia. Referenciada em várias peças como marcador temporal. Mãe de Mêmnon, herói troiano aliado de Troia. Aparece na poética do coro em várias tragédias.',
+    obras:['referenciada em As Troianas','Agamêmnon (Ésquilo)'] },
+  { id:'pan', label:'Pã', role:'Deus dos campos e dos pastores', group:'natureza', x:CX-460, y:CY-20,
+    desc:'Deus dos campos, florestas e pastores, meio homem meio bode. Em O Misantropo de Menandro aparece no prólogo como narrador — uma das mais raras e charmosas aparições do deus na comédia. Associado ao pânico e à música rústica.',
+    obras:['O Misantropo (Menandro)','referenciado em As Rãs'] },
+
+  // ── PERSONIFICAÇÕES ──
+  { id:'nike', label:'Nike', role:'Personificação da Vitória', group:'person', x:CX+460, y:CY-140,
+    desc:'Deusa alada da vitória. Filha do Titã Palas e da oceânide Estige. Nos dramas aparece como símbolo invocado antes das batalhas e como companheira de Atena. Em Os Pássaros de Aristófanes é mencionada na criação da nova cidade celeste.',
+    obras:['Os Pássaros (Aristófanes)','referenciada em Os Sete Contra Tebas'] },
+  { id:'eirene', label:'Eirene (Paz)', role:'Personificação da Paz', group:'person', x:CX-460, y:CY-140,
+    desc:'Personificação da paz, uma das Horas filhas de Zeus e Têmis. Em A Paz de Aristófanes é literalmente enterrada pela Guerra e libertada pelos camponeses gregos numa comédia política brilhante — uma das alegorias mais potentes do teatro antigo.',
+    obras:['A Paz (Aristófanes)'] },
+  { id:'kratos', label:'Cratos', role:'Personificação da Força', group:'person', x:CX-360, y:CY+260,
+    desc:'Personificação da força e do poder. Junto com Bia (a Violência), aparece em Prometeu Acorrentado executando as ordens de Zeus — acorrentando Prometeu à rocha. Figuras que encarnam o poder bruto do governo tirano, em contraste com a piedade de Hefesto.',
+    obras:['Prometeu Acorrentado (Ésquilo)'] },
+  { id:'bia', label:'Bia', role:'Personificação da Violência', group:'person', x:CX-360, y:CY+160,
+    desc:'Personificação da violência e da força bruta. Irmã de Cratos, Níke e Zelo. Em Prometeu Acorrentado aparece ao lado de Cratos como executora silenciosa das ordens de Zeus — nunca fala uma palavra, o que a torna ainda mais aterrorizante.',
+    obras:['Prometeu Acorrentado (Ésquilo)'] },
+  { id:'oceano', label:'Oceano', role:'Titã / deus do rio primordial', group:'natureza', x:CX-480, y:CY+20,
+    desc:'Titã primordial, personificação do grande rio que circunda o mundo. Em Prometeu Acorrentado visita o herói acorrentado tentando convencê-lo a se reconciliar com Zeus — em tom de conselho pragmático que Prometeu rejeita com desdém.',
+    obras:['Prometeu Acorrentado (Ésquilo)'] },
+];
+
+const edges = [
+  // Zeus — pai dos deuses
+  { s:'zeus', t:'apolo',    type:'familia', label:'pai/filho (com Leto)' },
+  { s:'zeus', t:'atena',    type:'familia', label:'pai/filha (nasceu de sua cabeça)' },
+  { s:'zeus', t:'hermes',   type:'familia', label:'pai/filho (com Maia)' },
+  { s:'zeus', t:'artemis',  type:'familia', label:'pai/filha (com Leto)' },
+  { s:'zeus', t:'dionisio', type:'familia', label:'pai/filho (com Sêmele)' },
+  { s:'zeus', t:'ares',     type:'familia', label:'pai/filho (com Hera)' },
+  { s:'zeus', t:'hefesto',  type:'familia', label:'pai/filho (com Hera)' },
+  { s:'zeus', t:'hera',     type:'amor',    label:'casamento / eterno conflito' },
+  { s:'zeus', t:'persephone', type:'familia', label:'pai/filha (com Deméter)' },
+  { s:'zeus', t:'nike',     type:'familia', label:'protegida / companheira de Atena' },
+  { s:'zeus', t:'eirene',   type:'familia', label:'pai/filha (com Têmis)' },
+  { s:'zeus', t:'kratos',   type:'divino',  label:'agente do seu poder' },
+  { s:'zeus', t:'bia',      type:'divino',  label:'agente do seu poder' },
+  { s:'zeus', t:'prometeu', type:'conflito',label:'puniu com o suplício eterno' },
+  { s:'zeus', t:'iris',     type:'divino',  label:'mensageira' },
+
+  // irmãos olímpicos
+  { s:'zeus',     t:'hades',    type:'familia', label:'irmãos / dividiram o cosmos' },
+  { s:'zeus',     t:'poseidon', type:'familia', label:'irmãos / dividiram o cosmos' },
+  { s:'hades',    t:'persephone', type:'amor',  label:'rapto / casamento' },
+
+  // apolo & ártemis
+  { s:'apolo',   t:'artemis',  type:'familia', label:'gêmeos (mãe Leto)' },
+
+  // hera × outros
+  { s:'hera',    t:'dionisio', type:'conflito',label:'perseguiu por ser filho bastardo de Zeus' },
+  { s:'hera',    t:'iris',     type:'divino',  label:'Íris serve Hera' },
+  { s:'hera',    t:'lissa',    type:'divino',  label:'enviou para enlouquecer Héracles' },
+
+  // intervenções em mortais
+  { s:'apolo',   t:'erinias',  type:'conflito',label:'conflito no julgamento de Orestes' },
+  { s:'atena',   t:'erinias',  type:'divino',  label:'transformou em Eumênides' },
+  { s:'afrodite',t:'artemis',  type:'conflito',label:'destruiu Hipólito protegido de Ártemis' },
+  { s:'artemis', t:'tanatos',  type:'conflito',label:'Ártemis não pode salvar Alceste da Morte' },
+  { s:'tanatos', t:'hades',    type:'familia', label:'agente / servo' },
+  { s:'caronte', t:'hades',    type:'familia', label:'barqueiro a serviço do Hades' },
+  { s:'erinias', t:'hades',    type:'familia', label:'habitam o submundo' },
+  { s:'persephone',t:'erinias',type:'divino',  label:'rainha sobre as Fúrias' },
+
+  // prometeu
+  { s:'prometeu',t:'hefesto',  type:'conflito',label:'Hefesto o acorrentou com pesar' },
+  { s:'prometeu',t:'kratos',   type:'conflito',label:'Cratos o entregou acorrentado' },
+  { s:'prometeu',t:'bia',      type:'conflito',label:'Bia o forçou em silêncio' },
+  { s:'prometeu',t:'oceano',   type:'familia', label:'titãs / Oceano tenta aconselhar' },
+
+  // outros
+  { s:'hermes',  t:'caronte',  type:'divino',  label:'ambos guiam os mortos' },
+  { s:'pan',     t:'dionisio', type:'familia', label:'ambos deuses da natureza selvagem' },
+  { s:'iris',    t:'lissa',    type:'divino',  label:'viajaram juntas à missão de Hera' },
+  { s:'eirene',  t:'ares',     type:'conflito',label:'paz × guerra — opostos absolutos' },
+];
+
+// ─── RENDER ─────────────────────────────────────────────────────────────────
+const svg = document.getElementById('canvas');
+const W = window.innerWidth, H = window.innerHeight;
+svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+
+let transform={x:0,y:0,scale:1}, showLabels=true, dragging=false, dragStart=null, transformStart=null, selectedNode=null;
+
+const groupColors = {
+  zeus:      '#E8C472',
+  olimpico:  '#6A9AE0',
+  chthon:    '#9A60D4',
+  natureza:  '#6ABD8A',
+  person:    '#E08080',
+};
+const groupFill = {
+  zeus:      'rgba(232,196,114,0.18)',
+  olimpico:  'rgba(106,154,224,0.14)',
+  chthon:    'rgba(154,96,212,0.14)',
+  natureza:  'rgba(106,189,138,0.13)',
+  person:    'rgba(224,128,128,0.13)',
+};
+const edgeColors = { familia:'#C9973A', amor:'#7EB8D4', conflito:'#E87272', divino:'#C8A0D4' };
+
+function ns(tag,attrs={}) {
+  const el=document.createElementNS('http://www.w3.org/2000/svg',tag);
+  for(const[k,v]of Object.entries(attrs))el.setAttribute(k,v);
+  return el;
+}
+
+const defs=ns('defs');
+['familia','amor','conflito','divino'].forEach(t=>{
+  const mk=ns('marker',{id:`arr-${t}`,markerWidth:8,markerHeight:8,refX:20,refY:3,orient:'auto'});
+  mk.appendChild(ns('path',{d:'M0,0 L0,6 L8,3 z',fill:edgeColors[t],opacity:'0.75'}));
+  defs.appendChild(mk);
+});
+const flt=ns('filter',{id:'glow',x:'-40%',y:'-40%',width:'180%',height:'180%'});
+flt.appendChild(ns('feGaussianBlur',{stdDeviation:'6',result:'blur'}));
+flt.appendChild(ns('feComposite',{in:'SourceGraphic',in2:'blur',operator:'over'}));
+defs.appendChild(flt);
+// zeus special glow
+const flt2=ns('filter',{id:'zeus-glow',x:'-60%',y:'-60%',width:'220%',height:'220%'});
+flt2.appendChild(ns('feGaussianBlur',{stdDeviation:'10',result:'blur'}));
+flt2.appendChild(ns('feComposite',{in:'SourceGraphic',in2:'blur',operator:'over'}));
+defs.appendChild(flt2);
+svg.appendChild(defs);
+
+const g=ns('g',{id:'main'});
+svg.appendChild(g);
+const edgeGroup=ns('g'), nodeGroup=ns('g');
+g.appendChild(edgeGroup); g.appendChild(nodeGroup);
+
+// decorative Olympus ring
+const olympRing=ns('circle',{cx:CX,cy:CY,r:320,fill:'none',stroke:'rgba(106,154,224,0.06)','stroke-width':'1','stroke-dasharray':'4,8'});
+edgeGroup.appendChild(olympRing);
+const olympRing2=ns('circle',{cx:CX,cy:CY,r:220,fill:'none',stroke:'rgba(106,154,224,0.04)','stroke-width':'1','stroke-dasharray':'2,6'});
+edgeGroup.appendChild(olympRing2);
+
+// edges
+const edgeEls={};
+edges.forEach(e=>{
+  const src=nodes.find(n=>n.id===e.s), tgt=nodes.find(n=>n.id===e.t);
+  if(!src||!tgt)return;
+  const dx=tgt.x-src.x, dy=tgt.y-src.y;
+  const mx=src.x+dx*0.5+dy*0.15, my=src.y+dy*0.5-dx*0.15;
+  const dash=e.type==='amor'?'5,4':e.type==='divino'?'2,4':'none';
+  const path=ns('path',{
+    d:`M${src.x},${src.y} Q${mx},${my} ${tgt.x},${tgt.y}`,
+    fill:'none',stroke:edgeColors[e.type],
+    'stroke-width':e.type==='conflito'?2:1.4,
+    'stroke-dasharray':dash,opacity:0.32,
+    'marker-end':`url(#arr-${e.type})`,
+  });
+  edgeGroup.appendChild(path);
+  const lbl=ns('text',{x:mx,y:my,'text-anchor':'middle','font-family':'IM Fell English, serif','font-size':'9','font-style':'italic',fill:edgeColors[e.type],opacity:0,'pointer-events':'none'});
+  lbl.textContent=e.label;
+  edgeGroup.appendChild(lbl);
+  edgeEls[`${e.s}-${e.t}`]={path,lbl};
+});
+
+// nodes
+const nodeEls={};
+nodes.forEach(node=>{
+  const isZeus=node.id==='zeus';
+  const r=isZeus?28:20;
+  const grp=ns('g',{cursor:'pointer'});
+  grp.dataset.id=node.id;
+
+  if(isZeus){
+    // lightning aura
+    const aura=ns('circle',{cx:node.x,cy:node.y,r:42,fill:'rgba(232,196,114,0.06)',stroke:'rgba(232,196,114,0.18)','stroke-width':'1','stroke-dasharray':'3,5',filter:'url(#zeus-glow)'});
+    grp.appendChild(aura);
+  }
+
+  const ring=ns('circle',{cx:node.x,cy:node.y,r:r+7,fill:'none',stroke:groupColors[node.group],'stroke-width':1.5,opacity:0,filter:'url(#glow)'});
+  grp.appendChild(ring);
+  const circle=ns('circle',{cx:node.x,cy:node.y,r:r,fill:groupFill[node.group],stroke:groupColors[node.group],'stroke-width':isZeus?2:1.5});
+  grp.appendChild(circle);
+
+  const icon=ns('text',{x:node.x,y:node.y+(isZeus?7:5),'text-anchor':'middle','font-family':'Cinzel, serif','font-size':isZeus?'16':'13','font-weight':'700',fill:groupColors[node.group],'pointer-events':'none'});
+  icon.textContent=node.label[0];
+  grp.appendChild(icon);
+
+  const label=ns('text',{x:node.x,y:node.y+r+16,'text-anchor':'middle','font-family':'Cinzel, serif','font-size':'10','font-weight':'600',fill:'#E8F0FF',opacity:showLabels?0.9:0,'pointer-events':'none'});
+  label.textContent=node.label;
+  grp.appendChild(label);
+
+  const role=ns('text',{x:node.x,y:node.y+r+28,'text-anchor':'middle','font-family':'IM Fell English, serif','font-size':'8','font-style':'italic',fill:groupColors[node.group],opacity:showLabels?0.55:0,'pointer-events':'none'});
+  role.textContent=node.role.length>30?node.role.slice(0,30)+'…':node.role;
+  grp.appendChild(role);
+
+  nodeGroup.appendChild(grp);
+  nodeEls[node.id]={grp,circle,ring,label,role,r};
+
+  grp.addEventListener('mouseenter',()=>{ if(selectedNode===node.id)return; circle.setAttribute('r',r+3); ring.setAttribute('opacity',0.5); highlightEdges(node.id,0.88); });
+  grp.addEventListener('mouseleave',()=>{ if(selectedNode===node.id)return; circle.setAttribute('r',r); ring.setAttribute('opacity',0); resetEdges(); });
+  grp.addEventListener('click',ev=>{ ev.stopPropagation(); selectNode(node); });
+});
+
+function highlightEdges(id,op){ edges.forEach(e=>{ const k=`${e.s}-${e.t}`; if(!edgeEls[k])return; if(e.s===id||e.t===id){edgeEls[k].path.setAttribute('opacity',op);edgeEls[k].lbl.setAttribute('opacity',op*0.9);}else edgeEls[k].path.setAttribute('opacity',0.04); }); }
+function resetEdges(){ edges.forEach(e=>{ const k=`${e.s}-${e.t}`; if(!edgeEls[k])return; edgeEls[k].path.setAttribute('opacity',0.32); edgeEls[k].lbl.setAttribute('opacity',0); }); }
+
+function selectNode(node){
+  if(selectedNode&&nodeEls[selectedNode]){ const old=nodeEls[selectedNode]; old.circle.setAttribute('r',old.r); old.ring.setAttribute('opacity',0); old.circle.setAttribute('stroke-width',old.r===28?2:1.5); }
+  if(selectedNode===node.id){selectedNode=null;resetEdges();closeInfo();return;}
+  selectedNode=node.id;
+  const el=nodeEls[node.id];
+  el.circle.setAttribute('r',el.r+4); el.ring.setAttribute('opacity',0.85); el.circle.setAttribute('stroke-width',2.5);
+  highlightEdges(node.id,0.92);
+  document.getElementById('info-name').textContent=node.label;
+  document.getElementById('info-role').textContent=node.role;
+  document.getElementById('info-desc').textContent=node.desc;
+  document.getElementById('info-obras-list').innerHTML=node.obras.map(o=>`<span class="obra-tag">${o}</span>`).join('');
+  document.getElementById('info-panel').classList.add('visible');
+}
+function closeInfo(){
+  document.getElementById('info-panel').classList.remove('visible');
+  if(selectedNode&&nodeEls[selectedNode]){ const el=nodeEls[selectedNode]; el.circle.setAttribute('r',el.r); el.ring.setAttribute('opacity',0); el.circle.setAttribute('stroke-width',el.r===28?2:1.5); }
+  selectedNode=null; resetEdges();
+}
+svg.addEventListener('click',()=>closeInfo());
+window.closeInfo=closeInfo;
+
+// pan & zoom
+const bb=nodes.reduce((a,n)=>({minX:Math.min(a.minX,n.x),maxX:Math.max(a.maxX,n.x),minY:Math.min(a.minY,n.y),maxY:Math.max(a.maxY,n.y)}),{minX:Infinity,maxX:-Infinity,minY:Infinity,maxY:-Infinity});
+const cW=bb.maxX-bb.minX+160,cH=bb.maxY-bb.minY+160;
+const initScale=Math.min((W-60)/cW,(H-100)/cH,1)*0.88;
+transform.scale=initScale;
+transform.x=(W-cW*initScale)/2-bb.minX*initScale+60;
+transform.y=(H-cH*initScale)/2-bb.minY*initScale+55;
+function applyT(){g.setAttribute('transform',`translate(${transform.x},${transform.y}) scale(${transform.scale})`);}
+applyT();
+
+svg.addEventListener('mousedown',e=>{if(e.target.closest('[data-id]'))return;dragging=true;dragStart={x:e.clientX,y:e.clientY};transformStart={...transform};svg.style.cursor='grabbing';});
+window.addEventListener('mousemove',e=>{if(!dragging)return;transform.x=transformStart.x+(e.clientX-dragStart.x);transform.y=transformStart.y+(e.clientY-dragStart.y);applyT();});
+window.addEventListener('mouseup',()=>{dragging=false;svg.style.cursor='default';});
+svg.addEventListener('wheel',e=>{e.preventDefault();const f=e.deltaY<0?1.1:0.91;transform.x=e.clientX-(e.clientX-transform.x)*f;transform.y=e.clientY-(e.clientY-transform.y)*f;transform.scale*=f;applyT();},{passive:false});
+let ltx=null,lty=null;
+svg.addEventListener('touchstart',e=>{if(e.touches.length===1){dragging=true;ltx=e.touches[0].clientX;lty=e.touches[0].clientY;transformStart={...transform};dragStart={x:ltx,y:lty};}},{passive:true});
+svg.addEventListener('touchmove',e=>{if(!dragging||e.touches.length!==1)return;transform.x=transformStart.x+(e.touches[0].clientX-dragStart.x);transform.y=transformStart.y+(e.touches[0].clientY-dragStart.y);applyT();},{passive:true});
+svg.addEventListener('touchend',()=>{dragging=false;});
+function resetView(){transform.scale=initScale;transform.x=(W-cW*initScale)/2-bb.minX*initScale+60;transform.y=(H-cH*initScale)/2-bb.minY*initScale+55;applyT();}
+function toggleLabels(){showLabels=!showLabels;Object.values(nodeEls).forEach(({label,role})=>{label.setAttribute('opacity',showLabels?0.9:0);role.setAttribute('opacity',showLabels?0.55:0);});}
+window.resetView=resetView; window.toggleLabels=toggleLabels;
+</script>
+</body>
+</html>

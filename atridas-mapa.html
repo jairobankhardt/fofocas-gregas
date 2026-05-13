@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fofocas Gregas — Os Atridas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg: #06090D;
+  --crimson: #8B1A1A;
+  --crimson-l: #C44040;
+  --steel: #4A6A8A;
+  --steel-l: #7AAAC4;
+  --gold: #C9973A;
+  --gold-l: #E8C472;
+  --parch: #EEF2F8;
+  --green-l: #7ABD8A;
+  --purple-l: #C8A0D4;
+}
+body {
+  background: var(--bg);
+  font-family: 'IM Fell English', Georgia, serif;
+  overflow: hidden; height:100vh; width:100vw;
+}
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse at 20% 40%, rgba(139,26,26,0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 30%, rgba(74,106,138,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 90%, rgba(139,26,26,0.06) 0%, transparent 40%);
+  pointer-events:none;
+}
+#header {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:10px 24px 0;
+  display:flex; flex-direction:column; align-items:stretch;
+  background:linear-gradient(to bottom,rgba(6,9,13,0.98),rgba(6,9,13,0.7));
+  border-bottom:1px solid rgba(139,26,26,0.35);
+}
+.header-top { display:flex; align-items:center; justify-content:space-between; padding-bottom:8px; }
+.header-left h1 { font-family:'Cinzel Decorative',serif; font-size:1.1rem; color:#E08080; line-height:1; }
+.header-left p { font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.2em; color:var(--crimson-l); opacity:0.8; margin-top:3px; text-transform:uppercase; }
+.header-controls { display:flex; gap:8px; }
+.btn { font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:0.08em; padding:5px 12px; border:1px solid rgba(139,26,26,0.4); background:rgba(139,26,26,0.1); color:#E08080; border-radius:2px; cursor:pointer; transition:all 0.2s; }
+.btn:hover { background:rgba(139,26,26,0.25); border-color:var(--crimson-l); }
+
+.site-nav { display:flex; border-top:1px solid rgba(139,26,26,0.25); padding:4px 0; }
+.site-nav a { font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:rgba(200,160,160,0.5); padding:4px 10px; transition:color 0.2s; }
+.site-nav a:hover { color:#E08080; }
+.site-nav a.active { color:#E08080; }
+
+#legend {
+  position:fixed; bottom:20px; left:20px; z-index:100;
+  background:rgba(6,9,13,0.93); border:1px solid rgba(139,26,26,0.28); border-radius:4px; padding:12px 16px; min-width:190px;
+}
+#legend h3 { font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.15em; color:#E08080; text-transform:uppercase; margin-bottom:10px; opacity:0.9; }
+.leg-item { display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:0.75rem; color:var(--parch); opacity:0.8; }
+.leg-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+.leg-line { width:24px; height:2px; flex-shrink:0; border-radius:2px; }
+
+#info-panel {
+  position:fixed; top:100px; right:20px; z-index:100; width:270px;
+  background:rgba(6,9,13,0.97); border:1px solid rgba(139,26,26,0.38); border-radius:4px;
+  padding:18px; opacity:0; transform:translateX(20px); transition:all 0.3s ease; pointer-events:none;
+}
+#info-panel.visible { opacity:1; transform:translateX(0); pointer-events:all; }
+#info-name { font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:#E08080; margin-bottom:4px; }
+#info-role { font-style:italic; font-size:0.8rem; color:var(--crimson-l); opacity:0.9; margin-bottom:10px; }
+#info-desc { font-size:0.8rem; color:var(--parch); opacity:0.85; line-height:1.65; margin-bottom:10px; }
+#info-obras { border-top:1px solid rgba(139,26,26,0.22); padding-top:10px; }
+#info-obras h4 { font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.15em; color:var(--crimson-l); opacity:0.7; text-transform:uppercase; margin-bottom:6px; }
+.obra-tag { display:inline-block; background:rgba(139,26,26,0.14); border:1px solid rgba(139,26,26,0.32); border-radius:2px; padding:2px 7px; font-size:0.7rem; color:var(--parch); margin:2px; }
+#info-close { position:absolute; top:10px; right:12px; font-size:1rem; color:#E08080; opacity:0.5; cursor:pointer; background:none; border:none; font-family:serif; }
+#info-close:hover { opacity:1; }
+
+#hint { position:fixed; bottom:20px; right:20px; z-index:100; font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.1em; color:var(--crimson-l); opacity:0.4; text-align:right; line-height:1.8; }
+#canvas { position:fixed; inset:0; width:100%; height:100%; }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div class="header-top">
+    <div class="header-left">
+      <h1>🎭 Fofocas Gregas</h1>
+      <p>A Casa dos Atridas — Sangue chama sangue</p>
+    </div>
+    <div class="header-controls">
+      <button class="btn" onclick="resetView()">&#8635; Resetar</button>
+      <button class="btn" onclick="toggleLabels()">Rótulos</button>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <a href="index.html">Início</a>
+    <a href="deuses-mapa.html">Deuses</a>
+    <a href="atridas-mapa.html" class="active">Atridas</a>
+    <a href="familia-edipo-mapa.html">Casa de Édipo</a>
+    <a href="ciclo-troiano-mapa.html">Ciclo Troiano</a>
+  </nav>
+</div>
+
+<div id="legend">
+  <h3>Legenda</h3>
+  <div class="leg-item"><div class="leg-dot" style="background:#E08080"></div> Atridas (linhagem de Atreu)</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#7AAAC4"></div> Espartanos / aliados</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#7ABD8A"></div> Figuras externas</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#C8A0D4"></div> Deuses / Erínias</div>
+  <div style="margin-top:10px">
+  <div class="leg-item"><div class="leg-line" style="background:#C9973A"></div> Família (sangue)</div>
+  <div class="leg-item"><div class="leg-line" style="background:#E87272"></div> Assassinato / Conflito</div>
+  <div class="leg-item"><div class="leg-line" style="background:none; border-top:2px dashed #7EB8D4; height:0"></div> Amor / Casamento</div>
+  <div class="leg-item"><div class="leg-line" style="background:none; border-top:2px dotted #C8A0D4; height:0"></div> Intervenção divina</div>
+  </div>
+</div>
+
+<div id="info-panel">
+  <button id="info-close" onclick="closeInfo()">✕</button>
+  <div id="info-name"></div>
+  <div id="info-role"></div>
+  <div id="info-desc"></div>
+  <div id="info-obras">
+    <h4>Aparece em</h4>
+    <div id="info-obras-list"></div>
+  </div>
+</div>
+
+<div id="hint">
+  Arraste para mover · Scroll para zoom<br>
+  Clique num personagem para detalhes
+</div>
+
+<svg id="canvas"></svg>
+
+<script>
+const CX = 660;
+const GY  = [110, 240, 380, 520, 650];
+
+const nodes = [
+  // GEN 0 — origem da maldição
+  { id:'tantalo',    label:'Tântalo',     role:'Origem da maldição',          group:'atrida',  x:CX,      y:GY[0],
+    desc:'Rei lídio, filho de Zeus. Cometeu o crime mais abominável: matou o próprio filho Pélops, cozinhou-o e serviu aos deuses num banquete. Foi condenado ao Tártaro para sempre. Sua transgressão atraiu a maldição que perseguiria toda a linhagem.',
+    obras:['Referenciado em Agamêmnon (Ésquilo)','As Troianas'] },
+  { id:'erinias',    label:'Erínias',     role:'Deusas da vingança',          group:'deus',    x:CX+360,  y:GY[0],
+    desc:'As Fúrias — Alecto, Megera e Tisífone. Deusas da vingança familiar que perseguem quem derrama sangue de parentes. São as grandes antagonistas de Orestes na Oresteia de Ésquilo, transformando-se ao final nas Eumênides ("as benevolentes").',
+    obras:['As Eumênides (Ésquilo)','As Coéforas (Ésquilo)'] },
+  { id:'apolo',      label:'Apolo',       role:'Deus — ordenou o matricídio', group:'deus',    x:CX-360,  y:GY[0],
+    desc:'Deus da profecia e da purificação. Foi Apolo quem ordenou a Orestes que vingasse o pai matando a mãe. Depois defendeu Orestes no tribunal de Atena em Atenas — o primeiro julgamento por júri da história mítica.',
+    obras:['As Eumênides (Ésquilo)','As Coéforas','Orestes (Eurípides)','Electra (Eurípides)'] },
+
+  // GEN 1
+  { id:'pelops',     label:'Pélops',      role:'Filho de Tântalo / herdeiro da maldição', group:'atrida', x:CX, y:GY[1],
+    desc:'Filho de Tântalo, reconstituído pelos deuses após o banquete macabro. Venceu uma corrida de bigas traindo o auriga Mírtilo — e ao matá-lo, recebeu outra maldição sobre seus filhos. Deu nome ao Peloponeso.',
+    obras:['Referenciado em Agamêmnon','Electra'] },
+
+  // GEN 2
+  { id:'atreu',      label:'Atreu',       role:'Rei de Micenas / pai de Agamêmnon', group:'atrida', x:CX-220, y:GY[2],
+    desc:'Filho de Pélops, rei de Micenas. Sua rivalidade com o irmão Tiestes chegou ao cúmulo do horror: serviu-lhe os próprios filhos num banquete de vingança. Pai de Agamêmnon e Menelau — os Atridas.',
+    obras:['Referenciado em Agamêmnon (Ésquilo)','Electra'] },
+  { id:'tiestes',    label:'Tiestes',     role:'Irmão de Atreu / amaldiçoado', group:'atrida', x:CX+220, y:GY[2],
+    desc:'Irmão rival de Atreu. Seduziu a esposa do irmão e em represália foi servido com carne dos próprios filhos. Amaldiçoou Atreu e toda a descendência. Pai de Egisto — que vingaria o pai décadas depois.',
+    obras:['Referenciado em Agamêmnon','Electra (Sófocles)'] },
+
+  // GEN 3
+  { id:'agamemnon',  label:'Agamêmnon',   role:'Rei de Micenas / comandante grego', group:'atrida', x:CX-300, y:GY[3],
+    desc:'O filho mais célebre de Atreu. Comandante supremo dos gregos em Troia. Sacrificou a filha Ifigênia para obter ventos favoráveis. Ao regressar vitorioso, foi assassinado na banheira pela esposa Clitemnestra e o amante Egisto. Protagonista da tragédia que abre a Oresteia.',
+    obras:['Agamêmnon (Ésquilo)','As Coéforas','Hécuba (Eurípides)','Ifigênia em Áulis','As Troianas'] },
+  { id:'menelau',    label:'Menelau',      role:'Rei de Esparta / irmão de Agamêmnon', group:'atrida', x:CX+300, y:GY[3],
+    desc:'Irmão de Agamêmnon, rei de Esparta. O rapto de sua esposa Helena por Páris foi o estopim da Guerra de Troia. Personagem que em Eurípides aparece frequentemente como político covarde e calculista, contrastando com a imagem heroica tradicional.',
+    obras:['As Troianas','Andrômaca','Helena','Orestes (Eurípides)','Ifigênia em Áulis'] },
+  { id:'egisto',     label:'Egisto',       role:'Filho de Tiestes / amante de Clitemnestra', group:'atrida', x:CX+80, y:GY[3],
+    desc:'Único filho sobrevivente de Tiestes. Tornou-se amante de Clitemnestra durante a ausência de Agamêmnon e co-conspirador no assassinato do rei. Governa Micenas com a rainha até ser morto por Orestes em ato de vingança.',
+    obras:['Agamêmnon (Ésquilo)','As Coéforas','Electra (Sófocles)','Electra (Eurípides)'] },
+
+  // ESPOSAS / PARCEIRAS GEN 3
+  { id:'clitemnestra', label:'Clitemnestra', role:'Rainha de Micenas / assassina do marido', group:'esparta', x:CX-80, y:GY[3],
+    desc:'A grande figura feminina da Oresteia. Matou Agamêmnon em vingança pelo sacrifício de Ifigênia e pela chegada de Cassandra como escrava. Governa Micenas com pulso de ferro até ser morta pelo próprio filho Orestes — e mesmo morta persegue-o como fantasma.',
+    obras:['Agamêmnon (Ésquilo)','As Coéforas','As Eumênides','Electra (Sófocles)','Electra (Eurípides)','Ifigênia em Áulis'] },
+  { id:'helena',     label:'Helena',        role:'Esposa de Menelau / a mais bela', group:'esparta', x:CX+480, y:GY[3],
+    desc:'Filha de Zeus e Leda, irmã de Clitemnestra. A mulher mais bela do mundo. Sua fuga (ou rapto) com Páris causou a Guerra de Troia. Eurípides sugere numa versão alternativa que um fantasma foi para Troia enquanto a verdadeira Helena aguardava no Egito.',
+    obras:['As Troianas','Helena (Eurípides)','Orestes (Eurípides)','Andrômaca'] },
+
+  // GEN 4 — filhos
+  { id:'orestes',    label:'Orestes',      role:'Filho de Agamêmnon / vingador / julgado', group:'atrida', x:CX-340, y:GY[4],
+    desc:'O centro da Oresteia. Exilado desde criança, retorna para vingar o pai matando a mãe e Egisto — ato ordenado por Apolo mas punido pelas Erínias. É o primeiro personagem mítico a ser "julgado" por um tribunal humano, em Atenas, e absolvido. Aparece em mais peças do que qualquer outro herói trágico.',
+    obras:['As Coéforas (Ésquilo)','As Eumênides','Electra (Sófocles)','Electra (Eurípides)','Orestes (Eurípides)','Andrômaca','Ifigênia em Táuris'] },
+  { id:'electra',    label:'Electra',      role:'Filha de Agamêmnon / a que não esquece', group:'atrida', x:CX-160, y:GY[4],
+    desc:'Filha de Agamêmnon e Clitemnestra. Recusou-se a aceitar o assassinato do pai e passou anos em humilhação na corte de Egisto e Clitemnestra, esperando o retorno de Orestes. Incita o irmão ao matricídio. Aparece em três versões diferentes — Ésquilo, Sófocles e Eurípides — cada uma com uma psicologia distinta.',
+    obras:['As Coéforas (Ésquilo)','Electra (Sófocles)','Electra (Eurípides)','Orestes (Eurípides)'] },
+  { id:'ifigenia',   label:'Ifigênia',     role:'Filha sacrificada / sacerdotisa', group:'atrida', x:CX+20,  y:GY[4],
+    desc:'Primogênita de Agamêmnon. Sacrificada (ou não, dependendo da versão) pelo pai para obter ventos favoráveis à frota grega. Ártemis a salvou transportando-a para a Táuris como sacerdotisa. Reencontra Orestes na Táuris numa peça de aventura quase novelesca de Eurípides.',
+    obras:['Ifigênia em Áulis (Eurípides)','Ifigênia em Táuris (Eurípides)'] },
+  { id:'crisótemis',  label:'Crisótemis',  role:'Filha de Agamêmnon / a pragmática', group:'atrida', x:CX+180, y:GY[4],
+    desc:'Filha de Agamêmnon e Clitemnestra, irmã de Electra. Pragmática e conformada, aconselha Electra a aceitar a situação. Funciona na peça de Sófocles como contraponto à obsessão vingativa da irmã — papel análogo ao de Ismene em Antígona.',
+    obras:['Electra (Sófocles)'] },
+  { id:'hermione',   label:'Hermione',     role:'Filha de Menelau e Helena',       group:'esparta', x:CX+420, y:GY[4],
+    desc:'Única filha de Menelau e Helena, criada em Esparta enquanto a mãe estava em Troia. Em Andrômaca é a antagonista cruel que persegue a troiana. Em Orestes participa de um tenso triângulo com o primo e com Neoptólemo.',
+    obras:['Andrômaca (Eurípides)','Orestes (Eurípides)'] },
+
+  // outros ligados
+  { id:'pilades',    label:'Pílades',      role:'Melhor amigo de Orestes',         group:'externo', x:CX-500, y:GY[4],
+    desc:'Príncipe da Fócida, filho de Estrofio, melhor amigo e cunhado de Orestes. Figura de lealdade absoluta — em As Coéforas pronuncia apenas três versos, mas decisivos. Em Orestes de Eurípides torna-se co-conspirador num plano desesperado.',
+    obras:['As Coéforas (Ésquilo)','Electra (Sófocles)','Electra (Eurípides)','Orestes (Eurípides)','Ifigênia em Táuris'] },
+  { id:'atena',      label:'Atena',        role:'Deusa — presidiu o julgamento',   group:'deus',    x:CX-520, y:GY[2],
+    desc:'Deusa da sabedoria. Presidiu o julgamento de Orestes no Areópago de Atenas, usando seu voto de minerva para absolver o matricida e transformar as Erínias nas Eumênides ("as benevolentes"). Ato que inaugura simbolicamente o sistema judiciário.',
+    obras:['As Eumênides (Ésquilo)','As Troianas','Orestes (Eurípides)'] },
+  { id:'cassandra',  label:'Cassandra',    role:'Princesa troiana / escrava profetisa', group:'externo', x:CX-480, y:GY[3],
+    desc:'Princesa de Troia, amaldiçoada por Apolo para profetizar verdades que ninguém acredita. Levada como prêmio de guerra por Agamêmnon. Prevê seu próprio assassinato e o do rei com clareza perturbadora no palácio de Micenas, mas é ignorada.',
+    obras:['Agamêmnon (Ésquilo)','As Troianas (Eurípides)','Hécuba'] },
+  { id:'artemis',    label:'Ártemis',      role:'Deusa — exigiu o sacrifício',     group:'deus',    x:CX+120,  y:GY[2],
+    desc:'Deusa da caça. Ofendida por Agamêmnon, reteve os ventos em Áulis e exigiu o sacrifício de Ifigênia. Numa versão alternativa (Eurípides), salvou Ifigênia no último momento substituindo-a por uma corça, transportando-a à Táuris.',
+    obras:['Ifigênia em Áulis','Ifigênia em Táuris (Eurípides)','Hipólito (Eurípides)'] },
+];
+
+const edges = [
+  // maldição original
+  { s:'tantalo',     t:'pelops',      type:'familia',  label:'pai / filho amaldiçoado' },
+  { s:'pelops',      t:'atreu',       type:'familia',  label:'pai / filho' },
+  { s:'pelops',      t:'tiestes',     type:'familia',  label:'pai / filho' },
+  { s:'atreu',       t:'tiestes',     type:'conflito', label:'serviu os filhos num banquete' },
+  { s:'tiestes',     t:'egisto',      type:'familia',  label:'pai / filho (vingador)' },
+
+  // atridas geração 3
+  { s:'atreu',       t:'agamemnon',   type:'familia',  label:'pai / filho' },
+  { s:'atreu',       t:'menelau',     type:'familia',  label:'pai / filho' },
+  { s:'agamemnon',   t:'menelau',     type:'familia',  label:'irmãos Atridas' },
+
+  // casamentos
+  { s:'agamemnon',   t:'clitemnestra',type:'amor',     label:'casamento' },
+  { s:'menelau',     t:'helena',      type:'amor',     label:'casamento' },
+  { s:'clitemnestra',t:'egisto',      type:'amor',     label:'adultério / co-conspiradores' },
+
+  // filhos agamêmnon
+  { s:'agamemnon',   t:'orestes',     type:'familia',  label:'pai / filho' },
+  { s:'agamemnon',   t:'electra',     type:'familia',  label:'pai / filha' },
+  { s:'agamemnon',   t:'ifigenia',    type:'familia',  label:'pai / filha' },
+  { s:'agamemnon',   t:'crisótemis',  type:'familia',  label:'pai / filha' },
+  { s:'clitemnestra',t:'orestes',     type:'familia',  label:'mãe / filho' },
+  { s:'clitemnestra',t:'electra',     type:'familia',  label:'mãe / filha' },
+  { s:'clitemnestra',t:'ifigenia',    type:'familia',  label:'mãe / filha' },
+  { s:'clitemnestra',t:'crisótemis',  type:'familia',  label:'mãe / filha' },
+
+  // filhos menelau
+  { s:'menelau',     t:'hermione',    type:'familia',  label:'pai / filha' },
+  { s:'helena',      t:'hermione',    type:'familia',  label:'mãe / filha' },
+  { s:'clitemnestra',t:'helena',      type:'familia',  label:'irmãs' },
+
+  // assassinatos
+  { s:'clitemnestra',t:'agamemnon',   type:'conflito', label:'assassinou na banheira' },
+  { s:'egisto',      t:'agamemnon',   type:'conflito', label:'co-autor do assassinato' },
+  { s:'orestes',     t:'clitemnestra',type:'conflito', label:'matricídio (por ordem de Apolo)' },
+  { s:'orestes',     t:'egisto',      type:'conflito', label:'matou o usurpador' },
+  { s:'agamemnon',   t:'ifigenia',    type:'conflito', label:'sacrificou a filha em Áulis' },
+  { s:'agamemnon',   t:'cassandra',   type:'conflito', label:'trouxe como escrava' },
+  { s:'clitemnestra',t:'cassandra',   type:'conflito', label:'assassinou junto com Agamêmnon' },
+
+  // divinos
+  { s:'apolo',       t:'orestes',     type:'divino',   label:'ordenou o matricídio' },
+  { s:'apolo',       t:'agamemnon',   type:'divino',   label:'puniu com maldições' },
+  { s:'erinias',     t:'orestes',     type:'divino',   label:'perseguiram o matricida' },
+  { s:'atena',       t:'orestes',     type:'divino',   label:'absolveu no tribunal' },
+  { s:'atena',       t:'erinias',     type:'divino',   label:'transformou em Eumênides' },
+  { s:'artemis',     t:'agamemnon',   type:'divino',   label:'exigiu sacrifício de Ifigênia' },
+  { s:'artemis',     t:'ifigenia',    type:'divino',   label:'salvou e levou à Táuris' },
+  { s:'cassandra',   t:'agamemnon',   type:'divino',   label:'previu o assassinato' },
+
+  // amizades / apoios
+  { s:'pilades',     t:'orestes',     type:'amor',     label:'amizade absoluta / apoiou o matricídio' },
+  { s:'electra',     t:'orestes',     type:'familia',  label:'incitou e reconheceu o irmão' },
+];
+
+// ─── RENDER ─────────────────────────────────────────────────────────────────
+const svg = document.getElementById('canvas');
+const W = window.innerWidth, H = window.innerHeight;
+svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+let transform = { x:0, y:0, scale:1 };
+let showLabels = true, dragging = false, dragStart = null, transformStart = null, selectedNode = null;
+
+const groupColors = {
+  atrida:  '#E08080',
+  esparta: '#7AAAC4',
+  externo: '#7ABD8A',
+  deus:    '#C8A0D4',
+};
+const groupFill = {
+  atrida:  'rgba(224,128,128,0.13)',
+  esparta: 'rgba(122,170,196,0.13)',
+  externo: 'rgba(122,189,138,0.12)',
+  deus:    'rgba(200,160,212,0.13)',
+};
+const edgeColors = {
+  familia:  '#C9973A',
+  amor:     '#7EB8D4',
+  conflito: '#E87272',
+  divino:   '#C8A0D4',
+};
+
+function ns(tag, attrs={}) {
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k,v] of Object.entries(attrs)) el.setAttribute(k,v);
+  return el;
+}
+
+const defs = ns('defs');
+['familia','amor','conflito','divino'].forEach(t => {
+  const mk = ns('marker',{id:`arr-${t}`,markerWidth:8,markerHeight:8,refX:20,refY:3,orient:'auto'});
+  mk.appendChild(ns('path',{d:'M0,0 L0,6 L8,3 z',fill:edgeColors[t],opacity:'0.75'}));
+  defs.appendChild(mk);
+});
+const flt = ns('filter',{id:'glow',x:'-30%',y:'-30%',width:'160%',height:'160%'});
+flt.appendChild(ns('feGaussianBlur',{stdDeviation:'5',result:'blur'}));
+flt.appendChild(ns('feComposite',{in:'SourceGraphic',in2:'blur',operator:'over'}));
+defs.appendChild(flt);
+svg.appendChild(defs);
+
+const g = ns('g',{id:'main'});
+svg.appendChild(g);
+const edgeGroup = ns('g'), nodeGroup = ns('g');
+g.appendChild(edgeGroup); g.appendChild(nodeGroup);
+
+// generation bands
+[['Origem / Maldição de Tântalo', GY[0]],
+ ['Pélops — 2ª geração', GY[1]],
+ ['Atreu & Tiestes — 3ª geração', GY[2]],
+ ['Agamêmnon & Menelau — 4ª geração', GY[3]],
+ ['Orestes, Electra & irmãos — 5ª geração', GY[4]]
+].forEach(([lbl, y]) => {
+  const line = ns('line',{x1:0,y1:y-42,x2:W*3,y2:y-42,stroke:'rgba(224,128,128,0.07)','stroke-width':'1'});
+  edgeGroup.appendChild(line);
+  const t = ns('text',{x:18,y:y-28,'font-family':'Cinzel, serif','font-size':'9','letter-spacing':'0.15em',fill:'rgba(224,128,128,0.2)'});
+  t.textContent = `— ${lbl}`;
+  edgeGroup.appendChild(t);
+});
+
+// edges
+const edgeEls = {};
+edges.forEach(e => {
+  const src=nodes.find(n=>n.id===e.s), tgt=nodes.find(n=>n.id===e.t);
+  if(!src||!tgt) return;
+  const dx=tgt.x-src.x, dy=tgt.y-src.y;
+  const mx=src.x+dx*0.5+dy*0.18, my=src.y+dy*0.5-dx*0.18;
+  const dash = e.type==='amor'?'5,4':e.type==='divino'?'2,4':'none';
+  const path = ns('path',{
+    d:`M${src.x},${src.y} Q${mx},${my} ${tgt.x},${tgt.y}`,
+    fill:'none', stroke:edgeColors[e.type],
+    'stroke-width':e.type==='conflito'?2.2:1.5,
+    'stroke-dasharray':dash, opacity:0.35,
+    'marker-end':`url(#arr-${e.type})`,
+  });
+  edgeGroup.appendChild(path);
+  const lbl = ns('text',{x:mx,y:my,'text-anchor':'middle','font-family':'IM Fell English, serif','font-size':'9','font-style':'italic',fill:edgeColors[e.type],opacity:0,'pointer-events':'none'});
+  lbl.textContent = e.label;
+  edgeGroup.appendChild(lbl);
+  edgeEls[`${e.s}-${e.t}`]={path,lbl};
+});
+
+// nodes
+const nodeEls = {};
+nodes.forEach(node => {
+  const grp = ns('g',{cursor:'pointer'});
+  grp.dataset.id = node.id;
+  const ring = ns('circle',{cx:node.x,cy:node.y,r:27,fill:'none',stroke:groupColors[node.group],'stroke-width':1.5,opacity:0,filter:'url(#glow)'});
+  grp.appendChild(ring);
+  const circle = ns('circle',{cx:node.x,cy:node.y,r:20,fill:groupFill[node.group],stroke:groupColors[node.group],'stroke-width':1.5});
+  grp.appendChild(circle);
+  const icon = ns('text',{x:node.x,y:node.y+5,'text-anchor':'middle','font-family':'Cinzel, serif','font-size':'13','font-weight':'700',fill:groupColors[node.group],'pointer-events':'none'});
+  icon.textContent = node.label[0];
+  grp.appendChild(icon);
+  const label = ns('text',{x:node.x,y:node.y+35,'text-anchor':'middle','font-family':'Cinzel, serif','font-size':'10','font-weight':'600',fill:'#EEF2F8',opacity:showLabels?0.9:0,'pointer-events':'none'});
+  label.textContent = node.label;
+  grp.appendChild(label);
+  const role = ns('text',{x:node.x,y:node.y+47,'text-anchor':'middle','font-family':'IM Fell English, serif','font-size':'8','font-style':'italic',fill:groupColors[node.group],opacity:showLabels?0.55:0,'pointer-events':'none'});
+  role.textContent = node.role.length>28?node.role.slice(0,28)+'…':node.role;
+  grp.appendChild(role);
+  nodeGroup.appendChild(grp);
+  nodeEls[node.id]={grp,circle,ring,label,role};
+
+  grp.addEventListener('mouseenter',()=>{ if(selectedNode===node.id)return; circle.setAttribute('r',23); ring.setAttribute('opacity',0.5); highlightEdges(node.id,0.88); });
+  grp.addEventListener('mouseleave',()=>{ if(selectedNode===node.id)return; circle.setAttribute('r',20); ring.setAttribute('opacity',0); resetEdges(); });
+  grp.addEventListener('click',ev=>{ ev.stopPropagation(); selectNode(node); });
+});
+
+function highlightEdges(id,op){ edges.forEach(e=>{ const k=`${e.s}-${e.t}`; if(!edgeEls[k])return; if(e.s===id||e.t===id){edgeEls[k].path.setAttribute('opacity',op);edgeEls[k].lbl.setAttribute('opacity',op*0.9);}else edgeEls[k].path.setAttribute('opacity',0.05); }); }
+function resetEdges(){ edges.forEach(e=>{ const k=`${e.s}-${e.t}`; if(!edgeEls[k])return; edgeEls[k].path.setAttribute('opacity',0.35); edgeEls[k].lbl.setAttribute('opacity',0); }); }
+function selectNode(node){
+  if(selectedNode&&nodeEls[selectedNode]){nodeEls[selectedNode].circle.setAttribute('r',20);nodeEls[selectedNode].ring.setAttribute('opacity',0);nodeEls[selectedNode].circle.setAttribute('stroke-width',1.5);}
+  if(selectedNode===node.id){selectedNode=null;resetEdges();closeInfo();return;}
+  selectedNode=node.id;
+  nodeEls[node.id].circle.setAttribute('r',24);nodeEls[node.id].ring.setAttribute('opacity',0.85);nodeEls[node.id].circle.setAttribute('stroke-width',2.5);
+  highlightEdges(node.id,0.92);
+  document.getElementById('info-name').textContent=node.label;
+  document.getElementById('info-role').textContent=node.role;
+  document.getElementById('info-desc').textContent=node.desc;
+  document.getElementById('info-obras-list').innerHTML=node.obras.map(o=>`<span class="obra-tag">${o}</span>`).join('');
+  document.getElementById('info-panel').classList.add('visible');
+}
+function closeInfo(){
+  document.getElementById('info-panel').classList.remove('visible');
+  if(selectedNode&&nodeEls[selectedNode]){nodeEls[selectedNode].circle.setAttribute('r',20);nodeEls[selectedNode].ring.setAttribute('opacity',0);nodeEls[selectedNode].circle.setAttribute('stroke-width',1.5);}
+  selectedNode=null;resetEdges();
+}
+svg.addEventListener('click',()=>closeInfo());
+window.closeInfo=closeInfo;
+
+// pan & zoom
+const bb=nodes.reduce((a,n)=>({minX:Math.min(a.minX,n.x),maxX:Math.max(a.maxX,n.x),minY:Math.min(a.minY,n.y),maxY:Math.max(a.maxY,n.y)}),{minX:Infinity,maxX:-Infinity,minY:Infinity,maxY:-Infinity});
+const cW=bb.maxX-bb.minX+140,cH=bb.maxY-bb.minY+140;
+const initScale=Math.min((W-60)/cW,(H-100)/cH,1)*0.88;
+transform.scale=initScale;
+transform.x=(W-cW*initScale)/2-bb.minX*initScale+50;
+transform.y=(H-cH*initScale)/2-bb.minY*initScale+55;
+function applyT(){g.setAttribute('transform',`translate(${transform.x},${transform.y}) scale(${transform.scale})`);}
+applyT();
+
+svg.addEventListener('mousedown',e=>{if(e.target.closest('[data-id]'))return;dragging=true;dragStart={x:e.clientX,y:e.clientY};transformStart={...transform};svg.style.cursor='grabbing';});
+window.addEventListener('mousemove',e=>{if(!dragging)return;transform.x=transformStart.x+(e.clientX-dragStart.x);transform.y=transformStart.y+(e.clientY-dragStart.y);applyT();});
+window.addEventListener('mouseup',()=>{dragging=false;svg.style.cursor='default';});
+svg.addEventListener('wheel',e=>{e.preventDefault();const f=e.deltaY<0?1.1:0.91;transform.x=e.clientX-(e.clientX-transform.x)*f;transform.y=e.clientY-(e.clientY-transform.y)*f;transform.scale*=f;applyT();},{passive:false});
+let ltx=null,lty=null;
+svg.addEventListener('touchstart',e=>{if(e.touches.length===1){dragging=true;ltx=e.touches[0].clientX;lty=e.touches[0].clientY;transformStart={...transform};dragStart={x:ltx,y:lty};}},{passive:true});
+svg.addEventListener('touchmove',e=>{if(!dragging||e.touches.length!==1)return;transform.x=transformStart.x+(e.touches[0].clientX-dragStart.x);transform.y=transformStart.y+(e.touches[0].clientY-dragStart.y);applyT();},{passive:true});
+svg.addEventListener('touchend',()=>{dragging=false;});
+function resetView(){transform.scale=initScale;transform.x=(W-cW*initScale)/2-bb.minX*initScale+50;transform.y=(H-cH*initScale)/2-bb.minY*initScale+55;applyT();}
+function toggleLabels(){showLabels=!showLabels;Object.values(nodeEls).forEach(({label,role})=>{label.setAttribute('opacity',showLabels?0.9:0);role.setAttribute('opacity',showLabels?0.55:0);});}
+window.resetView=resetView;window.toggleLabels=toggleLabels;
+</script>
+</body>
+</html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fofocas Gregas — Ciclo Troiano</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg: #0D0A05;
+  --gold: #C9973A;
+  --gold-l: #E8C472;
+  --gold-p: #F5E6C0;
+  --terra: #8B3A1A;
+  --blue: #1A3A5C;
+  --blue-l: #2E6A9E;
+  --parch: #F7EDD8;
+  --ink: #2C1F0A;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'IM Fell English', Georgia, serif;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  cursor: default;
+}
+
+/* starfield */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse at 15% 25%, rgba(201,151,58,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 75%, rgba(139,58,26,0.07) 0%, transparent 50%);
+  pointer-events:none;
+}
+
+/* HEADER */
+#header {
+  position:fixed; top:0; left:0; right:0;
+  z-index:100;
+  padding: 14px 24px 12px;
+  display:flex; align-items:center; justify-content:space-between;
+  background: linear-gradient(to bottom, rgba(13,10,5,0.98), rgba(13,10,5,0.7));
+  border-bottom: 1px solid rgba(201,151,58,0.2);
+}
+
+.header-left h1 {
+  font-family:'Cinzel Decorative', serif;
+  font-size: 1.1rem;
+  color: var(--gold-l);
+  line-height:1;
+}
+.header-left p {
+  font-family:'Cinzel', serif;
+  font-size:0.65rem;
+  letter-spacing:0.2em;
+  color: var(--gold);
+  opacity:0.7;
+  margin-top:3px;
+  text-transform:uppercase;
+}
+
+.header-controls {
+  display:flex; gap:8px; align-items:center;
+}
+
+.btn {
+  font-family:'Cinzel', serif;
+  font-size:0.68rem;
+  letter-spacing:0.08em;
+  padding:5px 12px;
+  border: 1px solid rgba(201,151,58,0.4);
+  background: rgba(201,151,58,0.08);
+  color: var(--gold-l);
+  border-radius:2px;
+  cursor:pointer;
+  transition: all 0.2s;
+}
+.btn:hover { background:rgba(201,151,58,0.18); border-color:var(--gold); }
+
+/* LEGEND */
+#legend {
+  position:fixed; bottom:20px; left:20px;
+  z-index:100;
+  background: rgba(13,10,5,0.9);
+  border: 1px solid rgba(201,151,58,0.25);
+  border-radius:4px;
+  padding:12px 16px;
+  min-width:180px;
+}
+#legend h3 {
+  font-family:'Cinzel', serif;
+  font-size:0.65rem;
+  letter-spacing:0.15em;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:10px;
+  opacity:0.8;
+}
+.leg-item {
+  display:flex; align-items:center; gap:8px;
+  margin-bottom:6px;
+  font-size:0.75rem;
+  color:var(--parch);
+  opacity:0.8;
+}
+.leg-dot {
+  width:12px; height:12px;
+  border-radius:50%;
+  flex-shrink:0;
+}
+.leg-line {
+  width:24px; height:3px;
+  flex-shrink:0;
+  border-radius:2px;
+}
+
+/* INFO PANEL */
+#info-panel {
+  position:fixed; top:70px; right:20px;
+  z-index:100;
+  width:260px;
+  background: rgba(13,10,5,0.95);
+  border: 1px solid rgba(201,151,58,0.3);
+  border-radius:4px;
+  padding:18px;
+  opacity:0;
+  transform: translateX(20px);
+  transition: all 0.3s ease;
+  pointer-events:none;
+}
+#info-panel.visible {
+  opacity:1;
+  transform:translateX(0);
+  pointer-events:all;
+}
+#info-name {
+  font-family:'Cinzel', serif;
+  font-size:1rem;
+  font-weight:700;
+  color:var(--gold-l);
+  margin-bottom:4px;
+}
+#info-role {
+  font-style:italic;
+  font-size:0.8rem;
+  color:var(--gold);
+  opacity:0.8;
+  margin-bottom:10px;
+}
+#info-desc {
+  font-size:0.8rem;
+  color:var(--parch);
+  opacity:0.85;
+  line-height:1.6;
+  margin-bottom:10px;
+}
+#info-obras {
+  border-top:1px solid rgba(201,151,58,0.2);
+  padding-top:10px;
+}
+#info-obras h4 {
+  font-family:'Cinzel', serif;
+  font-size:0.62rem;
+  letter-spacing:0.15em;
+  color:var(--gold);
+  opacity:0.7;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.obra-tag {
+  display:inline-block;
+  background:rgba(201,151,58,0.1);
+  border:1px solid rgba(201,151,58,0.25);
+  border-radius:2px;
+  padding:2px 7px;
+  font-size:0.7rem;
+  color:var(--parch);
+  margin:2px;
+}
+#info-close {
+  position:absolute; top:10px; right:12px;
+  font-size:1rem;
+  color:var(--gold);
+  opacity:0.5;
+  cursor:pointer;
+  background:none; border:none;
+  font-family:serif;
+}
+#info-close:hover { opacity:1; }
+
+/* HINT */
+#hint {
+  position:fixed; bottom:20px; right:20px;
+  z-index:100;
+  font-family:'Cinzel', serif;
+  font-size:0.62rem;
+  letter-spacing:0.1em;
+  color:var(--gold);
+  opacity:0.4;
+  text-align:right;
+  line-height:1.8;
+}
+
+/* SVG canvas */
+#canvas {
+  position:fixed; inset:0;
+  width:100%; height:100%;
+}
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div class="header-left">
+    <h1>🎭 Fofocas Gregas</h1>
+    <p>Ciclo Troiano — Mapa de Relações</p>
+  </div>
+  <div class="header-controls">
+    <button class="btn" onclick="resetView()">⟳ Resetar</button>
+    <button class="btn" onclick="toggleLabels()">Rótulos</button>
+  </div>
+</div>
+
+<div id="legend">
+  <h3>Legenda</h3>
+  <div class="leg-item"><div class="leg-dot" style="background:#E8C472"></div> Família Real de Troia</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#7EB8D4"></div> Gregos / Aqueus</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#D4A0D4"></div> Deuses</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#A8D4A0"></div> Figuras Mistas</div>
+  <div style="margin-top:10px">
+  <div class="leg-item"><div class="leg-line" style="background:#E8C472"></div> Família (sangue)</div>
+  <div class="leg-item"><div class="leg-line" style="background:#E87272"></div> Conflito/Inimizade</div>
+  <div class="leg-item"><div class="leg-line" style="background:#7EB8D4; height:2px; border-top:2px dashed #7EB8D4; background:none"></div> Amor/Casamento</div>
+  <div class="leg-item"><div class="leg-line" style="background:#D4A0D4"></div> Intervenção divina</div>
+  </div>
+</div>
+
+<div id="info-panel">
+  <button id="info-close" onclick="closeInfo()">✕</button>
+  <div id="info-name"></div>
+  <div id="info-role"></div>
+  <div id="info-desc"></div>
+  <div id="info-obras">
+    <h4>Aparece em</h4>
+    <div id="info-obras-list"></div>
+  </div>
+</div>
+
+<div id="hint">
+  Arraste para mover · Scroll para zoom<br>
+  Clique num personagem para detalhes
+</div>
+
+<svg id="canvas"></svg>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+
+const nodes = [
+  // TROIA - família real
+  { id:'priamo',    label:'Príamo',    role:'Rei de Troia',          group:'troia',  x:500, y:200,
+    desc:'Rei de Troia, pai de 50 filhos. Governou a cidade durante a Guerra de Troia e foi morto por Neoptólemo no altar de Zeus.',
+    obras:['As Troianas','Hécuba','Resos'] },
+  { id:'hecuba',    label:'Hécuba',    role:'Rainha de Troia',       group:'troia',  x:380, y:200,
+    desc:'Rainha de Troia, esposa de Príamo. Perdeu quase todos os filhos e foi escravizada pelos gregos. Protagonista de duas peças de Eurípides.',
+    obras:['As Troianas (Eurípides)','Hécuba (Eurípides)','As Fenícias'] },
+  { id:'heitor',    label:'Heitor',    role:'Príncipe guerreiro',    group:'troia',  x:500, y:320,
+    desc:'O maior herói de Troia, filho primogênito de Príamo e Hécuba. Morto por Aquiles em combate singular.',
+    obras:['Resos (Eurípides)'] },
+  { id:'paris',     label:'Páris',     role:'Príncipe / causa da guerra', group:'troia', x:360, y:320,
+    desc:'Príncipe troiano que raptou (ou seduziu) Helena, desencadeando a Guerra de Troia. Matou Aquiles com uma flecha guiada por Apolo.',
+    obras:['As Troianas','Hécuba'] },
+  { id:'cassandra', label:'Cassandra', role:'Profetisa maldita',     group:'troia',  x:260, y:280,
+    desc:'Princesa de Troia amaldiçoada por Apolo: profetizava verdades que ninguém acreditava. Levada como escrava por Agamêmnon e morta com ele por Clitemnestra.',
+    obras:['As Troianas (Eurípides)','Agamêmnon (Ésquilo)','Hécuba'] },
+  { id:'andromacha',label:'Andrômaca', role:'Esposa de Heitor',      group:'troia',  x:620, y:320,
+    desc:'Esposa fiel de Heitor. Após a queda de Troia tornou-se escrava de Neoptólemo. Protagonista da peça homônima de Eurípides.',
+    obras:['As Troianas','Andrômaca (Eurípides)'] },
+  { id:'astianax',  label:'Astíanax',  role:'Filho de Heitor',       group:'troia',  x:620, y:430,
+    desc:'Filho bebê de Heitor e Andrômaca. Lançado das muralhas de Troia pelos gregos, que temiam que crescesse e vingasse o pai.',
+    obras:['As Troianas (Eurípides)'] },
+  { id:'polixena',  label:'Políxena',  role:'Princesa sacrificada',  group:'troia',  x:280, y:400,
+    desc:'Filha de Príamo e Hécuba, sacrificada sobre o túmulo de Aquiles por exigência do fantasma do herói — um dos momentos mais patéticos de Eurípides.',
+    obras:['Hécuba (Eurípides)'] },
+  { id:'polidoro',  label:'Polidoro',  role:'Príncipe traído',       group:'troia',  x:400, y:430,
+    desc:'Filho caçula de Príamo, enviado secretamente à Trácia com ouro para ser salvo da guerra. Traído e assassinado pelo rei Polimestor.',
+    obras:['Hécuba (Eurípides)'] },
+  { id:'deifobos',  label:'Deífobo',   role:'Príncipe de Troia',     group:'troia',  x:480, y:430,
+    desc:'Irmão de Páris e Heitor. Após a morte de Páris, casou-se com Helena à força. Morto por Menelau durante o saque de Troia.',
+    obras:['Helena (Eurípides)'] },
+
+  // GREGOS
+  { id:'agamemnon', label:'Agamêmnon', role:'Rei de Micenas / Comandante', group:'grego', x:760, y:180,
+    desc:'Rei de Micenas e comandante supremo dos gregos. Sacrificou a filha Ifigênia para obter ventos favoráveis. Morto por Clitemnestra ao regressar.',
+    obras:['Agamêmnon (Ésquilo)','As Troianas','Hécuba','Ifigênia em Áulis'] },
+  { id:'menelau',   label:'Menelau',   role:'Rei de Esparta',        group:'grego',  x:880, y:280,
+    desc:'Rei de Esparta, marido de Helena. O rapto de Helena por Páris foi o estopim da guerra. Recuperou Helena após a queda de Troia.',
+    obras:['As Troianas','Andrômaca','Helena','Orestes','Ifigênia em Áulis'] },
+  { id:'helena',    label:'Helena',    role:'A mais bela do mundo',  group:'misto',  x:760, y:320,
+    desc:'A mulher mais bela do mundo, filha de Zeus e Leda. Sua fuga (ou rapto) para Troia causou a guerra. Versão de Eurípides sugere que ficou no Egito enquanto um fantasma foi para Troia.',
+    obras:['As Troianas','Helena (Eurípides)','Orestes','Andrômaca'] },
+  { id:'aquiles',   label:'Aquiles',   role:'Maior herói grego',     group:'grego',  x:900, y:400,
+    desc:'O maior guerreiro grego, filho da nereida Tétis. Quase invulnerável. Matou Heitor mas foi morto por uma flecha de Páris guiada por Apolo.',
+    obras:['Ifigênia em Áulis (Eurípides)'] },
+  { id:'odisseu',   label:'Odisseu',   role:'O astuto',              group:'grego',  x:800, y:450,
+    desc:'Herói de Ítaca, o mais inteligente dos gregos. Idealizou o Cavalo de Troia. Aparece em peças como o manipulador que convence para sacrifícios e execuções.',
+    obras:['Hécuba','As Troianas','Filoctetes (Sófocles)','Ájax (Sófocles)'] },
+  { id:'neoptolemo',label:'Neoptólemo',role:'Filho de Aquiles',      group:'grego',  x:1000, y:350,
+    desc:'Filho de Aquiles, também chamado Pirro. Matou Príamo no altar de Zeus e tomou Andrômaca como escrava. Mais tarde morto em Delfos.',
+    obras:['Andrômaca (Eurípides)','Filoctetes (Sófocles)'] },
+  { id:'taltibio',  label:'Taltíbio',  role:'Arauto de Agamêmnon',   group:'grego',  x:680, y:200,
+    desc:'Arauto oficial de Agamêmnon. Personagem de rara humanidade — transmite ordens cruéis com visível constrangimento e compaixão pelas troianas.',
+    obras:['As Troianas (Eurípides)','Hécuba'] },
+
+  // DEUSES
+  { id:'apolo',     label:'Apolo',     role:'Deus — protetor de Troia', group:'deus', x:200, y:160,
+    desc:'Deus do sol, das artes e da profecia. Protetor de Troia. Amaldiçoou Cassandra. Guiou a flecha de Páris que matou Aquiles.',
+    obras:['As Eumênides','Íon','Andrômaca'] },
+  { id:'atena',     label:'Atena',     role:'Deusa — aliada dos gregos', group:'deus', x:900, y:160,
+    desc:'Deusa da sabedoria e da guerra. Apoiou os gregos durante toda a guerra. Após o saque (e o estupro de Cassandra no seu templo) voltou-se contra eles.',
+    obras:['As Troianas','As Eumênides','Orestes'] },
+  { id:'afrodite',  label:'Afrodite',  role:'Deusa — causadora da guerra', group:'deus', x:350, y:130,
+    desc:'Deusa do amor. Prometeu Helena a Páris no Julgamento das Deusas — ato que desencadeou toda a guerra de Troia.',
+    obras:['Hipólito (Eurípides)'] },
+  { id:'poseidon',  label:'Posêidon',  role:'Deus do mar',           group:'deus',  x:700, y:130,
+    desc:'Deus dos mares. Ajudou a construir as muralhas de Troia e depois colaborou com Atena para destruir a frota grega no retorno.',
+    obras:['As Troianas (Eurípides)'] },
+
+  // FIGURAS MISTAS / OUTROS
+  { id:'polimestor',label:'Polimestor',role:'Rei da Trácia / traidor', group:'misto', x:200, y:450,
+    desc:'Rei trácio que deveria guardar o jovem Polidoro. Matou-o pelo ouro e jogou o corpo ao mar. Vingado cegamente por Hécuba.',
+    obras:['Hécuba (Eurípides)'] },
+  { id:'tetis',     label:'Tétis',     role:'Nereida, mãe de Aquiles', group:'deus', x:1050, y:200,
+    desc:'Nereida (ninfa do mar) e mãe de Aquiles. Tentou torná-lo imortal mergulhando-o no rio Estige. Aparece para consolar Andrômaca.',
+    obras:['Andrômaca (Eurípides)'] },
+];
+
+const edges = [
+  // família Príamo-Hécuba
+  { s:'priamo',    t:'hecuba',     type:'amor',     label:'casamento' },
+  { s:'priamo',    t:'heitor',     type:'familia',  label:'pai/filho' },
+  { s:'priamo',    t:'paris',      type:'familia',  label:'pai/filho' },
+  { s:'priamo',    t:'cassandra',  type:'familia',  label:'pai/filha' },
+  { s:'priamo',    t:'polixena',   type:'familia',  label:'pai/filha' },
+  { s:'priamo',    t:'polidoro',   type:'familia',  label:'pai/filho' },
+  { s:'priamo',    t:'deifobos',   type:'familia',  label:'pai/filho' },
+  { s:'hecuba',    t:'heitor',     type:'familia',  label:'mãe/filho' },
+  { s:'hecuba',    t:'cassandra',  type:'familia',  label:'mãe/filha' },
+  { s:'hecuba',    t:'polixena',   type:'familia',  label:'mãe/filha' },
+  { s:'hecuba',    t:'polidoro',   type:'familia',  label:'mãe/filho' },
+
+  // casamentos / amores
+  { s:'heitor',    t:'andromacha', type:'amor',     label:'casamento' },
+  { s:'andromacha',t:'astianax',   type:'familia',  label:'mãe/filho' },
+  { s:'paris',     t:'helena',     type:'amor',     label:'fuga/amor' },
+  { s:'menelau',   t:'helena',     type:'amor',     label:'casamento' },
+  { s:'deifobos',  t:'helena',     type:'amor',     label:'casou após Páris' },
+  { s:'aquiles',   t:'tetis',      type:'familia',  label:'filho/mãe' },
+
+  // conflitos
+  { s:'agamemnon', t:'hecuba',     type:'conflito', label:'vencedor/vencida' },
+  { s:'agamemnon', t:'cassandra',  type:'conflito', label:'capturou como escrava' },
+  { s:'aquiles',   t:'heitor',     type:'conflito', label:'matou em duelo' },
+  { s:'neoptolemo',t:'andromacha', type:'conflito', label:'escravizou' },
+  { s:'neoptolemo',t:'priamo',     type:'conflito', label:'matou no altar' },
+  { s:'odisseu',   t:'hecuba',     type:'conflito', label:'negou salvar Políxena' },
+  { s:'polimestor',t:'polidoro',   type:'conflito', label:'assassinou' },
+  { s:'hecuba',    t:'polimestor', type:'conflito', label:'vingou-se / cegou' },
+  { s:'paris',     t:'menelau',    type:'conflito', label:'roubou Helena' },
+  { s:'paris',     t:'aquiles',    type:'conflito', label:'matou c/ flecha' },
+
+  // divinos
+  { s:'apolo',     t:'cassandra',  type:'divino',   label:'amaldiçoou' },
+  { s:'apolo',     t:'paris',      type:'divino',   label:'guiou a flecha' },
+  { s:'afrodite',  t:'paris',      type:'divino',   label:'Julgamento / prometeu Helena' },
+  { s:'afrodite',  t:'helena',     type:'divino',   label:'a fez amar Páris' },
+  { s:'atena',     t:'agamemnon',  type:'divino',   label:'apoiou os gregos' },
+  { s:'poseidon',  t:'priamo',     type:'divino',   label:'construiu as muralhas' },
+  { s:'tetis',     t:'aquiles',    type:'divino',   label:'tentou imortalizar' },
+  { s:'taltibio',  t:'agamemnon',  type:'familia',  label:'arauto/servo' },
+  { s:'agamemnon', t:'menelau',    type:'familia',  label:'irmãos (Atridas)' },
+  { s:'neoptolemo',t:'aquiles',    type:'familia',  label:'filho/pai' },
+];
+
+// ─── RENDER ─────────────────────────────────────────────────────────────────
+
+const svg = document.getElementById('canvas');
+const W = window.innerWidth, H = window.innerHeight;
+svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+let transform = { x: 0, y: 0, scale: 1 };
+let showLabels = true;
+let dragging = false, dragStart = null, transformStart = null;
+let selectedNode = null;
+
+const groupColors = {
+  troia: '#C9973A',
+  grego: '#7EB8D4',
+  deus:  '#C8A0D4',
+  misto: '#A0D4A8',
+};
+const groupFill = {
+  troia: 'rgba(201,151,58,0.18)',
+  grego: 'rgba(126,184,212,0.15)',
+  deus:  'rgba(200,160,212,0.15)',
+  misto: 'rgba(160,212,168,0.15)',
+};
+const edgeColors = {
+  familia: '#C9973A',
+  amor:    '#7EB8D4',
+  conflito:'#E87272',
+  divino:  '#C8A0D4',
+};
+
+function ns(tag, attrs={}) {
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k,v] of Object.entries(attrs)) el.setAttribute(k, v);
+  return el;
+}
+
+// defs
+const defs = ns('defs');
+
+// arrow markers
+['familia','amor','conflito','divino'].forEach(type => {
+  const mk = ns('marker', { id:`arr-${type}`, markerWidth:8, markerHeight:8,
+    refX:18, refY:3, orient:'auto' });
+  const path = ns('path', { d:'M0,0 L0,6 L8,3 z', fill: edgeColors[type], opacity:'0.7' });
+  mk.appendChild(path);
+  defs.appendChild(mk);
+});
+
+// glow filter
+const flt = ns('filter', { id:'glow', x:'-30%', y:'-30%', width:'160%', height:'160%' });
+const fe1 = ns('feGaussianBlur', { stdDeviation:'4', result:'blur' });
+const fe2 = ns('feComposite', { in:'SourceGraphic', in2:'blur', operator:'over' });
+flt.appendChild(fe1); flt.appendChild(fe2);
+defs.appendChild(flt);
+
+// selected glow
+const flt2 = ns('filter', { id:'glow2', x:'-50%', y:'-50%', width:'200%', height:'200%' });
+const fe3 = ns('feGaussianBlur', { stdDeviation:'8', result:'blur' });
+const fe4 = ns('feComposite', { in:'SourceGraphic', in2:'blur', operator:'over' });
+flt2.appendChild(fe3); flt2.appendChild(fe4);
+defs.appendChild(flt2);
+
+svg.appendChild(defs);
+
+// main group (transformable)
+const g = ns('g', { id:'main' });
+svg.appendChild(g);
+
+const edgeGroup = ns('g');
+const nodeGroup = ns('g');
+g.appendChild(edgeGroup);
+g.appendChild(nodeGroup);
+
+// draw edges
+const edgeEls = {};
+edges.forEach(e => {
+  const src = nodes.find(n => n.id === e.s);
+  const tgt = nodes.find(n => n.id === e.t);
+  if (!src || !tgt) return;
+
+  const dx = tgt.x - src.x, dy = tgt.y - src.y;
+  const mx = src.x + dx*0.5 + dy*0.15;
+  const my = src.y + dy*0.5 - dx*0.15;
+
+  const path = ns('path', {
+    d: `M${src.x},${src.y} Q${mx},${my} ${tgt.x},${tgt.y}`,
+    fill: 'none',
+    stroke: edgeColors[e.type],
+    'stroke-width': e.type === 'conflito' ? 2 : 1.5,
+    'stroke-dasharray': e.type === 'amor' ? '5,4' : e.type === 'divino' ? '2,3' : 'none',
+    opacity: 0.4,
+    'marker-end': `url(#arr-${e.type})`,
+  });
+  path.dataset.edge = `${e.s}-${e.t}`;
+  edgeGroup.appendChild(path);
+
+  // edge label (hidden by default, shows on hover)
+  const lbl = ns('text', {
+    x: mx, y: my,
+    'text-anchor': 'middle',
+    'font-family': 'IM Fell English, Georgia, serif',
+    'font-size': '9',
+    'font-style': 'italic',
+    fill: edgeColors[e.type],
+    opacity: 0,
+    'pointer-events': 'none',
+  });
+  lbl.textContent = e.label;
+  lbl.dataset.edgelabel = `${e.s}-${e.t}`;
+  edgeGroup.appendChild(lbl);
+
+  edgeEls[`${e.s}-${e.t}`] = { path, lbl };
+});
+
+// draw nodes
+const nodeEls = {};
+nodes.forEach(node => {
+  const grp = ns('g', { cursor:'pointer' });
+  grp.dataset.id = node.id;
+
+  // outer glow ring (hidden)
+  const ring = ns('circle', {
+    cx: node.x, cy: node.y, r: 26,
+    fill: 'none',
+    stroke: groupColors[node.group],
+    'stroke-width': 1.5,
+    opacity: 0,
+    filter: 'url(#glow)',
+  });
+  grp.appendChild(ring);
+
+  // bg circle
+  const circle = ns('circle', {
+    cx: node.x, cy: node.y, r: 20,
+    fill: groupFill[node.group],
+    stroke: groupColors[node.group],
+    'stroke-width': 1.5,
+  });
+  grp.appendChild(circle);
+
+  // icon char (first letter)
+  const icon = ns('text', {
+    x: node.x, y: node.y + 5,
+    'text-anchor': 'middle',
+    'font-family': 'Cinzel, serif',
+    'font-size': '13',
+    'font-weight': '700',
+    fill: groupColors[node.group],
+    'pointer-events': 'none',
+  });
+  icon.textContent = node.label[0];
+  grp.appendChild(icon);
+
+  // label
+  const label = ns('text', {
+    x: node.x, y: node.y + 34,
+    'text-anchor': 'middle',
+    'font-family': 'Cinzel, serif',
+    'font-size': '10',
+    'font-weight': '600',
+    fill: '#F5E6C0',
+    opacity: showLabels ? 0.9 : 0,
+    'pointer-events': 'none',
+  });
+  label.textContent = node.label;
+  grp.appendChild(label);
+
+  // role sublabel
+  const role = ns('text', {
+    x: node.x, y: node.y + 46,
+    'text-anchor': 'middle',
+    'font-family': 'IM Fell English, serif',
+    'font-size': '8',
+    'font-style': 'italic',
+    fill: groupColors[node.group],
+    opacity: showLabels ? 0.6 : 0,
+    'pointer-events': 'none',
+  });
+  role.textContent = node.role;
+  grp.appendChild(role);
+
+  nodeGroup.appendChild(grp);
+  nodeEls[node.id] = { grp, circle, ring, label, role };
+
+  // hover
+  grp.addEventListener('mouseenter', () => {
+    if (selectedNode === node.id) return;
+    circle.setAttribute('r', 23);
+    ring.setAttribute('opacity', 0.5);
+    // highlight connected edges
+    highlightEdges(node.id, 0.85);
+  });
+  grp.addEventListener('mouseleave', () => {
+    if (selectedNode === node.id) return;
+    circle.setAttribute('r', 20);
+    ring.setAttribute('opacity', 0);
+    resetEdges();
+  });
+  grp.addEventListener('click', (ev) => {
+    ev.stopPropagation();
+    selectNode(node);
+  });
+});
+
+function highlightEdges(nodeId, op) {
+  edges.forEach(e => {
+    const key = `${e.s}-${e.t}`;
+    if (!edgeEls[key]) return;
+    if (e.s === nodeId || e.t === nodeId) {
+      edgeEls[key].path.setAttribute('opacity', op);
+      edgeEls[key].lbl.setAttribute('opacity', op * 0.9);
+    } else {
+      edgeEls[key].path.setAttribute('opacity', 0.08);
+    }
+  });
+}
+function resetEdges() {
+  edges.forEach(e => {
+    const key = `${e.s}-${e.t}`;
+    if (!edgeEls[key]) return;
+    edgeEls[key].path.setAttribute('opacity', 0.4);
+    edgeEls[key].lbl.setAttribute('opacity', 0);
+  });
+}
+
+function selectNode(node) {
+  // deselect old
+  if (selectedNode && nodeEls[selectedNode]) {
+    nodeEls[selectedNode].circle.setAttribute('r', 20);
+    nodeEls[selectedNode].ring.setAttribute('opacity', 0);
+    nodeEls[selectedNode].circle.setAttribute('stroke-width', 1.5);
+  }
+  if (selectedNode === node.id) {
+    selectedNode = null;
+    resetEdges();
+    closeInfo();
+    return;
+  }
+  selectedNode = node.id;
+  nodeEls[node.id].circle.setAttribute('r', 24);
+  nodeEls[node.id].ring.setAttribute('opacity', 0.8);
+  nodeEls[node.id].circle.setAttribute('stroke-width', 2.5);
+  highlightEdges(node.id, 0.9);
+
+  // info panel
+  document.getElementById('info-name').textContent = node.label;
+  document.getElementById('info-role').textContent = node.role;
+  document.getElementById('info-desc').textContent = node.desc;
+  const obrasList = document.getElementById('info-obras-list');
+  obrasList.innerHTML = node.obras.map(o => `<span class="obra-tag">${o}</span>`).join('');
+  document.getElementById('info-panel').classList.add('visible');
+}
+
+function closeInfo() {
+  document.getElementById('info-panel').classList.remove('visible');
+  if (selectedNode && nodeEls[selectedNode]) {
+    nodeEls[selectedNode].circle.setAttribute('r', 20);
+    nodeEls[selectedNode].ring.setAttribute('opacity', 0);
+    nodeEls[selectedNode].circle.setAttribute('stroke-width', 1.5);
+  }
+  selectedNode = null;
+  resetEdges();
+}
+
+svg.addEventListener('click', () => { closeInfo(); });
+
+// ─── PAN & ZOOM ──────────────────────────────────────────────────────────────
+
+function applyTransform() {
+  g.setAttribute('transform', `translate(${transform.x},${transform.y}) scale(${transform.scale})`);
+}
+
+// Initial center
+const nodesBB = nodes.reduce((acc, n) => ({
+  minX: Math.min(acc.minX, n.x), maxX: Math.max(acc.maxX, n.x),
+  minY: Math.min(acc.minY, n.y), maxY: Math.max(acc.maxY, n.y),
+}), { minX:Infinity, maxX:-Infinity, minY:Infinity, maxY:-Infinity });
+
+const contentW = nodesBB.maxX - nodesBB.minX + 100;
+const contentH = nodesBB.maxY - nodesBB.minY + 100;
+const initScale = Math.min((W - 60) / contentW, (H - 100) / contentH, 1) * 0.85;
+transform.scale = initScale;
+transform.x = (W - contentW * initScale) / 2 - nodesBB.minX * initScale + 30;
+transform.y = (H - contentH * initScale) / 2 - nodesBB.minY * initScale + 50;
+applyTransform();
+
+svg.addEventListener('mousedown', e => {
+  if (e.target.closest('[data-id]')) return;
+  dragging = true;
+  dragStart = { x: e.clientX, y: e.clientY };
+  transformStart = { ...transform };
+  svg.style.cursor = 'grabbing';
+});
+window.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  transform.x = transformStart.x + (e.clientX - dragStart.x);
+  transform.y = transformStart.y + (e.clientY - dragStart.y);
+  applyTransform();
+});
+window.addEventListener('mouseup', () => {
+  dragging = false;
+  svg.style.cursor = 'default';
+});
+svg.addEventListener('wheel', e => {
+  e.preventDefault();
+  const factor = e.deltaY < 0 ? 1.1 : 0.91;
+  const mx = e.clientX, my = e.clientY;
+  transform.x = mx - (mx - transform.x) * factor;
+  transform.y = my - (my - transform.y) * factor;
+  transform.scale *= factor;
+  applyTransform();
+}, { passive: false });
+
+// touch
+let lastTouch = null;
+svg.addEventListener('touchstart', e => {
+  if (e.touches.length === 1) {
+    dragging = true;
+    lastTouch = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    transformStart = { ...transform };
+    dragStart = { ...lastTouch };
+  }
+}, { passive: true });
+svg.addEventListener('touchmove', e => {
+  if (!dragging || e.touches.length !== 1) return;
+  const t = e.touches[0];
+  transform.x = transformStart.x + (t.clientX - dragStart.x);
+  transform.y = transformStart.y + (t.clientY - dragStart.y);
+  applyTransform();
+}, { passive: true });
+svg.addEventListener('touchend', () => { dragging = false; });
+
+function resetView() {
+  transform.scale = initScale;
+  transform.x = (W - contentW * initScale) / 2 - nodesBB.minX * initScale + 30;
+  transform.y = (H - contentH * initScale) / 2 - nodesBB.minY * initScale + 50;
+  applyTransform();
+}
+
+function toggleLabels() {
+  showLabels = !showLabels;
+  Object.values(nodeEls).forEach(({ label, role }) => {
+    label.setAttribute('opacity', showLabels ? 0.9 : 0);
+    role.setAttribute('opacity', showLabels ? 0.6 : 0);
+  });
+}
+
+window.resetView = resetView;
+window.toggleLabels = toggleLabels;
+window.closeInfo = closeInfo;
+</script>
+</body>
+</html>
