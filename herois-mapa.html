@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fofocas Gregas — Os Heróis</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg: #080A04;
+  --bronze: #8A5A1A;
+  --bronze-l: #D4903A;
+  --bronze-p: #F5E0C0;
+  --leaf-l: #6AAD3A;
+  --iron-l: #7A9ABD;
+  --fire-l: #D45A3A;
+  --parch: #F0EAD8;
+}
+body {
+  background: var(--bg);
+  font-family: 'IM Fell English', Georgia, serif;
+  overflow: hidden; height:100vh; width:100vw;
+}
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(138,90,26,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 20%, rgba(106,173,58,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 85%, rgba(138,42,26,0.1) 0%, transparent 45%);
+  pointer-events:none;
+}
+#header {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:14px 24px 12px;
+  display:flex; align-items:center; justify-content:space-between;
+  background:linear-gradient(to bottom,rgba(8,10,4,0.98),rgba(8,10,4,0.65));
+  border-bottom:1px solid rgba(212,144,58,0.28);
+}
+.header-left h1 { font-family:'Cinzel Decorative',serif; font-size:1.1rem; color:var(--bronze-l); line-height:1; }
+.header-left p { font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.2em; color:var(--bronze); opacity:0.85; margin-top:3px; text-transform:uppercase; }
+.header-controls { display:flex; gap:8px; }
+.btn { font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:0.08em; padding:5px 12px; border:1px solid rgba(212,144,58,0.35); background:rgba(138,90,26,0.12); color:var(--bronze-l); border-radius:2px; cursor:pointer; transition:all 0.2s; }
+.btn:hover { background:rgba(138,90,26,0.28); border-color:var(--bronze-l); }
+#legend {
+  position:fixed; bottom:20px; left:20px; z-index:100;
+  background:rgba(8,10,4,0.93); border:1px solid rgba(212,144,58,0.22); border-radius:4px; padding:12px 16px; min-width:195px;
+}
+#legend h3 { font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--bronze-l); text-transform:uppercase; margin-bottom:10px; opacity:0.9; }
+.leg-item { display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:0.75rem; color:var(--parch); opacity:0.8; }
+.leg-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+.leg-line { width:24px; height:2px; flex-shrink:0; border-radius:2px; }
+#info-panel {
+  position:fixed; top:70px; right:20px; z-index:100; width:275px;
+  background:rgba(8,10,4,0.97); border:1px solid rgba(212,144,58,0.28); border-radius:4px;
+  padding:18px; opacity:0; transform:translateX(20px); transition:all 0.3s ease; pointer-events:none;
+}
+#info-panel.visible { opacity:1; transform:translateX(0); pointer-events:all; }
+#info-name { font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:var(--bronze-l); margin-bottom:4px; }
+#info-role { font-style:italic; font-size:0.8rem; color:var(--bronze); opacity:0.95; margin-bottom:10px; }
+#info-desc { font-size:0.8rem; color:var(--parch); opacity:0.85; line-height:1.65; margin-bottom:10px; }
+#info-obras { border-top:1px solid rgba(212,144,58,0.18); padding-top:10px; }
+#info-obras h4 { font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.15em; color:var(--bronze); opacity:0.7; text-transform:uppercase; margin-bottom:6px; }
+.obra-tag { display:inline-block; background:rgba(138,90,26,0.16); border:1px solid rgba(212,144,58,0.28); border-radius:2px; padding:2px 7px; font-size:0.7rem; color:var(--parch); margin:2px; }
+#info-close { position:absolute; top:10px; right:12px; font-size:1rem; color:var(--bronze-l); opacity:0.5; cursor:pointer; background:none; border:none; font-family:serif; }
+#info-close:hover { opacity:1; }
+#hint { position:fixed; bottom:20px; right:20px; z-index:100; font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.1em; color:var(--bronze); opacity:0.4; text-align:right; line-height:1.8; }
+#canvas { position:fixed; inset:0; width:100%; height:100%; }
+</style>
+</head>
+<body>
+<div id="header">
+  <div class="header-left">
+    <h1>⚔️ Fofocas Gregas</h1>
+    <p>Os Heróis — Glória, Maldição e Aventura</p>
+  </div>
+  <div class="header-controls">
+    <button class="btn" onclick="resetView()">⟳ Resetar</button>
+    <button class="btn" onclick="toggleLabels()">Rótulos</button>
+  </div>
+</div>
+<div id="legend">
+  <h3>Legenda</h3>
+  <div class="leg-item"><div class="leg-dot" style="background:#D4903A"></div> Heróis Pan-Helênicos</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#6AAD3A"></div> Heróis Locais / Regionais</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#7A9ABD"></div> Guerreiros de Troia</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#D45A3A"></div> Heróinas</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#C8A0D4"></div> Profetas / Auxiliares</div>
+  <div style="margin-top:10px">
+  <div class="leg-item"><div class="leg-line" style="background:#C9973A"></div> Família / Linhagem</div>
+  <div class="leg-item"><div class="leg-line" style="background:none;border-top:2px dashed #7EB8D4;height:0"></div> Amor / União</div>
+  <div class="leg-item"><div class="leg-line" style="background:#E87272"></div> Conflito / Rivalidade</div>
+  <div class="leg-item"><div class="leg-line" style="background:none;border-top:2px dotted #6AAD3A;height:0"></div> Aliança / Amizade</div>
+  </div>
+</div>
+<div id="info-panel">
+  <button id="info-close" onclick="closeInfo()">✕</button>
+  <div id="info-name"></div>
+  <div id="info-role"></div>
+  <div id="info-desc"></div>
+  <div id="info-obras"><h4>Aparece em</h4><div id="info-obras-list"></div></div>
+</div>
+<div id="hint">Arraste para mover · Scroll para zoom<br>Clique num herói para detalhes</div>
+<svg id="canvas"></svg>
+<script>
+const nodes = [
+  // HÉRACLES E CICLO
+  { id:'heracles',   label:'Héracles',    role:'O maior herói grego',              group:'pan',     x:180,  y:280,
+    desc:'Filho de Zeus e Alcmena, o herói mais famoso da Grécia. Enlouquecido por Hera, matou a própria família. Cumpriu os 12 Trabalhos. Em Alceste luta com a Morte para salvar uma amiga. Aparece em pelo menos 6 peças — às vezes herói sério, às vezes comicamente glutão em Os Pássaros.',
+    obras:['Herácles (Eurípides)','Alceste (Eurípides)','As Traquínias (Sófocles)','Os Pássaros (Aristófanes)','Filoctetes (Sófocles)'] },
+  { id:'dejanira',   label:'Dejanira',    role:'Esposa de Héracles',               group:'heroina', x:55,   y:155,
+    desc:'Esposa de Héracles, protagonista de As Traquínias. Usa sem saber uma túnica envenenada para reconquistar o amor do marido — e o mata acidentalmente. Uma das representações mais complexas de ciúme e culpa involuntária na tragédia grega.',
+    obras:['As Traquínias (Sófocles)'] },
+  { id:'hilo',       label:'Hilo',        role:'Filho de Héracles e Dejanira',     group:'local',   x:55,   y:380,
+    desc:'Filho de Héracles e Dejanira. Testemunha a agonia do pai em As Traquínias, carrega-o para o Monte Eta e recebe o último pedido: casar com Iole, a jovem que causou toda a tragédia.',
+    obras:['As Traquínias (Sófocles)'] },
+  { id:'iole',       label:'Iole',        role:'Amada de Héracles / causa da tragédia', group:'heroina', x:185, y:140,
+    desc:'Princesa capturada por Héracles, causa involuntária da tragédia das Traquínias. Sua chegada desperta o ciúme de Dejanira sem que Iole tenha feito nada de errado. Figura trágica silenciosa — quase não fala, mas sua presença destrói uma família.',
+    obras:['As Traquínias (Sófocles)'] },
+  { id:'alceste',    label:'Alceste',     role:'Rainha que morreu pelo marido',    group:'heroina', x:330,  y:55,
+    desc:'Rainha da Tessália, esposa de Admeto. A mais nobre das heróinas: escolheu morrer voluntariamente para salvar o marido. Trazida de volta por Héracles que luta com Tânatos junto ao túmulo. Peça limítrofe entre tragédia e comédia.',
+    obras:['Alceste (Eurípides)'] },
+  { id:'admeto',     label:'Admeto',      role:'Rei da Tessália / salvo por Alceste', group:'local', x:330, y:165,
+    desc:'Rei da Tessália, amigo de Apolo. Soube que morreria cedo e pediu que alguém morresse em seu lugar — apenas sua esposa Alceste aceitou. Personagem que Eurípides examina sem piedade: covarde que aceitou o sacrifício, ou rei que amava?',
+    obras:['Alceste (Eurípides)'] },
+
+  // JASÃO E ARGONAUTAS
+  { id:'jasao',      label:'Jasão',       role:'Líder dos Argonautas',             group:'pan',     x:610,  y:110,
+    desc:'Líder dos Argonautas em busca do Velocino de Ouro. Em Medeia de Eurípides é o anti-herói calculista que abandona Medeia por um casamento politicamente conveniente — e paga o preço mais alto. Um dos personagens masculinos mais moralmente contestados de toda a tragédia grega.',
+    obras:['Medeia (Eurípides)'] },
+  { id:'medeia',     label:'Medeia',      role:'Feiticeira / vinga a traição com horror', group:'heroina', x:750, y:45,
+    desc:'Princesa da Cólquida, feiticeira poderosa que ajudou Jasão a conquistar o Velocino. Abandonada por Jasão em Corinto, comete o ato mais extremo da tragédia grega: mata os próprios filhos para destruir o marido. Protagonista absoluta da peça de Eurípides.',
+    obras:['Medeia (Eurípides)'] },
+  { id:'creonte_cor',label:'Creonte (Cor.)',role:'Rei de Corinto / vítima de Medeia', group:'local', x:750, y:210,
+    desc:'Rei de Corinto (diferente do Creonte tebano). Ofereceu a filha Glauce em casamento a Jasão e ordenou o exílio de Medeia. Morreu junto com a filha ao receber o presente envenenado que Medeia enviou.',
+    obras:['Medeia (Eurípides)'] },
+  { id:'egeu',       label:'Egeu',        role:'Rei de Atenas / refúgio de Medeia', group:'local',  x:600,  y:260,
+    desc:'Rei de Atenas, pai de Teseu. Aparece em Medeia prometendo refúgio à heroína sem saber o que ela vai fazer. Sua promessa inocente torna-se o bilhete de saída de Medeia após o crime.',
+    obras:['Medeia (Eurípides)'] },
+
+  // TESEU E ATENAS
+  { id:'teseu',      label:'Teseu',       role:'Rei de Atenas / herói fundador',   group:'pan',     x:490,  y:420,
+    desc:'O grande herói de Atenas, matador do Minotauro. Nos dramas aparece como árbitro justo: em As Suplicantes resgata corpos dos mortos de Tebas; em Édipo em Colono acolhe o rei exilado; em Herácles ampara o amigo enlouquecido. Teseu é o herói que "faz a coisa certa".',
+    obras:['Herácles (Eurípides)','Édipo em Colono (Sófocles)','As Suplicantes (Eurípides)','Hipólito (Eurípides)'] },
+  { id:'hipolito',   label:'Hipólito',    role:'Filho de Teseu / devoto de Ártemis', group:'pan',   x:370,  y:530,
+    desc:'Filho de Teseu e da amazona Hipólita. Consagrado a Ártemis, desprezava Afrodite e o amor carnal. Destruído pela ira da deusa — que inspirou a madrasta Fedra a amá-lo — e pela desconfiança do pai. Morre inocente, num dos finais mais injustos da tragédia grega.',
+    obras:['Hipólito (Eurípides)'] },
+  { id:'fedra',      label:'Fedra',       role:'Madrasta de Hipólito / amor impossível', group:'heroina', x:250, y:530,
+    desc:'Esposa de Teseu, apaixonada pelo enteado Hipólito por intervenção de Afrodite. Ao ser rejeitada, escreveu uma carta falsa acusando-o de estupro antes de se suicidar. Sua complexidade psicológica — ama sem querer, resiste, cede, mente — tornou-a um dos personagens mais estudados do teatro ocidental.',
+    obras:['Hipólito (Eurípides)'] },
+
+  // GUERRA DE TROIA
+  { id:'aquiles',    label:'Aquiles',     role:'O maior guerreiro grego',          group:'troia',   x:980,  y:175,
+    desc:'Filho de Peleu e da nereida Tétis. Quase invulnerável — mergulhado no Estige pelo calcanhar. Matou Heitor e foi morto por Páris com uma flecha. Em Ifigênia em Áulis é retratado como jovem honrado que protesta contra o sacrifício da noiva.',
+    obras:['Ifigênia em Áulis (Eurípides)'] },
+  { id:'odisseu',    label:'Odisseu',     role:'O mais astuto / o persuasor',      group:'troia',   x:980,  y:350,
+    desc:'Rei de Ítaca, o mais inteligente dos gregos. Idealizou o Cavalo de Troia. Nos dramas aparece quase sempre como vilão pragmático: convence para sacrifícios, manipula heróis, usa mentiras como arma. Em Filoctetes lidera a missão para roubar o arco; em Hécuba recusa salvar Políxena.',
+    obras:['Filoctetes (Sófocles)','Hécuba (Eurípides)','As Troianas','Ájax (Sófocles)'] },
+  { id:'ajax',       label:'Ájax',        role:'Segundo maior guerreiro grego',    group:'troia',   x:1110, y:265,
+    desc:'O mais poderoso guerreiro grego depois de Aquiles. Quando as armas de Aquiles foram dadas a Odisseu em vez de a ele, enlouqueceu de raiva — massacrou um rebanho crendo serem seus inimigos. Ao recobrar a razão, suicidou-se de vergonha. Tragédia sobre honra, loucura e o silêncio de Atena.',
+    obras:['Ájax (Sófocles)'] },
+  { id:'filoctetes', label:'Filoctetes',  role:'Arqueiro / dono do arco de Héracles', group:'troia', x:1110, y:420,
+    desc:'Herói grego portador do arco mágico de Héracles. Abandonado na ilha de Lemnos por ter sido picado por uma serpente. Depois de 10 anos sozinho, Odisseu e Neoptólemo vêm buscá-lo pois uma profecia diz que Troia só cai com seu arco.',
+    obras:['Filoctetes (Sófocles)'] },
+  { id:'neoptolemo', label:'Neoptólemo', role:'Filho de Aquiles / herói relutante', group:'troia',  x:980,  y:490,
+    desc:'Filho de Aquiles, convocado para a guerra após a morte do pai. Em Filoctetes é enviado com Odisseu para enganar Filoctetes — mas sua honra resiste à mentira. Em Andrômaca tomou Andrômaca como escrava e depois foi morto em Delfos.',
+    obras:['Filoctetes (Sófocles)','Andrômaca (Eurípides)'] },
+  { id:'diomedes',   label:'Diomedes',   role:'Rei de Argos / guerreiro audaz',   group:'troia',   x:1110, y:140,
+    desc:'Rei de Argos, um dos mais valentes guerreiros gregos. Em Resos de Eurípides parte numa missão noturna com Odisseu para espionar e assassinar o rei trácio aliado de Troia. Figura de coragem quase temerária.',
+    obras:['Resos (Eurípides)'] },
+
+  // HERÓIS SOLITÁRIOS
+  { id:'prometeu_h', label:'Prometeu',   role:'Titã / herói da humanidade',       group:'local',   x:110,  y:590,
+    desc:'Embora seja um Titã, Prometeu funciona dramaticamente como herói: roubou o fogo dos deuses para dar aos humanos, sofreu punição injusta e resistiu com dignidade absoluta. Em Prometeu Acorrentado de Ésquilo é o mais nobre dos mártires — recusa-se a ceder mesmo sofrendo eternamente.',
+    obras:['Prometeu Acorrentado (Ésquilo)','Os Pássaros (Aristófanes)'] },
+  { id:'orfeu',      label:'Orfeu',      role:'Músico que desceu ao Hades por amor', group:'pan',   x:390,  y:650,
+    desc:'O músico mais célebre da mitologia grega. Desceu ao Hades para buscar a esposa Eurídice, encantou Perséfone e Hades com sua lira — mas perdeu Eurídice ao virar-se antes de sair. Referenciado nas tragédias como símbolo do poder da música e do amor impossível.',
+    obras:['Referenciado em Alceste (Eurípides)','Contexto de As Bacantes'] },
+  { id:'perseu',     label:'Perseu',     role:'Matou Medusa / fundador de linhagens', group:'pan',  x:250,  y:650,
+    desc:'Filho de Zeus e Dânae. Matou a Górgona Medusa, salvou Andrômeda e fundou Micenas. Ancestral de Héracles e dos reis de Micenas — linhagem que desemboca nos Atridas. Referenciado como raiz de grandes dynastias trágicas.',
+    obras:['Referenciado em Agamêmnon','Andrômeda (Eurípides — perdida)'] },
+  { id:'belerofontes', label:'Belerofonte', role:'Domou Pégaso / desafiou o Olimpo', group:'pan',  x:570,  y:590,
+    desc:'Herói que domou o cavalo alado Pégaso e matou a Quimera. Enlouquecido pela glória, tentou voar ao Olimpo — Zeus o derrubou. Protagonizou tragédias perdidas de Eurípides que o retratavam como um homem que questionou a existência dos deuses.',
+    obras:['Belerofonte (Eurípides — perdida)','referenciado em As Rãs'] },
+  { id:'adrasto',    label:'Adrasto',    role:'Rei de Argos / liderou os Sete',   group:'local',   x:730,  y:590,
+    desc:'Rei de Argos que liderou a expedição dos Sete Contra Tebas em apoio ao genro Polinices. O único dos sete a sobreviver à derrota. Reaparece em As Suplicantes de Eurípides pedindo ajuda a Teseu para recuperar os corpos dos companheiros.',
+    obras:['Os Sete Contra Tebas (Ésquilo)','As Suplicantes (Eurípides)','As Fenícias (Eurípides)'] },
+
+  // PROFETAS
+  { id:'tiresias_h', label:'Tirésias',   role:'Profeta cego / presente em tudo',  group:'div',     x:670,  y:490,
+    desc:'O grande profeta cego de Tebas. Aparece em quatro ciclos diferentes — Édipo, Antígona, As Fenícias e As Bacantes — sempre trazendo verdades indesejadas. É o único mortal que viveu como homem e como mulher. Personagem que costura todos os grandes mitos tebanos.',
+    obras:['Édipo Rei','Antígona (Sófocles)','As Fenícias (Eurípides)','As Bacantes (Eurípides)'] },
+  { id:'calcas',     label:'Calcas',     role:'Adivinho da frota grega',          group:'div',     x:840,  y:490,
+    desc:'Adivinho da frota grega, intérprete da vontade de Apolo. Foi ele quem revelou que Ártemis exigia o sacrifício de Ifigênia em Áulis para que os ventos soprassem. Figura de segundo plano que desencadeia a tragédia central dos Atridas.',
+    obras:['Ifigênia em Áulis (Eurípides)','referenciado em Agamêmnon (Ésquilo)'] },
+];
+
+const edges = [
+  // Héracles
+  { s:'heracles',    t:'dejanira',    type:'amor',     label:'casamento' },
+  { s:'heracles',    t:'hilo',        type:'familia',  label:'pai / filho' },
+  { s:'heracles',    t:'iole',        type:'amor',     label:'amor / causa da tragédia' },
+  { s:'dejanira',    t:'hilo',        type:'familia',  label:'mãe / filho' },
+  { s:'dejanira',    t:'iole',        type:'conflito', label:'ciúme fatal' },
+  { s:'heracles',    t:'alceste',     type:'alianca',  label:'salvou do Hades' },
+  { s:'heracles',    t:'admeto',      type:'alianca',  label:'amizade de hóspede' },
+  { s:'heracles',    t:'teseu',       type:'alianca',  label:'amizade / apoio na loucura' },
+  { s:'heracles',    t:'filoctetes',  type:'familia',  label:'deu-lhe o arco antes de morrer' },
+  { s:'heracles',    t:'prometeu_h',  type:'alianca',  label:'libertou Prometeu (mito)' },
+  { s:'heracles',    t:'perseu',      type:'familia',  label:'descendente de Perseu' },
+  { s:'alceste',     t:'admeto',      type:'amor',     label:'morreu voluntariamente por ele' },
+
+  // Jasão
+  { s:'jasao',       t:'medeia',      type:'amor',     label:'abandonou após anos juntos' },
+  { s:'jasao',       t:'creonte_cor', type:'amor',     label:'aceitou casar com filha' },
+  { s:'medeia',      t:'creonte_cor', type:'conflito', label:'matou Creonte e Glauce' },
+  { s:'medeia',      t:'egeu',        type:'alianca',  label:'Egeu prometeu refúgio' },
+  { s:'egeu',        t:'teseu',       type:'familia',  label:'pai / filho' },
+  { s:'jasao',       t:'heracles',    type:'alianca',  label:'Héracles participou dos Argonautas' },
+
+  // Teseu
+  { s:'teseu',       t:'hipolito',    type:'familia',  label:'pai / filho' },
+  { s:'teseu',       t:'fedra',       type:'amor',     label:'casamento' },
+  { s:'fedra',       t:'hipolito',    type:'conflito', label:'amor proibido / acusação falsa' },
+  { s:'teseu',       t:'hipolito',    type:'conflito', label:'amaldiçoou o filho por engano' },
+  { s:'teseu',       t:'adrasto',     type:'alianca',  label:'ajudou a recuperar os corpos' },
+
+  // Troia
+  { s:'aquiles',     t:'odisseu',     type:'conflito', label:'rivalidade pelas armas' },
+  { s:'aquiles',     t:'ajax',        type:'conflito', label:'armas disputadas após morte' },
+  { s:'ajax',        t:'odisseu',     type:'conflito', label:'enlouqueceu de ódio por Odisseu' },
+  { s:'odisseu',     t:'filoctetes',  type:'conflito', label:'abandonou e voltou para usar' },
+  { s:'odisseu',     t:'neoptolemo',  type:'alianca',  label:'missão em Lemnos juntos' },
+  { s:'neoptolemo',  t:'filoctetes',  type:'alianca',  label:'convenceu com honra a ir a Troia' },
+  { s:'neoptolemo',  t:'aquiles',     type:'familia',  label:'filho / pai' },
+  { s:'diomedes',    t:'odisseu',     type:'alianca',  label:'missão noturna (Resos)' },
+
+  // profetas
+  { s:'tiresias_h',  t:'calcas',      type:'alianca',  label:'ambos intérpretes divinos' },
+
+  // linhagens
+  { s:'perseu',      t:'heracles',    type:'familia',  label:'ancestral via Anfitrião' },
+];
+
+// ─── RENDER ─────────────────────────────────────────────────────────────────
+const svg = document.getElementById('canvas');
+const W = window.innerWidth, H = window.innerHeight;
+svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+
+let transform={x:0,y:0,scale:1}, showLabels=true, dragging=false, dragStart=null, transformStart=null, selectedNode=null;
+
+const groupColors={pan:'#D4903A',local:'#6AAD3A',troia:'#7A9ABD',heroina:'#D45A3A',div:'#C8A0D4'};
+const groupFill={pan:'rgba(212,144,58,0.15)',local:'rgba(106,173,58,0.13)',troia:'rgba(122,154,189,0.14)',heroina:'rgba(212,90,58,0.14)',div:'rgba(200,160,212,0.13)'};
+const edgeColors={familia:'#C9973A',amor:'#7EB8D4',conflito:'#E87272',alianca:'#6AAD3A'};
+
+function ns(tag,attrs={}){const el=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const[k,v]of Object.entries(attrs))el.setAttribute(k,v);return el;}
+
+const defs=ns('defs');
+['familia','amor','conflito','alianca'].forEach(t=>{
+  const mk=ns('marker',{id:`arr-${t}`,markerWidth:8,markerHeight:8,refX:20,refY:3,orient:'auto'});
+  mk.appendChild(ns('path',{d:'M0,0 L0,6 L8,3 z',fill:edgeColors[t],opacity:'0.75'}));
+  defs.appendChild(mk);
+});
+const flt=ns('filter',{id:'glow',x:'-40%',y:'-40%',width:'180%',height:'180%'});
+flt.appendChild(ns('feGaussianBlur',{stdDeviation:'5',result:'blur'}));
+flt.appendChild(ns('feComposite',{in:'SourceGraphic',in2:'blur',operator:'over'}));
+defs.appendChild(flt);
+svg.appendChild(defs);
+
+const g=ns('g',{id:'main'});
+svg.appendChild(g);
+const edgeGroup=ns('g'),nodeGroup=ns('g');
+g.appendChild(edgeGroup);g.appendChild(nodeGroup);
+
+// cluster labels
+[{l:'Ciclo de Héracles',x:185,y:60},{l:'Argonautas / Medeia',x:660,y:28},{l:'Atenas e Teseu',x:430,y:355},{l:'Guerra de Troia',x:1020,y:75},{l:'Heróis Solitários',x:440,y:560}].forEach(c=>{
+  const t=ns('text',{x:c.x,y:c.y,'text-anchor':'middle','font-family':'Cinzel, serif','font-size':'9','letter-spacing':'0.15em',fill:'rgba(212,144,58,0.18)'});
+  t.textContent=`— ${c.l} —`;edgeGroup.appendChild(t);
+});
+
+// edges
+const edgeEls={};
+edges.forEach(e=>{
+  const src=nodes.find(n=>n.id===e.s),tgt=nodes.find(n=>n.id===e.t);
+  if(!src||!tgt||src.x<0||tgt.x<0)return;
+  const dx=tgt.x-src.x,dy=tgt.y-src.y;
+  const mx=src.x+dx*0.5+dy*0.16,my=src.y+dy*0.5-dx*0.16;
+  const dash=e.type==='amor'?'5,4':e.type==='alianca'?'3,5':'none';
+  const path=ns('path',{d:`M${src.x},${src.y} Q${mx},${my} ${tgt.x},${tgt.y}`,fill:'none',stroke:edgeColors[e.type]||'#888','stroke-width':e.type==='conflito'?2.2:1.5,'stroke-dasharray':dash,opacity:0.33,'marker-end':`url(#arr-${e.type})`});
+  edgeGroup.appendChild(path);
+  const lbl=ns('text',{x:mx,y:my,'text-anchor':'middle','font-family':'IM Fell English, serif','font-size':'9','font-style':'italic',fill:edgeColors[e.type]||'#888',opacity:0,'pointer-events':'none'});
+  lbl.textContent=e.label;edgeGroup.appendChild(lbl);
+  edgeEls[`${e.s}-${e.t}`]={path,lbl};
+});
+
+// nodes
+const nodeEls={};
+nodes.filter(n=>n.x>0).forEach(node=>{
+  const grp=ns('g',{cursor:'pointer'});grp.dataset.id=node.id;
+  const ring=ns('circle',{cx:node.x,cy:node.y,r:27,fill:'none',stroke:groupColors[node.group],'stroke-width':1.5,opacity:0,filter:'url(#glow)'});grp.appendChild(ring);
+  const circle=ns('circle',{cx:node.x,cy:node.y,r:20,fill:groupFill[node.group],stroke:groupColors[node.group],'stroke-width':1.5});grp.appendChild(circle);
+  const icon=ns('text',{x:node.x,y:node.y+5,'text-anchor':'middle','font-family':'Cinzel, serif','font-size':'13','font-weight':'700',fill:groupColors[node.group],'pointer-events':'none'});icon.textContent=node.label[0];grp.appendChild(icon);
+  const label=ns('text',{x:node.x,y:node.y+35,'text-anchor':'middle','font-family':'Cinzel, serif','font-size':'10','font-weight':'600',fill:'#F0EAD8',opacity:showLabels?0.9:0,'pointer-events':'none'});label.textContent=node.label;grp.appendChild(label);
+  const role=ns('text',{x:node.x,y:node.y+47,'text-anchor':'middle','font-family':'IM Fell English, serif','font-size':'8','font-style':'italic',fill:groupColors[node.group],opacity:showLabels?0.55:0,'pointer-events':'none'});role.textContent=node.role.length>30?node.role.slice(0,30)+'…':node.role;grp.appendChild(role);
+  nodeGroup.appendChild(grp);nodeEls[node.id]={grp,circle,ring,label,role};
+
+  grp.addEventListener('mouseenter',()=>{if(selectedNode===node.id)return;circle.setAttribute('r',23);ring.setAttribute('opacity',0.5);highlightEdges(node.id,0.88);});
+  grp.addEventListener('mouseleave',()=>{if(selectedNode===node.id)return;circle.setAttribute('r',20);ring.setAttribute('opacity',0);resetEdges();});
+  grp.addEventListener('click',ev=>{ev.stopPropagation();selectNode(node);});
+});
+
+function highlightEdges(id,op){edges.forEach(e=>{const k=`${e.s}-${e.t}`;if(!edgeEls[k])return;if(e.s===id||e.t===id){edgeEls[k].path.setAttribute('opacity',op);edgeEls[k].lbl.setAttribute('opacity',op*0.9);}else edgeEls[k].path.setAttribute('opacity',0.04);});}
+function resetEdges(){edges.forEach(e=>{const k=`${e.s}-${e.t}`;if(!edgeEls[k])return;edgeEls[k].path.setAttribute('opacity',0.33);edgeEls[k].lbl.setAttribute('opacity',0);});}
+function selectNode(node){
+  if(selectedNode&&nodeEls[selectedNode]){nodeEls[selectedNode].circle.setAttribute('r',20);nodeEls[selectedNode].ring.setAttribute('opacity',0);nodeEls[selectedNode].circle.setAttribute('stroke-width',1.5);}
+  if(selectedNode===node.id){selectedNode=null;resetEdges();closeInfo();return;}
+  selectedNode=node.id;
+  nodeEls[node.id].circle.setAttribute('r',24);nodeEls[node.id].ring.setAttribute('opacity',0.85);nodeEls[node.id].circle.setAttribute('stroke-width',2.5);
+  highlightEdges(node.id,0.92);
+  document.getElementById('info-name').textContent=node.label;
+  document.getElementById('info-role').textContent=node.role;
+  document.getElementById('info-desc').textContent=node.desc;
+  document.getElementById('info-obras-list').innerHTML=node.obras.map(o=>`<span class="obra-tag">${o}</span>`).join('');
+  document.getElementById('info-panel').classList.add('visible');
+}
+function closeInfo(){
+  document.getElementById('info-panel').classList.remove('visible');
+  if(selectedNode&&nodeEls[selectedNode]){nodeEls[selectedNode].circle.setAttribute('r',20);nodeEls[selectedNode].ring.setAttribute('opacity',0);nodeEls[selectedNode].circle.setAttribute('stroke-width',1.5);}
+  selectedNode=null;resetEdges();
+}
+svg.addEventListener('click',()=>closeInfo());
+window.closeInfo=closeInfo;
+
+const validN=nodes.filter(n=>n.x>0);
+const bb=validN.reduce((a,n)=>({minX:Math.min(a.minX,n.x),maxX:Math.max(a.maxX,n.x),minY:Math.min(a.minY,n.y),maxY:Math.max(a.maxY,n.y)}),{minX:Infinity,maxX:-Infinity,minY:Infinity,maxY:-Infinity});
+const cW=bb.maxX-bb.minX+160,cH=bb.maxY-bb.minY+160;
+const initScale=Math.min((W-60)/cW,(H-100)/cH,1)*0.88;
+transform.scale=initScale;
+transform.x=(W-cW*initScale)/2-bb.minX*initScale+60;
+transform.y=(H-cH*initScale)/2-bb.minY*initScale+55;
+function applyT(){g.setAttribute('transform',`translate(${transform.x},${transform.y}) scale(${transform.scale})`);}
+applyT();
+
+svg.addEventListener('mousedown',e=>{if(e.target.closest('[data-id]'))return;dragging=true;dragStart={x:e.clientX,y:e.clientY};transformStart={...transform};svg.style.cursor='grabbing';});
+window.addEventListener('mousemove',e=>{if(!dragging)return;transform.x=transformStart.x+(e.clientX-dragStart.x);transform.y=transformStart.y+(e.clientY-dragStart.y);applyT();});
+window.addEventListener('mouseup',()=>{dragging=false;svg.style.cursor='default';});
+svg.addEventListener('wheel',e=>{e.preventDefault();const f=e.deltaY<0?1.1:0.91;transform.x=e.clientX-(e.clientX-transform.x)*f;transform.y=e.clientY-(e.clientY-transform.y)*f;transform.scale*=f;applyT();},{passive:false});
+svg.addEventListener('touchstart',e=>{if(e.touches.length===1){dragging=true;dragStart={x:e.touches[0].clientX,y:e.touches[0].clientY};transformStart={...transform};}},{passive:true});
+svg.addEventListener('touchmove',e=>{if(!dragging||e.touches.length!==1)return;transform.x=transformStart.x+(e.touches[0].clientX-dragStart.x);transform.y=transformStart.y+(e.touches[0].clientY-dragStart.y);applyT();},{passive:true});
+svg.addEventListener('touchend',()=>{dragging=false;});
+function resetView(){transform.scale=initScale;transform.x=(W-cW*initScale)/2-bb.minX*initScale+60;transform.y=(H-cH*initScale)/2-bb.minY*initScale+55;applyT();}
+function toggleLabels(){showLabels=!showLabels;Object.values(nodeEls).forEach(({label,role})=>{label.setAttribute('opacity',showLabels?0.9:0);role.setAttribute('opacity',showLabels?0.55:0);});}
+window.resetView=resetView;window.toggleLabels=toggleLabels;
+</script>
+</body>
+</html>
