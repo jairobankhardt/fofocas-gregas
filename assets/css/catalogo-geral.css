@@ -2,8 +2,10 @@
    catalogo-geral.css — Catálogo de Obras Gregas
    ============================================================= */
 
+@import url('variables.css');
+
 :root {
-    --gold: #c9973a;
+    /* --gold → herdado de variables.css */
     --gold-light: #e8c472;
     --gold-pale: #f5e6c0;
     --terracotta: #9b3a1a;
@@ -27,7 +29,7 @@
 body {
     background-color: var(--deep);
     color: var(--parchment);
-    font-family: "IM Fell English", Georgia, serif;
+    font-family: var(--font-body);
     min-height: 100vh;
     overflow-x: hidden;
 }

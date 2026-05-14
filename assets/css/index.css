@@ -2,6 +2,8 @@
    index.css — Página inicial (Portal Fofocas Gregas)
    ============================================================= */
 
+@import url('variables.css');
+
 *,
 *::before,
 *::after {
@@ -12,9 +14,7 @@
 
 :root {
     --bg: #06050c;
-    --gold: #c9973a;
-    --gold-l: #e8c472;
-    --gold-p: #f5e6c0;
+    /* --gold, --gold-l, --gold-p → herdados de variables.css */
     --gold-d: #7a5a18;
     --parch: #f0ead8;
     --ink: #1a1208;
@@ -38,7 +38,7 @@ body {
 body {
     background: var(--bg);
     color: var(--parch);
-    font-family: "IM Fell English", Georgia, serif;
+    font-family: var(--font-body);
     cursor: default;
 }
 

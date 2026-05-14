@@ -14,6 +14,7 @@ fofocas-gregas/
 │
 ├── assets/
 │   ├── css/
+│   │   ├── variables.css         # ✅ Tokens globais de cor e tipografia
 │   │   ├── index.css             # ✅ Estilos da página inicial
 │   │   ├── catalogo-geral.css    # ✅ Estilos do catálogo
 │   │   ├── mapa-crimson.css      # ✅ Tema crimson (Atridas + Ciclo Troiano)
@@ -47,6 +48,7 @@ fofocas-gregas/
 
 - Menu compartilhado via `assets/js/menu-links.js`
 - Configuração centralizada em `assets/data/config.json`
+- Tokens globais de cor e tipografia em `assets/css/variables.css` (importado por todos os temas)
 - CSS com variáveis de cor (`:root`) por tema
 - `mapa-crimson.css` compartilhado entre Atridas e Ciclo Troiano (CSS idêntico)
 
@@ -76,7 +78,6 @@ Menu atualizado dinamicamente (com classe "active" inteligente)
 ### Curto Prazo
 
 - [ ] Extrair dados de mapas (nodes/edges) para JSON em `assets/data/maps/`
-- [ ] Criar `assets/css/variables.css` para cores e tipografia reutilizáveis entre temas
 - [ ] Adicionar `manifest.json` + service worker para suporte offline (PWA)
 
 ### Médio Prazo
@@ -93,6 +94,7 @@ Menu atualizado dinamicamente (com classe "active" inteligente)
 
 ✅ Menu centralizado e dinâmico
 ✅ CSS externo por tema (6 arquivos em `assets/css/`)
+✅ Tokens globais de cor/tipografia (`variables.css`, importado por todos os temas)
 ✅ Responsividade implementada (mobile/tablet/desktop)
 ✅ Configuração em JSON (fácil de editar)
 ✅ Nomeação consistente de classes CSS

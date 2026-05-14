@@ -1,0 +1,29 @@
+/* =============================================================
+   variables.css — Tokens globais de cor e tipografia
+   Importado por todos os CSS de tema via @import
+
+   CORES PARTILHADAS
+   ─────────────────
+   Variáveis cujo valor é idêntico em 2+ temas ficam aqui.
+   Cada tema pode sobrescrever localmente se precisar divergir.
+
+   TIPOGRAFIA
+   ──────────
+   As três famílias de fontes Google usadas em todo o projeto
+   são centralizadas aqui para evitar strings repetidas.
+   ============================================================= */
+
+:root {
+    /* ── Dourado ── presente em 5 dos 6 arquivos de tema */
+    --gold:   #c9973a;   /* dourado principal */
+    --gold-l: #e8c472;   /* dourado claro     */
+    --gold-p: #f5e6c0;   /* dourado pálido    */
+
+    /* ── Verde natural ── compartilhado entre Crimson e Púrpura */
+    --green-l: #7abd8a;
+
+    /* ── Tipografia ── */
+    --font-body:    "IM Fell English", Georgia, serif;
+    --font-title:   "Cinzel", serif;
+    --font-display: "Cinzel Decorative", serif;
+}
