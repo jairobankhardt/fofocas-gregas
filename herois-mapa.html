@@ -97,6 +97,7 @@
         </div>
         <svg id="canvas"></svg>
         <script src="assets/js/menu-links.js"></script>
+        <script src="assets/js/utils.js"></script>
         <script>
             const nodes = [
                 // HÉRACLES E CICLO
@@ -653,15 +654,7 @@
                 alianca: "#6AAD3A",
             };
 
-            function ns(tag, attrs = {}) {
-                const el = document.createElementNS(
-                    "http://www.w3.org/2000/svg",
-                    tag,
-                );
-                for (const [k, v] of Object.entries(attrs))
-                    el.setAttribute(k, v);
-                return el;
-            }
+            const ns = MapUtils.ns;
 
             const defs = ns("defs");
             ["familia", "amor", "conflito", "alianca"].forEach((t) => {
@@ -861,24 +854,8 @@
                     });
                 });
 
-            function highlightEdges(id, op) {
-                edges.forEach((e) => {
-                    const k = `${e.s}-${e.t}`;
-                    if (!edgeEls[k]) return;
-                    if (e.s === id || e.t === id) {
-                        edgeEls[k].path.setAttribute("opacity", op);
-                        edgeEls[k].lbl.setAttribute("opacity", op * 0.9);
-                    } else edgeEls[k].path.setAttribute("opacity", 0.04);
-                });
-            }
-            function resetEdges() {
-                edges.forEach((e) => {
-                    const k = `${e.s}-${e.t}`;
-                    if (!edgeEls[k]) return;
-                    edgeEls[k].path.setAttribute("opacity", 0.33);
-                    edgeEls[k].lbl.setAttribute("opacity", 0);
-                });
-            }
+            function highlightEdges(id, op) { MapUtils.highlightEdges(edges, edgeEls, id, op, 0.04); }
+            function resetEdges() { MapUtils.resetEdges(edges, edgeEls, 0.33); }
             function selectNode(node) {
                 if (selectedNode && nodeEls[selectedNode]) {
                     nodeEls[selectedNode].circle.setAttribute("r", 20);
@@ -927,20 +904,7 @@
             window.closeInfo = closeInfo;
 
             const validN = nodes.filter((n) => n.x > 0);
-            const bb = validN.reduce(
-                (a, n) => ({
-                    minX: Math.min(a.minX, n.x),
-                    maxX: Math.max(a.maxX, n.x),
-                    minY: Math.min(a.minY, n.y),
-                    maxY: Math.max(a.maxY, n.y),
-                }),
-                {
-                    minX: Infinity,
-                    maxX: -Infinity,
-                    minY: Infinity,
-                    maxY: -Infinity,
-                },
-            );
+            const bb = MapUtils.computeBoundingBox(validN);
             const cW = bb.maxX - bb.minX + 160,
                 cH = bb.maxY - bb.minY + 160;
             const initScale = Math.min((W - 60) / cW, (H - 100) / cH, 1) * 0.88;
@@ -1023,10 +987,7 @@
             }
             function toggleLabels() {
                 showLabels = !showLabels;
-                Object.values(nodeEls).forEach(({ label, role }) => {
-                    label.setAttribute("opacity", showLabels ? 0.9 : 0);
-                    role.setAttribute("opacity", showLabels ? 0.55 : 0);
-                });
+                MapUtils.toggleLabels(nodeEls, showLabels);
             }
             window.resetView = resetView;
             window.toggleLabels = toggleLabels;

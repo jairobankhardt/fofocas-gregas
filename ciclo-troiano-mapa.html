@@ -94,6 +94,7 @@
         <svg id="canvas"></svg>
 
         <script src="assets/js/menu-links.js"></script>
+        <script src="assets/js/utils.js"></script>
         <script>
             // ─── DATA ───────────────────────────────────────────────────────────────────
 
@@ -616,15 +617,7 @@
                 divino: "#C8A0D4",
             };
 
-            function ns(tag, attrs = {}) {
-                const el = document.createElementNS(
-                    "http://www.w3.org/2000/svg",
-                    tag,
-                );
-                for (const [k, v] of Object.entries(attrs))
-                    el.setAttribute(k, v);
-                return el;
-            }
+            const ns = MapUtils.ns;
 
             // defs
             const defs = ns("defs");
@@ -846,26 +839,8 @@
                 });
             });
 
-            function highlightEdges(nodeId, op) {
-                edges.forEach((e) => {
-                    const key = `${e.s}-${e.t}`;
-                    if (!edgeEls[key]) return;
-                    if (e.s === nodeId || e.t === nodeId) {
-                        edgeEls[key].path.setAttribute("opacity", op);
-                        edgeEls[key].lbl.setAttribute("opacity", op * 0.9);
-                    } else {
-                        edgeEls[key].path.setAttribute("opacity", 0.08);
-                    }
-                });
-            }
-            function resetEdges() {
-                edges.forEach((e) => {
-                    const key = `${e.s}-${e.t}`;
-                    if (!edgeEls[key]) return;
-                    edgeEls[key].path.setAttribute("opacity", 0.4);
-                    edgeEls[key].lbl.setAttribute("opacity", 0);
-                });
-            }
+            function highlightEdges(nodeId, op) { MapUtils.highlightEdges(edges, edgeEls, nodeId, op, 0.08); }
+            function resetEdges() { MapUtils.resetEdges(edges, edgeEls, 0.4); }
 
             function selectNode(node) {
                 // deselect old
@@ -930,20 +905,7 @@
             }
 
             // Initial center
-            const nodesBB = nodes.reduce(
-                (acc, n) => ({
-                    minX: Math.min(acc.minX, n.x),
-                    maxX: Math.max(acc.maxX, n.x),
-                    minY: Math.min(acc.minY, n.y),
-                    maxY: Math.max(acc.maxY, n.y),
-                }),
-                {
-                    minX: Infinity,
-                    maxX: -Infinity,
-                    minY: Infinity,
-                    maxY: -Infinity,
-                },
-            );
+            const nodesBB = MapUtils.computeBoundingBox(nodes);
 
             const contentW = nodesBB.maxX - nodesBB.minX + 100;
             const contentH = nodesBB.maxY - nodesBB.minY + 100;
@@ -1035,10 +997,7 @@
 
             function toggleLabels() {
                 showLabels = !showLabels;
-                Object.values(nodeEls).forEach(({ label, role }) => {
-                    label.setAttribute("opacity", showLabels ? 0.9 : 0);
-                    role.setAttribute("opacity", showLabels ? 0.6 : 0);
-                });
+                MapUtils.toggleLabels(nodeEls, showLabels, 0.6);
             }
 
             window.resetView = resetView;
