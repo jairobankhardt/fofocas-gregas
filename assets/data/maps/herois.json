@@ -1,0 +1,537 @@
+{
+  "nodes": [
+    {
+      "id": "heracles",
+      "label": "Héracles",
+      "role": "O maior herói grego",
+      "group": "pan",
+      "x": 180,
+      "y": 280,
+      "desc": "Filho de Zeus e Alcmena, o herói mais famoso da Grécia. Enlouquecido por Hera, matou a própria família. Cumpriu os 12 Trabalhos. Em Alceste luta com a Morte para salvar uma amiga. Aparece em pelo menos 6 peças — às vezes herói sério, às vezes comicamente glutão em Os Pássaros.",
+      "obras": [
+        "Herácles (Eurípides)",
+        "Alceste (Eurípides)",
+        "As Traquínias (Sófocles)",
+        "Os Pássaros (Aristófanes)",
+        "Filoctetes (Sófocles)"
+      ]
+    },
+    {
+      "id": "dejanira",
+      "label": "Dejanira",
+      "role": "Esposa de Héracles",
+      "group": "heroina",
+      "x": 55,
+      "y": 155,
+      "desc": "Esposa de Héracles, protagonista de As Traquínias. Usa sem saber uma túnica envenenada para reconquistar o amor do marido — e o mata acidentalmente. Uma das representações mais complexas de ciúme e culpa involuntária na tragédia grega.",
+      "obras": [
+        "As Traquínias (Sófocles)"
+      ]
+    },
+    {
+      "id": "hilo",
+      "label": "Hilo",
+      "role": "Filho de Héracles e Dejanira",
+      "group": "local",
+      "x": 55,
+      "y": 380,
+      "desc": "Filho de Héracles e Dejanira. Testemunha a agonia do pai em As Traquínias, carrega-o para o Monte Eta e recebe o último pedido: casar com Iole, a jovem que causou toda a tragédia.",
+      "obras": [
+        "As Traquínias (Sófocles)"
+      ]
+    },
+    {
+      "id": "iole",
+      "label": "Iole",
+      "role": "Amada de Héracles / causa da tragédia",
+      "group": "heroina",
+      "x": 185,
+      "y": 140,
+      "desc": "Princesa capturada por Héracles, causa involuntária da tragédia das Traquínias. Sua chegada desperta o ciúme de Dejanira sem que Iole tenha feito nada de errado. Figura trágica silenciosa — quase não fala, mas sua presença destrói uma família.",
+      "obras": [
+        "As Traquínias (Sófocles)"
+      ]
+    },
+    {
+      "id": "alceste",
+      "label": "Alceste",
+      "role": "Rainha que morreu pelo marido",
+      "group": "heroina",
+      "x": 330,
+      "y": 55,
+      "desc": "Rainha da Tessália, esposa de Admeto. A mais nobre das heróinas: escolheu morrer voluntariamente para salvar o marido. Trazida de volta por Héracles que luta com Tânatos junto ao túmulo. Peça limítrofe entre tragédia e comédia.",
+      "obras": [
+        "Alceste (Eurípides)"
+      ]
+    },
+    {
+      "id": "admeto",
+      "label": "Admeto",
+      "role": "Rei da Tessália / salvo por Alceste",
+      "group": "local",
+      "x": 330,
+      "y": 165,
+      "desc": "Rei da Tessália, amigo de Apolo. Soube que morreria cedo e pediu que alguém morresse em seu lugar — apenas sua esposa Alceste aceitou. Personagem que Eurípides examina sem piedade: covarde que aceitou o sacrifício, ou rei que amava?",
+      "obras": [
+        "Alceste (Eurípides)"
+      ]
+    },
+    {
+      "id": "jasao",
+      "label": "Jasão",
+      "role": "Líder dos Argonautas",
+      "group": "pan",
+      "x": 610,
+      "y": 110,
+      "desc": "Líder dos Argonautas em busca do Velocino de Ouro. Em Medeia de Eurípides é o anti-herói calculista que abandona Medeia por um casamento politicamente conveniente — e paga o preço mais alto. Um dos personagens masculinos mais moralmente contestados de toda a tragédia grega.",
+      "obras": [
+        "Medeia (Eurípides)"
+      ]
+    },
+    {
+      "id": "medeia",
+      "label": "Medeia",
+      "role": "Feiticeira / vinga a traição com horror",
+      "group": "heroina",
+      "x": 750,
+      "y": 45,
+      "desc": "Princesa da Cólquida, feiticeira poderosa que ajudou Jasão a conquistar o Velocino. Abandonada por Jasão em Corinto, comete o ato mais extremo da tragédia grega: mata os próprios filhos para destruir o marido. Protagonista absoluta da peça de Eurípides.",
+      "obras": [
+        "Medeia (Eurípides)"
+      ]
+    },
+    {
+      "id": "creonte_cor",
+      "label": "Creonte (Cor.)",
+      "role": "Rei de Corinto / vítima de Medeia",
+      "group": "local",
+      "x": 750,
+      "y": 210,
+      "desc": "Rei de Corinto (diferente do Creonte tebano). Ofereceu a filha Glauce em casamento a Jasão e ordenou o exílio de Medeia. Morreu junto com a filha ao receber o presente envenenado que Medeia enviou.",
+      "obras": [
+        "Medeia (Eurípides)"
+      ]
+    },
+    {
+      "id": "egeu",
+      "label": "Egeu",
+      "role": "Rei de Atenas / refúgio de Medeia",
+      "group": "local",
+      "x": 600,
+      "y": 260,
+      "desc": "Rei de Atenas, pai de Teseu. Aparece em Medeia prometendo refúgio à heroína sem saber o que ela vai fazer. Sua promessa inocente torna-se o bilhete de saída de Medeia após o crime.",
+      "obras": [
+        "Medeia (Eurípides)"
+      ]
+    },
+    {
+      "id": "teseu",
+      "label": "Teseu",
+      "role": "Rei de Atenas / herói fundador",
+      "group": "pan",
+      "x": 490,
+      "y": 420,
+      "desc": "O grande herói de Atenas, matador do Minotauro. Nos dramas aparece como árbitro justo: em As Suplicantes resgata corpos dos mortos de Tebas; em Édipo em Colono acolhe o rei exilado; em Herácles ampara o amigo enlouquecido. Teseu é o herói que \"faz a coisa certa\".",
+      "obras": [
+        "Herácles (Eurípides)",
+        "Édipo em Colono (Sófocles)",
+        "As Suplicantes (Eurípides)",
+        "Hipólito (Eurípides)"
+      ]
+    },
+    {
+      "id": "hipolito",
+      "label": "Hipólito",
+      "role": "Filho de Teseu / devoto de Ártemis",
+      "group": "pan",
+      "x": 370,
+      "y": 530,
+      "desc": "Filho de Teseu e da amazona Hipólita. Consagrado a Ártemis, desprezava Afrodite e o amor carnal. Destruído pela ira da deusa — que inspirou a madrasta Fedra a amá-lo — e pela desconfiança do pai. Morre inocente, num dos finais mais injustos da tragédia grega.",
+      "obras": [
+        "Hipólito (Eurípides)"
+      ]
+    },
+    {
+      "id": "fedra",
+      "label": "Fedra",
+      "role": "Madrasta de Hipólito / amor impossível",
+      "group": "heroina",
+      "x": 250,
+      "y": 530,
+      "desc": "Esposa de Teseu, apaixonada pelo enteado Hipólito por intervenção de Afrodite. Ao ser rejeitada, escreveu uma carta falsa acusando-o de estupro antes de se suicidar. Sua complexidade psicológica — ama sem querer, resiste, cede, mente — tornou-a um dos personagens mais estudados do teatro ocidental.",
+      "obras": [
+        "Hipólito (Eurípides)"
+      ]
+    },
+    {
+      "id": "aquiles",
+      "label": "Aquiles",
+      "role": "O maior guerreiro grego",
+      "group": "troia",
+      "x": 980,
+      "y": 175,
+      "desc": "Filho de Peleu e da nereida Tétis. Quase invulnerável — mergulhado no Estige pelo calcanhar. Matou Heitor e foi morto por Páris com uma flecha. Em Ifigênia em Áulis é retratado como jovem honrado que protesta contra o sacrifício da noiva.",
+      "obras": [
+        "Ifigênia em Áulis (Eurípides)"
+      ]
+    },
+    {
+      "id": "odisseu",
+      "label": "Odisseu",
+      "role": "O mais astuto / o persuasor",
+      "group": "troia",
+      "x": 980,
+      "y": 350,
+      "desc": "Rei de Ítaca, o mais inteligente dos gregos. Idealizou o Cavalo de Troia. Nos dramas aparece quase sempre como vilão pragmático: convence para sacrifícios, manipula heróis, usa mentiras como arma. Em Filoctetes lidera a missão para roubar o arco; em Hécuba recusa salvar Políxena.",
+      "obras": [
+        "Filoctetes (Sófocles)",
+        "Hécuba (Eurípides)",
+        "As Troianas",
+        "Ájax (Sófocles)"
+      ]
+    },
+    {
+      "id": "ajax",
+      "label": "Ájax",
+      "role": "Segundo maior guerreiro grego",
+      "group": "troia",
+      "x": 1110,
+      "y": 265,
+      "desc": "O mais poderoso guerreiro grego depois de Aquiles. Quando as armas de Aquiles foram dadas a Odisseu em vez de a ele, enlouqueceu de raiva — massacrou um rebanho crendo serem seus inimigos. Ao recobrar a razão, suicidou-se de vergonha. Tragédia sobre honra, loucura e o silêncio de Atena.",
+      "obras": [
+        "Ájax (Sófocles)"
+      ]
+    },
+    {
+      "id": "filoctetes",
+      "label": "Filoctetes",
+      "role": "Arqueiro / dono do arco de Héracles",
+      "group": "troia",
+      "x": 1110,
+      "y": 420,
+      "desc": "Herói grego portador do arco mágico de Héracles. Abandonado na ilha de Lemnos por ter sido picado por uma serpente. Depois de 10 anos sozinho, Odisseu e Neoptólemo vêm buscá-lo pois uma profecia diz que Troia só cai com seu arco.",
+      "obras": [
+        "Filoctetes (Sófocles)"
+      ]
+    },
+    {
+      "id": "neoptolemo",
+      "label": "Neoptólemo",
+      "role": "Filho de Aquiles / herói relutante",
+      "group": "troia",
+      "x": 980,
+      "y": 490,
+      "desc": "Filho de Aquiles, convocado para a guerra após a morte do pai. Em Filoctetes é enviado com Odisseu para enganar Filoctetes — mas sua honra resiste à mentira. Em Andrômaca tomou Andrômaca como escrava e depois foi morto em Delfos.",
+      "obras": [
+        "Filoctetes (Sófocles)",
+        "Andrômaca (Eurípides)"
+      ]
+    },
+    {
+      "id": "diomedes",
+      "label": "Diomedes",
+      "role": "Rei de Argos / guerreiro audaz",
+      "group": "troia",
+      "x": 1110,
+      "y": 140,
+      "desc": "Rei de Argos, um dos mais valentes guerreiros gregos. Em Resos de Eurípides parte numa missão noturna com Odisseu para espionar e assassinar o rei trácio aliado de Troia. Figura de coragem quase temerária.",
+      "obras": [
+        "Resos (Eurípides)"
+      ]
+    },
+    {
+      "id": "prometeu_h",
+      "label": "Prometeu",
+      "role": "Titã / herói da humanidade",
+      "group": "local",
+      "x": 110,
+      "y": 590,
+      "desc": "Embora seja um Titã, Prometeu funciona dramaticamente como herói: roubou o fogo dos deuses para dar aos humanos, sofreu punição injusta e resistiu com dignidade absoluta. Em Prometeu Acorrentado de Ésquilo é o mais nobre dos mártires — recusa-se a ceder mesmo sofrendo eternamente.",
+      "obras": [
+        "Prometeu Acorrentado (Ésquilo)",
+        "Os Pássaros (Aristófanes)"
+      ]
+    },
+    {
+      "id": "orfeu",
+      "label": "Orfeu",
+      "role": "Músico que desceu ao Hades por amor",
+      "group": "pan",
+      "x": 390,
+      "y": 650,
+      "desc": "O músico mais célebre da mitologia grega. Desceu ao Hades para buscar a esposa Eurídice, encantou Perséfone e Hades com sua lira — mas perdeu Eurídice ao virar-se antes de sair. Referenciado nas tragédias como símbolo do poder da música e do amor impossível.",
+      "obras": [
+        "Referenciado em Alceste (Eurípides)",
+        "Contexto de As Bacantes"
+      ]
+    },
+    {
+      "id": "perseu",
+      "label": "Perseu",
+      "role": "Matou Medusa / fundador de linhagens",
+      "group": "pan",
+      "x": 250,
+      "y": 650,
+      "desc": "Filho de Zeus e Dânae. Matou a Górgona Medusa, salvou Andrômeda e fundou Micenas. Ancestral de Héracles e dos reis de Micenas — linhagem que desemboca nos Atridas. Referenciado como raiz de grandes dynastias trágicas.",
+      "obras": [
+        "Referenciado em Agamêmnon",
+        "Andrômeda (Eurípides — perdida)"
+      ]
+    },
+    {
+      "id": "belerofontes",
+      "label": "Belerofonte",
+      "role": "Domou Pégaso / desafiou o Olimpo",
+      "group": "pan",
+      "x": 570,
+      "y": 590,
+      "desc": "Herói que domou o cavalo alado Pégaso e matou a Quimera. Enlouquecido pela glória, tentou voar ao Olimpo — Zeus o derrubou. Protagonizou tragédias perdidas de Eurípides que o retratavam como um homem que questionou a existência dos deuses.",
+      "obras": [
+        "Belerofonte (Eurípides — perdida)",
+        "referenciado em As Rãs"
+      ]
+    },
+    {
+      "id": "adrasto",
+      "label": "Adrasto",
+      "role": "Rei de Argos / liderou os Sete",
+      "group": "local",
+      "x": 730,
+      "y": 590,
+      "desc": "Rei de Argos que liderou a expedição dos Sete Contra Tebas em apoio ao genro Polinices. O único dos sete a sobreviver à derrota. Reaparece em As Suplicantes de Eurípides pedindo ajuda a Teseu para recuperar os corpos dos companheiros.",
+      "obras": [
+        "Os Sete Contra Tebas (Ésquilo)",
+        "As Suplicantes (Eurípides)",
+        "As Fenícias (Eurípides)"
+      ]
+    },
+    {
+      "id": "tiresias_h",
+      "label": "Tirésias",
+      "role": "Profeta cego / presente em tudo",
+      "group": "div",
+      "x": 670,
+      "y": 490,
+      "desc": "O grande profeta cego de Tebas. Aparece em quatro ciclos diferentes — Édipo, Antígona, As Fenícias e As Bacantes — sempre trazendo verdades indesejadas. É o único mortal que viveu como homem e como mulher. Personagem que costura todos os grandes mitos tebanos.",
+      "obras": [
+        "Édipo Rei",
+        "Antígona (Sófocles)",
+        "As Fenícias (Eurípides)",
+        "As Bacantes (Eurípides)"
+      ]
+    },
+    {
+      "id": "calcas",
+      "label": "Calcas",
+      "role": "Adivinho da frota grega",
+      "group": "div",
+      "x": 840,
+      "y": 490,
+      "desc": "Adivinho da frota grega, intérprete da vontade de Apolo. Foi ele quem revelou que Ártemis exigia o sacrifício de Ifigênia em Áulis para que os ventos soprassem. Figura de segundo plano que desencadeia a tragédia central dos Atridas.",
+      "obras": [
+        "Ifigênia em Áulis (Eurípides)",
+        "referenciado em Agamêmnon (Ésquilo)"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "s": "heracles",
+      "t": "dejanira",
+      "type": "amor",
+      "label": "casamento"
+    },
+    {
+      "s": "heracles",
+      "t": "hilo",
+      "type": "familia",
+      "label": "pai / filho"
+    },
+    {
+      "s": "heracles",
+      "t": "iole",
+      "type": "amor",
+      "label": "amor / causa da tragédia"
+    },
+    {
+      "s": "dejanira",
+      "t": "hilo",
+      "type": "familia",
+      "label": "mãe / filho"
+    },
+    {
+      "s": "dejanira",
+      "t": "iole",
+      "type": "conflito",
+      "label": "ciúme fatal"
+    },
+    {
+      "s": "heracles",
+      "t": "alceste",
+      "type": "alianca",
+      "label": "salvou do Hades"
+    },
+    {
+      "s": "heracles",
+      "t": "admeto",
+      "type": "alianca",
+      "label": "amizade de hóspede"
+    },
+    {
+      "s": "heracles",
+      "t": "teseu",
+      "type": "alianca",
+      "label": "amizade / apoio na loucura"
+    },
+    {
+      "s": "heracles",
+      "t": "filoctetes",
+      "type": "familia",
+      "label": "deu-lhe o arco antes de morrer"
+    },
+    {
+      "s": "heracles",
+      "t": "prometeu_h",
+      "type": "alianca",
+      "label": "libertou Prometeu (mito)"
+    },
+    {
+      "s": "heracles",
+      "t": "perseu",
+      "type": "familia",
+      "label": "descendente de Perseu"
+    },
+    {
+      "s": "alceste",
+      "t": "admeto",
+      "type": "amor",
+      "label": "morreu voluntariamente por ele"
+    },
+    {
+      "s": "jasao",
+      "t": "medeia",
+      "type": "amor",
+      "label": "abandonou após anos juntos"
+    },
+    {
+      "s": "jasao",
+      "t": "creonte_cor",
+      "type": "amor",
+      "label": "aceitou casar com filha"
+    },
+    {
+      "s": "medeia",
+      "t": "creonte_cor",
+      "type": "conflito",
+      "label": "matou Creonte e Glauce"
+    },
+    {
+      "s": "medeia",
+      "t": "egeu",
+      "type": "alianca",
+      "label": "Egeu prometeu refúgio"
+    },
+    {
+      "s": "egeu",
+      "t": "teseu",
+      "type": "familia",
+      "label": "pai / filho"
+    },
+    {
+      "s": "jasao",
+      "t": "heracles",
+      "type": "alianca",
+      "label": "Héracles participou dos Argonautas"
+    },
+    {
+      "s": "teseu",
+      "t": "hipolito",
+      "type": "familia",
+      "label": "pai / filho"
+    },
+    {
+      "s": "teseu",
+      "t": "fedra",
+      "type": "amor",
+      "label": "casamento"
+    },
+    {
+      "s": "fedra",
+      "t": "hipolito",
+      "type": "conflito",
+      "label": "amor proibido / acusação falsa"
+    },
+    {
+      "s": "teseu",
+      "t": "hipolito",
+      "type": "conflito",
+      "label": "amaldiçoou o filho por engano"
+    },
+    {
+      "s": "teseu",
+      "t": "adrasto",
+      "type": "alianca",
+      "label": "ajudou a recuperar os corpos"
+    },
+    {
+      "s": "aquiles",
+      "t": "odisseu",
+      "type": "conflito",
+      "label": "rivalidade pelas armas"
+    },
+    {
+      "s": "aquiles",
+      "t": "ajax",
+      "type": "conflito",
+      "label": "armas disputadas após morte"
+    },
+    {
+      "s": "ajax",
+      "t": "odisseu",
+      "type": "conflito",
+      "label": "enlouqueceu de ódio por Odisseu"
+    },
+    {
+      "s": "odisseu",
+      "t": "filoctetes",
+      "type": "conflito",
+      "label": "abandonou e voltou para usar"
+    },
+    {
+      "s": "odisseu",
+      "t": "neoptolemo",
+      "type": "alianca",
+      "label": "missão em Lemnos juntos"
+    },
+    {
+      "s": "neoptolemo",
+      "t": "filoctetes",
+      "type": "alianca",
+      "label": "convenceu com honra a ir a Troia"
+    },
+    {
+      "s": "neoptolemo",
+      "t": "aquiles",
+      "type": "familia",
+      "label": "filho / pai"
+    },
+    {
+      "s": "diomedes",
+      "t": "odisseu",
+      "type": "alianca",
+      "label": "missão noturna (Resos)"
+    },
+    {
+      "s": "tiresias_h",
+      "t": "calcas",
+      "type": "alianca",
+      "label": "ambos intérpretes divinos"
+    },
+    {
+      "s": "perseu",
+      "t": "heracles",
+      "type": "familia",
+      "label": "ancestral via Anfitrião"
+    }
+  ]
+}

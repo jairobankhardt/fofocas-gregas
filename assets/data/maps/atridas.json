@@ -1,0 +1,528 @@
+{
+  "nodes": [
+    {
+      "id": "tantalo",
+      "label": "Tântalo",
+      "role": "Origem da maldição",
+      "group": "atrida",
+      "x": 660,
+      "y": 110,
+      "desc": "Rei lídio, filho de Zeus. Cometeu o crime mais abominável: matou o próprio filho Pélops, cozinhou-o e serviu aos deuses num banquete. Foi condenado ao Tártaro para sempre. Sua transgressão atraiu a maldição que perseguiria toda a linhagem.",
+      "obras": [
+        "Referenciado em Agamêmnon (Ésquilo)",
+        "As Troianas"
+      ]
+    },
+    {
+      "id": "erinias",
+      "label": "Erínias",
+      "role": "Deusas da vingança",
+      "group": "deus",
+      "x": 1020,
+      "y": 110,
+      "desc": "As Fúrias — Alecto, Megera e Tisífone. Deusas da vingança familiar que perseguem quem derrama sangue de parentes. São as grandes antagonistas de Orestes na Oresteia de Ésquilo, transformando-se ao final nas Eumênides (\"as benevolentes\").",
+      "obras": [
+        "As Eumênides (Ésquilo)",
+        "As Coéforas (Ésquilo)"
+      ]
+    },
+    {
+      "id": "apolo",
+      "label": "Apolo",
+      "role": "Deus — ordenou o matricídio",
+      "group": "deus",
+      "x": 300,
+      "y": 110,
+      "desc": "Deus da profecia e da purificação. Foi Apolo quem ordenou a Orestes que vingasse o pai matando a mãe. Depois defendeu Orestes no tribunal de Atena em Atenas — o primeiro julgamento por júri da história mítica.",
+      "obras": [
+        "As Eumênides (Ésquilo)",
+        "As Coéforas",
+        "Orestes (Eurípides)",
+        "Electra (Eurípides)"
+      ]
+    },
+    {
+      "id": "pelops",
+      "label": "Pélops",
+      "role": "Filho de Tântalo / herdeiro da maldição",
+      "group": "atrida",
+      "x": 660,
+      "y": 240,
+      "desc": "Filho de Tântalo, reconstituído pelos deuses após o banquete macabro. Venceu uma corrida de bigas traindo o auriga Mírtilo — e ao matá-lo, recebeu outra maldição sobre seus filhos. Deu nome ao Peloponeso.",
+      "obras": [
+        "Referenciado em Agamêmnon",
+        "Electra"
+      ]
+    },
+    {
+      "id": "atreu",
+      "label": "Atreu",
+      "role": "Rei de Micenas / pai de Agamêmnon",
+      "group": "atrida",
+      "x": 440,
+      "y": 380,
+      "desc": "Filho de Pélops, rei de Micenas. Sua rivalidade com o irmão Tiestes chegou ao cúmulo do horror: serviu-lhe os próprios filhos num banquete de vingança. Pai de Agamêmnon e Menelau — os Atridas.",
+      "obras": [
+        "Referenciado em Agamêmnon (Ésquilo)",
+        "Electra"
+      ]
+    },
+    {
+      "id": "tiestes",
+      "label": "Tiestes",
+      "role": "Irmão de Atreu / amaldiçoado",
+      "group": "atrida",
+      "x": 880,
+      "y": 380,
+      "desc": "Irmão rival de Atreu. Seduziu a esposa do irmão e em represália foi servido com carne dos próprios filhos. Amaldiçoou Atreu e toda a descendência. Pai de Egisto — que vingaria o pai décadas depois.",
+      "obras": [
+        "Referenciado em Agamêmnon",
+        "Electra (Sófocles)"
+      ]
+    },
+    {
+      "id": "agamemnon",
+      "label": "Agamêmnon",
+      "role": "Rei de Micenas / comandante grego",
+      "group": "atrida",
+      "x": 360,
+      "y": 520,
+      "desc": "O filho mais célebre de Atreu. Comandante supremo dos gregos em Troia. Sacrificou a filha Ifigênia para obter ventos favoráveis. Ao regressar vitorioso, foi assassinado na banheira pela esposa Clitemnestra e o amante Egisto. Protagonista da tragédia que abre a Oresteia.",
+      "obras": [
+        "Agamêmnon (Ésquilo)",
+        "As Coéforas",
+        "Hécuba (Eurípides)",
+        "Ifigênia em Áulis",
+        "As Troianas"
+      ]
+    },
+    {
+      "id": "menelau",
+      "label": "Menelau",
+      "role": "Rei de Esparta / irmão de Agamêmnon",
+      "group": "atrida",
+      "x": 960,
+      "y": 520,
+      "desc": "Irmão de Agamêmnon, rei de Esparta. O rapto de sua esposa Helena por Páris foi o estopim da Guerra de Troia. Personagem que em Eurípides aparece frequentemente como político covarde e calculista, contrastando com a imagem heroica tradicional.",
+      "obras": [
+        "As Troianas",
+        "Andrômaca",
+        "Helena",
+        "Orestes (Eurípides)",
+        "Ifigênia em Áulis"
+      ]
+    },
+    {
+      "id": "egisto",
+      "label": "Egisto",
+      "role": "Filho de Tiestes / amante de Clitemnestra",
+      "group": "atrida",
+      "x": 740,
+      "y": 520,
+      "desc": "Único filho sobrevivente de Tiestes. Tornou-se amante de Clitemnestra durante a ausência de Agamêmnon e co-conspirador no assassinato do rei. Governa Micenas com a rainha até ser morto por Orestes em ato de vingança.",
+      "obras": [
+        "Agamêmnon (Ésquilo)",
+        "As Coéforas",
+        "Electra (Sófocles)",
+        "Electra (Eurípides)"
+      ]
+    },
+    {
+      "id": "clitemnestra",
+      "label": "Clitemnestra",
+      "role": "Rainha de Micenas / assassina do marido",
+      "group": "esparta",
+      "x": 580,
+      "y": 520,
+      "desc": "A grande figura feminina da Oresteia. Matou Agamêmnon em vingança pelo sacrifício de Ifigênia e pela chegada de Cassandra como escrava. Governa Micenas com pulso de ferro até ser morta pelo próprio filho Orestes — e mesmo morta persegue-o como fantasma.",
+      "obras": [
+        "Agamêmnon (Ésquilo)",
+        "As Coéforas",
+        "As Eumênides",
+        "Electra (Sófocles)",
+        "Electra (Eurípides)",
+        "Ifigênia em Áulis"
+      ]
+    },
+    {
+      "id": "helena",
+      "label": "Helena",
+      "role": "Esposa de Menelau / a mais bela",
+      "group": "esparta",
+      "x": 1140,
+      "y": 520,
+      "desc": "Filha de Zeus e Leda, irmã de Clitemnestra. A mulher mais bela do mundo. Sua fuga (ou rapto) com Páris causou a Guerra de Troia. Eurípides sugere numa versão alternativa que um fantasma foi para Troia enquanto a verdadeira Helena aguardava no Egito.",
+      "obras": [
+        "As Troianas",
+        "Helena (Eurípides)",
+        "Orestes (Eurípides)",
+        "Andrômaca"
+      ]
+    },
+    {
+      "id": "orestes",
+      "label": "Orestes",
+      "role": "Filho de Agamêmnon / vingador / julgado",
+      "group": "atrida",
+      "x": 320,
+      "y": 650,
+      "desc": "O centro da Oresteia. Exilado desde criança, retorna para vingar o pai matando a mãe e Egisto — ato ordenado por Apolo mas punido pelas Erínias. É o primeiro personagem mítico a ser \"julgado\" por um tribunal humano, em Atenas, e absolvido. Aparece em mais peças do que qualquer outro herói trágico.",
+      "obras": [
+        "As Coéforas (Ésquilo)",
+        "As Eumênides",
+        "Electra (Sófocles)",
+        "Electra (Eurípides)",
+        "Orestes (Eurípides)",
+        "Andrômaca",
+        "Ifigênia em Táuris"
+      ]
+    },
+    {
+      "id": "electra",
+      "label": "Electra",
+      "role": "Filha de Agamêmnon / a que não esquece",
+      "group": "atrida",
+      "x": 500,
+      "y": 650,
+      "desc": "Filha de Agamêmnon e Clitemnestra. Recusou-se a aceitar o assassinato do pai e passou anos em humilhação na corte de Egisto e Clitemnestra, esperando o retorno de Orestes. Incita o irmão ao matricídio. Aparece em três versões diferentes — Ésquilo, Sófocles e Eurípides — cada uma com uma psicologia distinta.",
+      "obras": [
+        "As Coéforas (Ésquilo)",
+        "Electra (Sófocles)",
+        "Electra (Eurípides)",
+        "Orestes (Eurípides)"
+      ]
+    },
+    {
+      "id": "ifigenia",
+      "label": "Ifigênia",
+      "role": "Filha sacrificada / sacerdotisa",
+      "group": "atrida",
+      "x": 680,
+      "y": 650,
+      "desc": "Primogênita de Agamêmnon. Sacrificada (ou não, dependendo da versão) pelo pai para obter ventos favoráveis à frota grega. Ártemis a salvou transportando-a para a Táuris como sacerdotisa. Reencontra Orestes na Táuris numa peça de aventura quase novelesca de Eurípides.",
+      "obras": [
+        "Ifigênia em Áulis (Eurípides)",
+        "Ifigênia em Táuris (Eurípides)"
+      ]
+    },
+    {
+      "id": "crisótemis",
+      "label": "Crisótemis",
+      "role": "Filha de Agamêmnon / a pragmática",
+      "group": "atrida",
+      "x": 840,
+      "y": 650,
+      "desc": "Filha de Agamêmnon e Clitemnestra, irmã de Electra. Pragmática e conformada, aconselha Electra a aceitar a situação. Funciona na peça de Sófocles como contraponto à obsessão vingativa da irmã — papel análogo ao de Ismene em Antígona.",
+      "obras": [
+        "Electra (Sófocles)"
+      ]
+    },
+    {
+      "id": "hermione",
+      "label": "Hermione",
+      "role": "Filha de Menelau e Helena",
+      "group": "esparta",
+      "x": 1080,
+      "y": 650,
+      "desc": "Única filha de Menelau e Helena, criada em Esparta enquanto a mãe estava em Troia. Em Andrômaca é a antagonista cruel que persegue a troiana. Em Orestes participa de um tenso triângulo com o primo e com Neoptólemo.",
+      "obras": [
+        "Andrômaca (Eurípides)",
+        "Orestes (Eurípides)"
+      ]
+    },
+    {
+      "id": "pilades",
+      "label": "Pílades",
+      "role": "Melhor amigo de Orestes",
+      "group": "externo",
+      "x": 160,
+      "y": 650,
+      "desc": "Príncipe da Fócida, filho de Estrofio, melhor amigo e cunhado de Orestes. Figura de lealdade absoluta — em As Coéforas pronuncia apenas três versos, mas decisivos. Em Orestes de Eurípides torna-se co-conspirador num plano desesperado.",
+      "obras": [
+        "As Coéforas (Ésquilo)",
+        "Electra (Sófocles)",
+        "Electra (Eurípides)",
+        "Orestes (Eurípides)",
+        "Ifigênia em Táuris"
+      ]
+    },
+    {
+      "id": "atena",
+      "label": "Atena",
+      "role": "Deusa — presidiu o julgamento",
+      "group": "deus",
+      "x": 140,
+      "y": 380,
+      "desc": "Deusa da sabedoria. Presidiu o julgamento de Orestes no Areópago de Atenas, usando seu voto de minerva para absolver o matricida e transformar as Erínias nas Eumênides (\"as benevolentes\"). Ato que inaugura simbolicamente o sistema judiciário.",
+      "obras": [
+        "As Eumênides (Ésquilo)",
+        "As Troianas",
+        "Orestes (Eurípides)"
+      ]
+    },
+    {
+      "id": "cassandra",
+      "label": "Cassandra",
+      "role": "Princesa troiana / escrava profetisa",
+      "group": "externo",
+      "x": 180,
+      "y": 520,
+      "desc": "Princesa de Troia, amaldiçoada por Apolo para profetizar verdades que ninguém acredita. Levada como prêmio de guerra por Agamêmnon. Prevê seu próprio assassinato e o do rei com clareza perturbadora no palácio de Micenas, mas é ignorada.",
+      "obras": [
+        "Agamêmnon (Ésquilo)",
+        "As Troianas (Eurípides)",
+        "Hécuba"
+      ]
+    },
+    {
+      "id": "artemis",
+      "label": "Ártemis",
+      "role": "Deusa — exigiu o sacrifício",
+      "group": "deus",
+      "x": 780,
+      "y": 380,
+      "desc": "Deusa da caça. Ofendida por Agamêmnon, reteve os ventos em Áulis e exigiu o sacrifício de Ifigênia. Numa versão alternativa (Eurípides), salvou Ifigênia no último momento substituindo-a por uma corça, transportando-a à Táuris.",
+      "obras": [
+        "Ifigênia em Áulis",
+        "Ifigênia em Táuris (Eurípides)",
+        "Hipólito (Eurípides)"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "s": "tantalo",
+      "t": "pelops",
+      "type": "familia",
+      "label": "pai / filho amaldiçoado"
+    },
+    {
+      "s": "pelops",
+      "t": "atreu",
+      "type": "familia",
+      "label": "pai / filho"
+    },
+    {
+      "s": "pelops",
+      "t": "tiestes",
+      "type": "familia",
+      "label": "pai / filho"
+    },
+    {
+      "s": "atreu",
+      "t": "tiestes",
+      "type": "conflito",
+      "label": "serviu os filhos num banquete"
+    },
+    {
+      "s": "tiestes",
+      "t": "egisto",
+      "type": "familia",
+      "label": "pai / filho (vingador)"
+    },
+    {
+      "s": "atreu",
+      "t": "agamemnon",
+      "type": "familia",
+      "label": "pai / filho"
+    },
+    {
+      "s": "atreu",
+      "t": "menelau",
+      "type": "familia",
+      "label": "pai / filho"
+    },
+    {
+      "s": "agamemnon",
+      "t": "menelau",
+      "type": "familia",
+      "label": "irmãos Atridas"
+    },
+    {
+      "s": "agamemnon",
+      "t": "clitemnestra",
+      "type": "amor",
+      "label": "casamento"
+    },
+    {
+      "s": "menelau",
+      "t": "helena",
+      "type": "amor",
+      "label": "casamento"
+    },
+    {
+      "s": "clitemnestra",
+      "t": "egisto",
+      "type": "amor",
+      "label": "adultério / co-conspiradores"
+    },
+    {
+      "s": "agamemnon",
+      "t": "orestes",
+      "type": "familia",
+      "label": "pai / filho"
+    },
+    {
+      "s": "agamemnon",
+      "t": "electra",
+      "type": "familia",
+      "label": "pai / filha"
+    },
+    {
+      "s": "agamemnon",
+      "t": "ifigenia",
+      "type": "familia",
+      "label": "pai / filha"
+    },
+    {
+      "s": "agamemnon",
+      "t": "crisótemis",
+      "type": "familia",
+      "label": "pai / filha"
+    },
+    {
+      "s": "clitemnestra",
+      "t": "orestes",
+      "type": "familia",
+      "label": "mãe / filho"
+    },
+    {
+      "s": "clitemnestra",
+      "t": "electra",
+      "type": "familia",
+      "label": "mãe / filha"
+    },
+    {
+      "s": "clitemnestra",
+      "t": "ifigenia",
+      "type": "familia",
+      "label": "mãe / filha"
+    },
+    {
+      "s": "clitemnestra",
+      "t": "crisótemis",
+      "type": "familia",
+      "label": "mãe / filha"
+    },
+    {
+      "s": "menelau",
+      "t": "hermione",
+      "type": "familia",
+      "label": "pai / filha"
+    },
+    {
+      "s": "helena",
+      "t": "hermione",
+      "type": "familia",
+      "label": "mãe / filha"
+    },
+    {
+      "s": "clitemnestra",
+      "t": "helena",
+      "type": "familia",
+      "label": "irmãs"
+    },
+    {
+      "s": "clitemnestra",
+      "t": "agamemnon",
+      "type": "conflito",
+      "label": "assassinou na banheira"
+    },
+    {
+      "s": "egisto",
+      "t": "agamemnon",
+      "type": "conflito",
+      "label": "co-autor do assassinato"
+    },
+    {
+      "s": "orestes",
+      "t": "clitemnestra",
+      "type": "conflito",
+      "label": "matricídio (por ordem de Apolo)"
+    },
+    {
+      "s": "orestes",
+      "t": "egisto",
+      "type": "conflito",
+      "label": "matou o usurpador"
+    },
+    {
+      "s": "agamemnon",
+      "t": "ifigenia",
+      "type": "conflito",
+      "label": "sacrificou a filha em Áulis"
+    },
+    {
+      "s": "agamemnon",
+      "t": "cassandra",
+      "type": "conflito",
+      "label": "trouxe como escrava"
+    },
+    {
+      "s": "clitemnestra",
+      "t": "cassandra",
+      "type": "conflito",
+      "label": "assassinou junto com Agamêmnon"
+    },
+    {
+      "s": "apolo",
+      "t": "orestes",
+      "type": "divino",
+      "label": "ordenou o matricídio"
+    },
+    {
+      "s": "apolo",
+      "t": "agamemnon",
+      "type": "divino",
+      "label": "puniu com maldições"
+    },
+    {
+      "s": "erinias",
+      "t": "orestes",
+      "type": "divino",
+      "label": "perseguiram o matricida"
+    },
+    {
+      "s": "atena",
+      "t": "orestes",
+      "type": "divino",
+      "label": "absolveu no tribunal"
+    },
+    {
+      "s": "atena",
+      "t": "erinias",
+      "type": "divino",
+      "label": "transformou em Eumênides"
+    },
+    {
+      "s": "artemis",
+      "t": "agamemnon",
+      "type": "divino",
+      "label": "exigiu sacrifício de Ifigênia"
+    },
+    {
+      "s": "artemis",
+      "t": "ifigenia",
+      "type": "divino",
+      "label": "salvou e levou à Táuris"
+    },
+    {
+      "s": "cassandra",
+      "t": "agamemnon",
+      "type": "divino",
+      "label": "previu o assassinato"
+    },
+    {
+      "s": "pilades",
+      "t": "orestes",
+      "type": "amor",
+      "label": "amizade absoluta / apoiou o matricídio"
+    },
+    {
+      "s": "electra",
+      "t": "orestes",
+      "type": "familia",
+      "label": "incitou e reconheceu o irmão"
+    }
+  ]
+}

@@ -23,9 +23,16 @@ fofocas-gregas/
 │   │   ├── mapa-bronze.css       # ✅ Tema bronze (Os Heróis)
 │   │   └── STYLES.md             # Guia de estilização
 │   ├── js/
-│   │   └── menu-links.js         # ✅ Menu compartilhado dinâmico
+│   │   ├── menu-links.js         # ✅ Menu compartilhado dinâmico
+│   │   └── utils.js              # ✅ Funções utilitárias compartilhadas entre mapas
 │   └── data/
-│       └── config.json           # ✅ Configuração central do projeto
+│       ├── config.json           # ✅ Configuração central do projeto
+│       └── maps/
+│           ├── atridas.json          # ✅ Dados de nós/arestas — Os Atridas
+│           ├── ciclo-troiano.json    # ✅ Dados de nós/arestas — Ciclo Troiano
+│           ├── deuses.json           # ✅ Dados de nós/arestas — Deuses
+│           ├── familia-edipo.json    # ✅ Dados de nós/arestas — Família de Édipo
+│           └── herois.json           # ✅ Dados de nós/arestas — Os Heróis
 │
 ├── ARCHITECTURE.md               # Este arquivo
 ├── README.md                     # Documentação geral
@@ -47,7 +54,9 @@ fofocas-gregas/
 ### 2. **Reutilização de Componentes**
 
 - Menu compartilhado via `assets/js/menu-links.js`
+- Utilitários de mapa via `assets/js/utils.js` (`MapUtils` — `ns`, `computeBoundingBox`, `highlightEdges`, `resetEdges`, `toggleLabels`)
 - Configuração centralizada em `assets/data/config.json`
+- Dados de mapas em `assets/data/maps/*.json` (carregados via `fetch` por cada página)
 - Tokens globais de cor e tipografia em `assets/css/variables.css` (importado por todos os temas)
 - CSS com variáveis de cor (`:root`) por tema
 - `mapa-crimson.css` compartilhado entre Atridas e Ciclo Troiano (CSS idêntico)
@@ -55,8 +64,8 @@ fofocas-gregas/
 ### 3. **Responsividade**
 
 - Dois breakpoints em todos os arquivos CSS:
-  - `@media (max-width: 768px)` — tablet / landscape mobile
-  - `@media (max-width: 480px)` — mobile portrait
+    - `@media (max-width: 768px)` — tablet / landscape mobile
+    - `@media (max-width: 480px)` — mobile portrait
 - Mapas: info panel desliza do fundo em mobile; nav com scroll horizontal
 - Catálogo: tabela com `overflow-x: auto`; nav scrollável
 - Portal: cards em coluna única abaixo de 700px
@@ -64,25 +73,31 @@ fofocas-gregas/
 ## Fluxo de Dados
 
 ```
-config.json (dados centralizados)
+config.json (configuração do projeto)
     ↓
 menu-links.js (lê e renderiza menu)
     ↓
 nav[data-shared-menu] (placeholder em cada página)
     ↓
 Menu atualizado dinamicamente (com classe "active" inteligente)
+
+maps/*.json (nodes + edges do mapa)
+    ↓
+fetch() em cada *-mapa.html
+    ↓
+MapUtils.* (utils.js) + lógica local de renderização SVG
+    ↓
+Canvas SVG interativo
 ```
 
 ## Futuras Melhorias Arquiteturais
 
 ### Curto Prazo
 
-- [ ] Extrair dados de mapas (nodes/edges) para JSON em `assets/data/maps/`
 - [ ] Adicionar `manifest.json` + service worker para suporte offline (PWA)
 
 ### Médio Prazo
 
-- [ ] Criar `assets/js/utils.js` para funções compartilhadas entre mapas
 - [ ] Sistema de build (vite) para minificação e bundling
 
 ### Longo Prazo
@@ -97,11 +112,12 @@ Menu atualizado dinamicamente (com classe "active" inteligente)
 ✅ Tokens globais de cor/tipografia (`variables.css`, importado por todos os temas)
 ✅ Responsividade implementada (mobile/tablet/desktop)
 ✅ Configuração em JSON (fácil de editar)
+✅ Dados de mapas em JSON externo (`assets/data/maps/*.json`, carregados via `fetch`)
+✅ Utilitários JS compartilhados (`utils.js` com `MapUtils`)
 ✅ Nomeação consistente de classes CSS
 ✅ Estrutura HTML semântica
 
 ---
-
 
 **Última atualização**: Maio 2026  
 **Responsável**: Arquitetura modular reutilizável

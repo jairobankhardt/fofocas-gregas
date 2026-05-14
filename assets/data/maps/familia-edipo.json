@@ -1,0 +1,445 @@
+{
+  "nodes": [
+    {
+      "id": "labdaco",
+      "label": "Lábdaco",
+      "role": "Rei de Tebas (avô de Édipo)",
+      "group": "labdacida",
+      "x": 680,
+      "y": 130,
+      "desc": "Rei de Tebas, filho de Polidoro e neto de Cadmo. Pai de Laio. Deu nome à dinastia Labdácida, marcada desde o início pela maldição divina.",
+      "obras": [
+        "Referenciado em Édipo Rei",
+        "Os Sete Contra Tebas"
+      ]
+    },
+    {
+      "id": "apolo",
+      "label": "Apolo",
+      "role": "Deus — autor da maldição",
+      "group": "deus",
+      "x": 1000,
+      "y": 130,
+      "desc": "Deus da profecia. O oráculo de Delfos, voz de Apolo, pronunciou todas as maldições que perseguiram os Labdácidas — de Laio a Édipo. Figura central sem aparecer em cena na maioria das peças.",
+      "obras": [
+        "Édipo Rei (Sófocles)",
+        "Édipo em Colono",
+        "As Fenícias"
+      ]
+    },
+    {
+      "id": "tiresias",
+      "label": "Tirésias",
+      "role": "Profeta cego de Tebas",
+      "group": "deus",
+      "x": 360,
+      "y": 130,
+      "desc": "O mais famoso adivinho da Antiguidade. Cego, mas dotado de visão profética por Apolo. Aparece em quatro peças diferentes, sempre portando verdades que ninguém quer ouvir.",
+      "obras": [
+        "Édipo Rei",
+        "Antígona",
+        "As Fenícias",
+        "As Bacantes"
+      ]
+    },
+    {
+      "id": "laio",
+      "label": "Laio",
+      "role": "Rei de Tebas / pai de Édipo",
+      "group": "labdacida",
+      "x": 500,
+      "y": 250,
+      "desc": "Rei de Tebas, pai biológico de Édipo. Recebeu do oráculo a profecia de que seria morto pelo próprio filho. Tentou matar o bebê Édipo, mas foi ele próprio assassinado por Édipo numa encruzilhada — sem que nenhum dos dois soubesse.",
+      "obras": [
+        "Édipo Rei (Sófocles)",
+        "As Fenícias (Eurípides)",
+        "Os Sete Contra Tebas (Ésquilo)"
+      ]
+    },
+    {
+      "id": "jocasta",
+      "label": "Jocasta",
+      "role": "Rainha / mãe e esposa de Édipo",
+      "group": "labdacida",
+      "x": 860,
+      "y": 250,
+      "desc": "Rainha de Tebas, mãe de Édipo que, sem saber, tornou-se também sua esposa. Ao descobrir a verdade, enforcou-se. Figura de extraordinária complexidade trágica — vítima e involuntária cúmplice da maldição.",
+      "obras": [
+        "Édipo Rei (Sófocles)",
+        "As Fenícias (Eurípides)"
+      ]
+    },
+    {
+      "id": "edipo",
+      "label": "Édipo",
+      "role": "Rei de Tebas / filho e marido de Jocasta",
+      "group": "labdacida",
+      "x": 680,
+      "y": 390,
+      "desc": "O protagonista mais famoso da tragédia grega. Matou o pai sem saber, casou com a mãe sem saber, desvendou o enigma da Esfinge, governou Tebas e, ao descobrir sua verdadeira identidade, cegou a si mesmo. Morreu em Colono após anos de exílio acompanhado por Antígona.",
+      "obras": [
+        "Édipo Rei (Sófocles)",
+        "Édipo em Colono (Sófocles)",
+        "As Fenícias (Eurípides)"
+      ]
+    },
+    {
+      "id": "merope",
+      "label": "Mérope",
+      "role": "Mãe adotiva de Édipo",
+      "group": "externo",
+      "x": 340,
+      "y": 390,
+      "desc": "Rainha de Corinto, mãe adotiva de Édipo. Criou-o como filho próprio sem revelar sua origem. Sua aparição indireta no enredo de Édipo Rei é o gatilho que desencadeia a busca da verdade.",
+      "obras": [
+        "Édipo Rei (Sófocles)"
+      ]
+    },
+    {
+      "id": "polibo",
+      "label": "Pólibo",
+      "role": "Rei de Corinto / pai adotivo",
+      "group": "externo",
+      "x": 200,
+      "y": 390,
+      "desc": "Rei de Corinto que adotou Édipo bebê. Édipo foge de Corinto exatamente para evitar matar o pai — sem saber que Pólibo não era seu pai verdadeiro.",
+      "obras": [
+        "Édipo Rei (Sófocles)"
+      ]
+    },
+    {
+      "id": "creonte",
+      "label": "Creonte",
+      "role": "Rei de Tebas / irmão de Jocasta",
+      "group": "tebas",
+      "x": 1080,
+      "y": 390,
+      "desc": "Irmão de Jocasta e cunhado/tio de Édipo. Governa Tebas interinamente várias vezes. Em Antígona, sua rigidez política — recusar enterro a Polinices — provoca uma cadeia de mortes que destrói sua própria família.",
+      "obras": [
+        "Édipo Rei",
+        "Édipo em Colono",
+        "Antígona (Sófocles)",
+        "As Fenícias (Eurípides)"
+      ]
+    },
+    {
+      "id": "antigona",
+      "label": "Antígona",
+      "role": "Filha de Édipo / heroína",
+      "group": "labdacida",
+      "x": 400,
+      "y": 530,
+      "desc": "A mais célebre filha de Édipo. Acompanhou o pai cego no exílio até Colono. Desafiou o édito de Creonte e enterrou o irmão Polinices, pagando com a vida. Símbolo eterno do conflito entre lei humana e lei divina.",
+      "obras": [
+        "Antígona (Sófocles)",
+        "Édipo em Colono (Sófocles)",
+        "As Fenícias (Eurípides)",
+        "Os Sete Contra Tebas (Ésquilo)"
+      ]
+    },
+    {
+      "id": "ismene",
+      "label": "Ismene",
+      "role": "Filha de Édipo / irmã de Antígona",
+      "group": "labdacida",
+      "x": 580,
+      "y": 530,
+      "desc": "Irmã de Antígona, mais cautelosa e pragmática. Recusa-se a participar do enterro de Polinices por medo — contraste que define a heroicidade de Antígona. Mais tarde quer compartilhar o martírio da irmã.",
+      "obras": [
+        "Antígona (Sófocles)",
+        "Édipo em Colono (Sófocles)",
+        "Os Sete Contra Tebas (Ésquilo)"
+      ]
+    },
+    {
+      "id": "eteocles",
+      "label": "Etéocles",
+      "role": "Filho de Édipo / Rei de Tebas",
+      "group": "labdacida",
+      "x": 780,
+      "y": 530,
+      "desc": "Filho de Édipo que assumiu o trono de Tebas. Quebrou o acordo com Polinices de alternarem o reinado. Morreu em combate singular contra o próprio irmão — os dois se mataram mutuamente.",
+      "obras": [
+        "Os Sete Contra Tebas (Ésquilo)",
+        "As Fenícias (Eurípides)"
+      ]
+    },
+    {
+      "id": "polinices",
+      "label": "Polinices",
+      "role": "Filho de Édipo / atacante de Tebas",
+      "group": "labdacida",
+      "x": 960,
+      "y": 530,
+      "desc": "Filho de Édipo expulso do trono por Etéocles. Organizou o exército dos Sete Contra Tebas para reconquistar a cidade. Morreu em duelo com o irmão. Seu cadáver insepulto é o centro da tragédia Antígona.",
+      "obras": [
+        "Os Sete Contra Tebas (Ésquilo)",
+        "As Fenícias (Eurípides)",
+        "Édipo em Colono",
+        "Antígona (Sófocles)"
+      ]
+    },
+    {
+      "id": "hemon",
+      "label": "Hêmon",
+      "role": "Filho de Creonte / noivo de Antígona",
+      "group": "tebas",
+      "x": 260,
+      "y": 670,
+      "desc": "Filho de Creonte e noivo de Antígona. Tentou convencer o pai a libertar Antígona, em vão. Encontrou-a morta na caverna e suicidou-se sobre seu corpo. Sua morte destrói também a mãe Eurídice.",
+      "obras": [
+        "Antígona (Sófocles)"
+      ]
+    },
+    {
+      "id": "euridice",
+      "label": "Eurídice",
+      "role": "Esposa de Creonte",
+      "group": "tebas",
+      "x": 460,
+      "y": 670,
+      "desc": "Esposa de Creonte, mãe de Hêmon. Ao receber a notícia da morte do filho, suicidou-se amaldiçoando Creonte. Aparece brevemente mas sua morte sela a ruína total do rei.",
+      "obras": [
+        "Antígona (Sófocles)"
+      ]
+    },
+    {
+      "id": "meneceu",
+      "label": "Meneceu",
+      "role": "Filho de Creonte / sacrifício",
+      "group": "tebas",
+      "x": 620,
+      "y": 670,
+      "desc": "Jovem filho de Creonte que, ao saber que Tirésias exigiu um sacrifício para salvar Tebas, atirou-se das muralhas voluntariamente — ato de heroísmo que contrasta com a rigidez do pai.",
+      "obras": [
+        "As Fenícias (Eurípides)"
+      ]
+    },
+    {
+      "id": "argos",
+      "label": "Adrasto",
+      "role": "Rei de Argos / sogro de Polinices",
+      "group": "externo",
+      "x": 1130,
+      "y": 530,
+      "desc": "Rei de Argos que liderou a expedição dos Sete Contra Tebas em apoio ao genro Polinices. O único dos sete a sobreviver à derrota. Reaparece em As Suplicantes de Eurípides pedindo ajuda a Teseu.",
+      "obras": [
+        "Os Sete Contra Tebas (Ésquilo)",
+        "As Suplicantes (Eurípides)",
+        "As Fenícias"
+      ]
+    },
+    {
+      "id": "argeia",
+      "label": "Argeia",
+      "role": "Esposa de Polinices",
+      "group": "externo",
+      "x": 1100,
+      "y": 670,
+      "desc": "Filha de Adrasto e esposa de Polinices. Aparece em As Fenícias junto de outras esposas dos Sete, esperando notícias do cerco a Tebas.",
+      "obras": [
+        "As Fenícias (Eurípides)"
+      ]
+    },
+    {
+      "id": "esfinge",
+      "label": "Esfinge",
+      "role": "Monstro / guardião de Tebas",
+      "group": "deus",
+      "x": 830,
+      "y": 320,
+      "desc": "Monstro com cabeça de mulher e corpo de leão enviado pelos deuses para flagelar Tebas. Propunha enigmas e devorava quem errasse. Édipo a venceu respondendo corretamente, libertando Tebas e tornando-se rei.",
+      "obras": [
+        "Édipo Rei (referenciado)"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "s": "labdaco",
+      "t": "laio",
+      "type": "familia",
+      "label": "pai/filho"
+    },
+    {
+      "s": "apolo",
+      "t": "laio",
+      "type": "divino",
+      "label": "amaldiçoou / profecia"
+    },
+    {
+      "s": "apolo",
+      "t": "edipo",
+      "type": "divino",
+      "label": "profecia do parricídio"
+    },
+    {
+      "s": "tiresias",
+      "t": "edipo",
+      "type": "divino",
+      "label": "revelou a verdade"
+    },
+    {
+      "s": "tiresias",
+      "t": "creonte",
+      "type": "divino",
+      "label": "avisou / ignorado"
+    },
+    {
+      "s": "laio",
+      "t": "jocasta",
+      "type": "amor",
+      "label": "casamento"
+    },
+    {
+      "s": "laio",
+      "t": "edipo",
+      "type": "familia",
+      "label": "pai/filho (sem saber)"
+    },
+    {
+      "s": "jocasta",
+      "t": "edipo",
+      "type": "familia",
+      "label": "mãe e esposa (tragédia)"
+    },
+    {
+      "s": "edipo",
+      "t": "laio",
+      "type": "conflito",
+      "label": "matou o pai (sem saber)"
+    },
+    {
+      "s": "edipo",
+      "t": "antigona",
+      "type": "familia",
+      "label": "pai/filha"
+    },
+    {
+      "s": "edipo",
+      "t": "ismene",
+      "type": "familia",
+      "label": "pai/filha"
+    },
+    {
+      "s": "edipo",
+      "t": "eteocles",
+      "type": "familia",
+      "label": "pai/filho"
+    },
+    {
+      "s": "edipo",
+      "t": "polinices",
+      "type": "familia",
+      "label": "pai/filho"
+    },
+    {
+      "s": "polibo",
+      "t": "edipo",
+      "type": "amor",
+      "label": "adotou / criou"
+    },
+    {
+      "s": "merope",
+      "t": "edipo",
+      "type": "amor",
+      "label": "mãe adotiva"
+    },
+    {
+      "s": "jocasta",
+      "t": "creonte",
+      "type": "familia",
+      "label": "irmãos"
+    },
+    {
+      "s": "creonte",
+      "t": "hemon",
+      "type": "familia",
+      "label": "pai/filho"
+    },
+    {
+      "s": "creonte",
+      "t": "euridice",
+      "type": "amor",
+      "label": "casamento"
+    },
+    {
+      "s": "creonte",
+      "t": "meneceu",
+      "type": "familia",
+      "label": "pai/filho"
+    },
+    {
+      "s": "creonte",
+      "t": "antigona",
+      "type": "conflito",
+      "label": "condenou à morte"
+    },
+    {
+      "s": "euridice",
+      "t": "hemon",
+      "type": "familia",
+      "label": "mãe/filho"
+    },
+    {
+      "s": "eteocles",
+      "t": "polinices",
+      "type": "conflito",
+      "label": "mataram-se mutuamente"
+    },
+    {
+      "s": "antigona",
+      "t": "ismene",
+      "type": "familia",
+      "label": "irmãs"
+    },
+    {
+      "s": "antigona",
+      "t": "polinices",
+      "type": "familia",
+      "label": "enterrou o irmão"
+    },
+    {
+      "s": "antigona",
+      "t": "hemon",
+      "type": "amor",
+      "label": "noivado"
+    },
+    {
+      "s": "hemon",
+      "t": "euridice",
+      "type": "familia",
+      "label": "filho/mãe"
+    },
+    {
+      "s": "polinices",
+      "t": "argos",
+      "type": "amor",
+      "label": "genro/sogro"
+    },
+    {
+      "s": "polinices",
+      "t": "argeia",
+      "type": "amor",
+      "label": "casamento"
+    },
+    {
+      "s": "argos",
+      "t": "eteocles",
+      "type": "conflito",
+      "label": "atacou Tebas"
+    },
+    {
+      "s": "esfinge",
+      "t": "edipo",
+      "type": "conflito",
+      "label": "Édipo a venceu"
+    },
+    {
+      "s": "edipo",
+      "t": "creonte",
+      "type": "conflito",
+      "label": "conflito / exílio"
+    }
+  ]
+}

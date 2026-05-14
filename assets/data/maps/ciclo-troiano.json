@@ -1,0 +1,531 @@
+{
+  "nodes": [
+    {
+      "id": "priamo",
+      "label": "Príamo",
+      "role": "Rei de Troia",
+      "group": "troia",
+      "x": 500,
+      "y": 200,
+      "desc": "Rei de Troia, pai de 50 filhos. Governou a cidade durante a Guerra de Troia e foi morto por Neoptólemo no altar de Zeus.",
+      "obras": [
+        "As Troianas",
+        "Hécuba",
+        "Resos"
+      ]
+    },
+    {
+      "id": "hecuba",
+      "label": "Hécuba",
+      "role": "Rainha de Troia",
+      "group": "troia",
+      "x": 380,
+      "y": 200,
+      "desc": "Rainha de Troia, esposa de Príamo. Perdeu quase todos os filhos e foi escravizada pelos gregos. Protagonista de duas peças de Eurípides.",
+      "obras": [
+        "As Troianas (Eurípides)",
+        "Hécuba (Eurípides)",
+        "As Fenícias"
+      ]
+    },
+    {
+      "id": "heitor",
+      "label": "Heitor",
+      "role": "Príncipe guerreiro",
+      "group": "troia",
+      "x": 500,
+      "y": 320,
+      "desc": "O maior herói de Troia, filho primogênito de Príamo e Hécuba. Morto por Aquiles em combate singular.",
+      "obras": [
+        "Resos (Eurípides)"
+      ]
+    },
+    {
+      "id": "paris",
+      "label": "Páris",
+      "role": "Príncipe / causa da guerra",
+      "group": "troia",
+      "x": 360,
+      "y": 320,
+      "desc": "Príncipe troiano que raptou (ou seduziu) Helena, desencadeando a Guerra de Troia. Matou Aquiles com uma flecha guiada por Apolo.",
+      "obras": [
+        "As Troianas",
+        "Hécuba"
+      ]
+    },
+    {
+      "id": "cassandra",
+      "label": "Cassandra",
+      "role": "Profetisa maldita",
+      "group": "troia",
+      "x": 260,
+      "y": 280,
+      "desc": "Princesa de Troia amaldiçoada por Apolo: profetizava verdades que ninguém acreditava. Levada como escrava por Agamêmnon e morta com ele por Clitemnestra.",
+      "obras": [
+        "As Troianas (Eurípides)",
+        "Agamêmnon (Ésquilo)",
+        "Hécuba"
+      ]
+    },
+    {
+      "id": "andromacha",
+      "label": "Andrômaca",
+      "role": "Esposa de Heitor",
+      "group": "troia",
+      "x": 620,
+      "y": 320,
+      "desc": "Esposa fiel de Heitor. Após a queda de Troia tornou-se escrava de Neoptólemo. Protagonista da peça homônima de Eurípides.",
+      "obras": [
+        "As Troianas",
+        "Andrômaca (Eurípides)"
+      ]
+    },
+    {
+      "id": "astianax",
+      "label": "Astíanax",
+      "role": "Filho de Heitor",
+      "group": "troia",
+      "x": 620,
+      "y": 430,
+      "desc": "Filho bebê de Heitor e Andrômaca. Lançado das muralhas de Troia pelos gregos, que temiam que crescesse e vingasse o pai.",
+      "obras": [
+        "As Troianas (Eurípides)"
+      ]
+    },
+    {
+      "id": "polixena",
+      "label": "Políxena",
+      "role": "Princesa sacrificada",
+      "group": "troia",
+      "x": 280,
+      "y": 400,
+      "desc": "Filha de Príamo e Hécuba, sacrificada sobre o túmulo de Aquiles por exigência do fantasma do herói — um dos momentos mais patéticos de Eurípides.",
+      "obras": [
+        "Hécuba (Eurípides)"
+      ]
+    },
+    {
+      "id": "polidoro",
+      "label": "Polidoro",
+      "role": "Príncipe traído",
+      "group": "troia",
+      "x": 400,
+      "y": 430,
+      "desc": "Filho caçula de Príamo, enviado secretamente à Trácia com ouro para ser salvo da guerra. Traído e assassinado pelo rei Polimestor.",
+      "obras": [
+        "Hécuba (Eurípides)"
+      ]
+    },
+    {
+      "id": "deifobos",
+      "label": "Deífobo",
+      "role": "Príncipe de Troia",
+      "group": "troia",
+      "x": 480,
+      "y": 430,
+      "desc": "Irmão de Páris e Heitor. Após a morte de Páris, casou-se com Helena à força. Morto por Menelau durante o saque de Troia.",
+      "obras": [
+        "Helena (Eurípides)"
+      ]
+    },
+    {
+      "id": "agamemnon",
+      "label": "Agamêmnon",
+      "role": "Rei de Micenas / Comandante",
+      "group": "grego",
+      "x": 760,
+      "y": 180,
+      "desc": "Rei de Micenas e comandante supremo dos gregos. Sacrificou a filha Ifigênia para obter ventos favoráveis. Morto por Clitemnestra ao regressar.",
+      "obras": [
+        "Agamêmnon (Ésquilo)",
+        "As Troianas",
+        "Hécuba",
+        "Ifigênia em Áulis"
+      ]
+    },
+    {
+      "id": "menelau",
+      "label": "Menelau",
+      "role": "Rei de Esparta",
+      "group": "grego",
+      "x": 880,
+      "y": 280,
+      "desc": "Rei de Esparta, marido de Helena. O rapto de Helena por Páris foi o estopim da guerra. Recuperou Helena após a queda de Troia.",
+      "obras": [
+        "As Troianas",
+        "Andrômaca",
+        "Helena",
+        "Orestes",
+        "Ifigênia em Áulis"
+      ]
+    },
+    {
+      "id": "helena",
+      "label": "Helena",
+      "role": "A mais bela do mundo",
+      "group": "misto",
+      "x": 760,
+      "y": 320,
+      "desc": "A mulher mais bela do mundo, filha de Zeus e Leda. Sua fuga (ou rapto) para Troia causou a guerra. Versão de Eurípides sugere que ficou no Egito enquanto um fantasma foi para Troia.",
+      "obras": [
+        "As Troianas",
+        "Helena (Eurípides)",
+        "Orestes",
+        "Andrômaca"
+      ]
+    },
+    {
+      "id": "aquiles",
+      "label": "Aquiles",
+      "role": "Maior herói grego",
+      "group": "grego",
+      "x": 900,
+      "y": 400,
+      "desc": "O maior guerreiro grego, filho da nereida Tétis. Quase invulnerável. Matou Heitor mas foi morto por uma flecha de Páris guiada por Apolo.",
+      "obras": [
+        "Ifigênia em Áulis (Eurípides)"
+      ]
+    },
+    {
+      "id": "odisseu",
+      "label": "Odisseu",
+      "role": "O astuto",
+      "group": "grego",
+      "x": 800,
+      "y": 450,
+      "desc": "Herói de Ítaca, o mais inteligente dos gregos. Idealizou o Cavalo de Troia. Aparece em peças como o manipulador que convence para sacrifícios e execuções.",
+      "obras": [
+        "Hécuba",
+        "As Troianas",
+        "Filoctetes (Sófocles)",
+        "Ájax (Sófocles)"
+      ]
+    },
+    {
+      "id": "neoptolemo",
+      "label": "Neoptólemo",
+      "role": "Filho de Aquiles",
+      "group": "grego",
+      "x": 1000,
+      "y": 350,
+      "desc": "Filho de Aquiles, também chamado Pirro. Matou Príamo no altar de Zeus e tomou Andrômaca como escrava. Mais tarde morto em Delfos.",
+      "obras": [
+        "Andrômaca (Eurípides)",
+        "Filoctetes (Sófocles)"
+      ]
+    },
+    {
+      "id": "taltibio",
+      "label": "Taltíbio",
+      "role": "Arauto de Agamêmnon",
+      "group": "grego",
+      "x": 680,
+      "y": 200,
+      "desc": "Arauto oficial de Agamêmnon. Personagem de rara humanidade — transmite ordens cruéis com visível constrangimento e compaixão pelas troianas.",
+      "obras": [
+        "As Troianas (Eurípides)",
+        "Hécuba"
+      ]
+    },
+    {
+      "id": "apolo",
+      "label": "Apolo",
+      "role": "Deus — protetor de Troia",
+      "group": "deus",
+      "x": 200,
+      "y": 160,
+      "desc": "Deus do sol, das artes e da profecia. Protetor de Troia. Amaldiçoou Cassandra. Guiou a flecha de Páris que matou Aquiles.",
+      "obras": [
+        "As Eumênides",
+        "Íon",
+        "Andrômaca"
+      ]
+    },
+    {
+      "id": "atena",
+      "label": "Atena",
+      "role": "Deusa — aliada dos gregos",
+      "group": "deus",
+      "x": 900,
+      "y": 160,
+      "desc": "Deusa da sabedoria e da guerra. Apoiou os gregos durante toda a guerra. Após o saque (e o estupro de Cassandra no seu templo) voltou-se contra eles.",
+      "obras": [
+        "As Troianas",
+        "As Eumênides",
+        "Orestes"
+      ]
+    },
+    {
+      "id": "afrodite",
+      "label": "Afrodite",
+      "role": "Deusa — causadora da guerra",
+      "group": "deus",
+      "x": 350,
+      "y": 130,
+      "desc": "Deusa do amor. Prometeu Helena a Páris no Julgamento das Deusas — ato que desencadeou toda a guerra de Troia.",
+      "obras": [
+        "Hipólito (Eurípides)"
+      ]
+    },
+    {
+      "id": "poseidon",
+      "label": "Posêidon",
+      "role": "Deus do mar",
+      "group": "deus",
+      "x": 700,
+      "y": 130,
+      "desc": "Deus dos mares. Ajudou a construir as muralhas de Troia e depois colaborou com Atena para destruir a frota grega no retorno.",
+      "obras": [
+        "As Troianas (Eurípides)"
+      ]
+    },
+    {
+      "id": "polimestor",
+      "label": "Polimestor",
+      "role": "Rei da Trácia / traidor",
+      "group": "misto",
+      "x": 200,
+      "y": 450,
+      "desc": "Rei trácio que deveria guardar o jovem Polidoro. Matou-o pelo ouro e jogou o corpo ao mar. Vingado cegamente por Hécuba.",
+      "obras": [
+        "Hécuba (Eurípides)"
+      ]
+    },
+    {
+      "id": "tetis",
+      "label": "Tétis",
+      "role": "Nereida, mãe de Aquiles",
+      "group": "deus",
+      "x": 1050,
+      "y": 200,
+      "desc": "Nereida (ninfa do mar) e mãe de Aquiles. Tentou torná-lo imortal mergulhando-o no rio Estige. Aparece para consolar Andrômaca.",
+      "obras": [
+        "Andrômaca (Eurípides)"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "s": "priamo",
+      "t": "hecuba",
+      "type": "amor",
+      "label": "casamento"
+    },
+    {
+      "s": "priamo",
+      "t": "heitor",
+      "type": "familia",
+      "label": "pai/filho"
+    },
+    {
+      "s": "priamo",
+      "t": "paris",
+      "type": "familia",
+      "label": "pai/filho"
+    },
+    {
+      "s": "priamo",
+      "t": "cassandra",
+      "type": "familia",
+      "label": "pai/filha"
+    },
+    {
+      "s": "priamo",
+      "t": "polixena",
+      "type": "familia",
+      "label": "pai/filha"
+    },
+    {
+      "s": "priamo",
+      "t": "polidoro",
+      "type": "familia",
+      "label": "pai/filho"
+    },
+    {
+      "s": "priamo",
+      "t": "deifobos",
+      "type": "familia",
+      "label": "pai/filho"
+    },
+    {
+      "s": "hecuba",
+      "t": "heitor",
+      "type": "familia",
+      "label": "mãe/filho"
+    },
+    {
+      "s": "hecuba",
+      "t": "cassandra",
+      "type": "familia",
+      "label": "mãe/filha"
+    },
+    {
+      "s": "hecuba",
+      "t": "polixena",
+      "type": "familia",
+      "label": "mãe/filha"
+    },
+    {
+      "s": "hecuba",
+      "t": "polidoro",
+      "type": "familia",
+      "label": "mãe/filho"
+    },
+    {
+      "s": "heitor",
+      "t": "andromacha",
+      "type": "amor",
+      "label": "casamento"
+    },
+    {
+      "s": "andromacha",
+      "t": "astianax",
+      "type": "familia",
+      "label": "mãe/filho"
+    },
+    {
+      "s": "paris",
+      "t": "helena",
+      "type": "amor",
+      "label": "fuga/amor"
+    },
+    {
+      "s": "menelau",
+      "t": "helena",
+      "type": "amor",
+      "label": "casamento"
+    },
+    {
+      "s": "deifobos",
+      "t": "helena",
+      "type": "amor",
+      "label": "casou após Páris"
+    },
+    {
+      "s": "aquiles",
+      "t": "tetis",
+      "type": "familia",
+      "label": "filho/mãe"
+    },
+    {
+      "s": "agamemnon",
+      "t": "hecuba",
+      "type": "conflito",
+      "label": "vencedor/vencida"
+    },
+    {
+      "s": "agamemnon",
+      "t": "cassandra",
+      "type": "conflito",
+      "label": "capturou como escrava"
+    },
+    {
+      "s": "aquiles",
+      "t": "heitor",
+      "type": "conflito",
+      "label": "matou em duelo"
+    },
+    {
+      "s": "neoptolemo",
+      "t": "andromacha",
+      "type": "conflito",
+      "label": "escravizou"
+    },
+    {
+      "s": "neoptolemo",
+      "t": "priamo",
+      "type": "conflito",
+      "label": "matou no altar"
+    },
+    {
+      "s": "odisseu",
+      "t": "hecuba",
+      "type": "conflito",
+      "label": "negou salvar Políxena"
+    },
+    {
+      "s": "polimestor",
+      "t": "polidoro",
+      "type": "conflito",
+      "label": "assassinou"
+    },
+    {
+      "s": "hecuba",
+      "t": "polimestor",
+      "type": "conflito",
+      "label": "vingou-se / cegou"
+    },
+    {
+      "s": "paris",
+      "t": "menelau",
+      "type": "conflito",
+      "label": "roubou Helena"
+    },
+    {
+      "s": "paris",
+      "t": "aquiles",
+      "type": "conflito",
+      "label": "matou c/ flecha"
+    },
+    {
+      "s": "apolo",
+      "t": "cassandra",
+      "type": "divino",
+      "label": "amaldiçoou"
+    },
+    {
+      "s": "apolo",
+      "t": "paris",
+      "type": "divino",
+      "label": "guiou a flecha"
+    },
+    {
+      "s": "afrodite",
+      "t": "paris",
+      "type": "divino",
+      "label": "Julgamento / prometeu Helena"
+    },
+    {
+      "s": "afrodite",
+      "t": "helena",
+      "type": "divino",
+      "label": "a fez amar Páris"
+    },
+    {
+      "s": "atena",
+      "t": "agamemnon",
+      "type": "divino",
+      "label": "apoiou os gregos"
+    },
+    {
+      "s": "poseidon",
+      "t": "priamo",
+      "type": "divino",
+      "label": "construiu as muralhas"
+    },
+    {
+      "s": "tetis",
+      "t": "aquiles",
+      "type": "divino",
+      "label": "tentou imortalizar"
+    },
+    {
+      "s": "taltibio",
+      "t": "agamemnon",
+      "type": "familia",
+      "label": "arauto/servo"
+    },
+    {
+      "s": "agamemnon",
+      "t": "menelau",
+      "type": "familia",
+      "label": "irmãos (Atridas)"
+    },
+    {
+      "s": "neoptolemo",
+      "t": "aquiles",
+      "type": "familia",
+      "label": "filho/pai"
+    }
+  ]
+}

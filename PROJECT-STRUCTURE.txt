@@ -22,9 +22,16 @@
 │   │   ├── mapa-bronze.css            ✅ Tema bronze — Heróis
 │   │   └── STYLES.md                  Guia de estilização
 │   ├── 📁 js/
-│   │   └── menu-links.js              ✅ Menu dinâmico (IIFE)
+│   │   ├── menu-links.js              ✅ Menu dinâmico (IIFE)
+│   │   └── utils.js                   ✅ Utilitários compartilhados (MapUtils)
 │   └── 📁 data/
-│       └── config.json                ✅ Configuração central (JSON)
+│       ├── config.json                ✅ Configuração central (JSON)
+│       └── 📁 maps/
+│           ├── atridas.json           ✅ Nodes + edges — Os Atridas
+│           ├── ciclo-troiano.json     ✅ Nodes + edges — Ciclo Troiano
+│           ├── deuses.json            ✅ Nodes + edges — Deuses
+│           ├── familia-edipo.json     ✅ Nodes + edges — Família de Édipo
+│           └── herois.json            ✅ Nodes + edges — Os Heróis
 │
 ├── 📚 DOCUMENTAÇÃO
 │   ├── README.md                      ✅ Overview + links principais
@@ -44,11 +51,12 @@
 | **Documentação** | ✅ Completa | 5 guias |
 | **Organização** | ✅ Profissional | 3 pastas |
 | **Menu centralizado** | ✅ Pronto | `assets/js/menu-links.js` |
+| **Utilitários JS** | ✅ Concluído | `assets/js/utils.js` |
 | **Configuração central** | ✅ Pronto | `assets/data/config.json` |
 | **Páginas funcionais** | ✅ Todas | 7 arquivos |
 | **CSS externo** | ✅ Concluído | 6 arquivos em `assets/css/` |
 | **Responsivo (mobile)** | ✅ Concluído | 2 breakpoints em todos os CSS |
-| **Dados em JSON** | 🔴 TODO | 0 arquivos |
+| **Dados em JSON** | ✅ Concluído | 5 arquivos em `assets/data/maps/` |
 
 ## ✅ O QUE FOI FEITO
 
@@ -65,9 +73,11 @@
    - ✅ **ROADMAP.md** — Timeline de P0 (crítico) até P3 (futuro)
    - ✅ **README.md** — Overview + estatísticas
 
-### 3. **Configuração Central**
+### 3. **Configuração Central e Dados**
    - ✅ `assets/data/config.json` — Um arquivo JSON com todas as informações do projeto
-   - ✅ `assets/js/menu-links.js** — Menu dinâmico reutilizável
+   - ✅ `assets/js/menu-links.js` — Menu dinâmico reutilizável
+   - ✅ `assets/js/utils.js` — Utilitários `MapUtils` compartilhados entre os 5 mapas
+   - ✅ `assets/data/maps/*.json` — Dados de nodes e edges separados do HTML (5 arquivos)
 
 ### 4. **Boas Práticas**
    - ✅ `.gitignore` melhorado
@@ -80,13 +90,9 @@
 ## 🚀 PRÓXIMAS AÇÕES (Por Prioridade)
 
 ### 🔴 P0 — CRÍTICO (Semana 1-2)
-1. **Extrair CSS inline para `assets/css/`**
-   - Ganho: Código 40% mais limpo, temas fáceis
-   - Tempo: 6-8 horas
+1. ~~**Extrair CSS inline para `assets/css/`**~~ ✅ FEITO
    
-2. **Migrar dados de mapas para JSON em `assets/data/maps/`**
-   - Ganho: Separação conteúdo/apresentação
-   - Tempo: 20 horas (5 mapas)
+2. ~~**Migrar dados de mapas para JSON em `assets/data/maps/`**~~ ✅ FEITO
 
 ### 🟠 P1 — IMPORTANTE (Semana 3-4)
 - Busca por personagem (4h)

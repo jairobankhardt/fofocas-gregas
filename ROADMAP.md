@@ -11,10 +11,12 @@
 - 7 páginas funcionais com mapas interativos
 - **CSS externo** — 6 arquivos em `assets/css/` (por tema), zero CSS inline
 - **Mobile-first** — media queries em todos os CSS (480px, 768px, 700px)
+- **Tokens CSS globais** — `assets/css/variables.css` (cores e tipografia compartilhados)
+- **Utilitários JS** — `assets/js/utils.js` com `MapUtils` (5 funções compartilhadas)
+- **Dados em JSON** — `assets/data/maps/*.json` carregados via `fetch` (5 mapas)
 
 ❌ **NÃO IMPLEMENTADO AINDA**
 
-- Dados de mapas em JSON (atualmente em HTML)
 - Sistema de build (webpack/vite)
 - Testes automatizados
 - PWA/offline support
@@ -48,15 +50,15 @@
 
 ### 🔴 P0 — CRÍTICO (Próximo sprint)
 
-#### 📋 Migrar dados de mapas para JSON
+#### ~~Migrar dados de mapas para JSON~~ ✅ FEITO
 
-**Por quê?** Dados no HTML = edições tocam código de renderização.
-
-- [ ] Criar `assets/data/maps/atridas-nodes.json` + `atridas-edges.json`
-- [ ] Reescrever cada mapa para carregar JSON dinamicamente
-- [ ] Testar renderização idêntica à versão atual
-
-**Tempo estimado:** 4 h por mapa × 5 mapas = 20 h
+- ✅ `assets/data/maps/atridas.json` — 20 nós, 39 arestas
+- ✅ `assets/data/maps/ciclo-troiano.json` — 23 nós, 37 arestas
+- ✅ `assets/data/maps/deuses.json` — 26 nós, 38 arestas
+- ✅ `assets/data/maps/familia-edipo.json` — 19 nós, 31 arestas
+- ✅ `assets/data/maps/herois.json` — 26 nós, 33 arestas
+- ✅ Todos os mapas reescritos para carregar JSON via `fetch`
+- ✅ Dados `const nodes`/`const edges` inline removidos dos HTMLs
 
 ---
 

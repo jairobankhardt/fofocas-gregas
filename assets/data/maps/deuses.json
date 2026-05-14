@@ -1,0 +1,588 @@
+{
+  "nodes": [
+    {
+      "id": "zeus",
+      "label": "Zeus",
+      "role": "Rei dos Deuses / Pai do Olimpo",
+      "group": "zeus",
+      "x": 680,
+      "y": 300,
+      "desc": "Senhor do Olimpo, deus do raio e do trovão. Pai de incontáveis mortais e deuses — Apolo, Ártemis, Atena, Hermes, Dionísio, Héracles, Helena e muitos outros. Nos dramas aparece como árbitro da ordem cósmica, mas também como pai ausente cujas decisões movem tragédias inteiras. Em Pluto de Aristófanes é satirizado.",
+      "obras": [
+        "As Suplicantes (Ésquilo)",
+        "Prometeu Acorrentado",
+        "As Eumênides",
+        "Pluto (Aristófanes)",
+        "Os Pássaros",
+        "As Troianas"
+      ]
+    },
+    {
+      "id": "hera",
+      "label": "Hera",
+      "role": "Rainha do Olimpo / esposa de Zeus",
+      "group": "olimpico",
+      "x": 380,
+      "y": 180,
+      "desc": "Rainha do Olimpo, deusa do casamento e da família. Eternamente ciumenta das aventuras amorosas de Zeus. Perseguiu Héracles — filho bastardo do marido — durante toda a sua vida. Nos dramas raramente aparece em cena mas sua influência é constante.",
+      "obras": [
+        "Herácles (Eurípides)",
+        "referenciada em As Troianas"
+      ]
+    },
+    {
+      "id": "apolo",
+      "label": "Apolo",
+      "role": "Deus da profecia, lira e sol",
+      "group": "olimpico",
+      "x": 940,
+      "y": 120,
+      "desc": "Filho de Zeus e Leto, irmão gêmeo de Ártemis. O mais presente de todos os deuses nas tragédias gregas. Seu oráculo em Delfos é a fonte de todas as profecias que desencadeiam as grandes tragédias — de Édipo a Orestes. Amaldiçoou Cassandra, ordenou o matricídio de Orestes e defendeu-o no tribunal.",
+      "obras": [
+        "As Eumênides (Ésquilo)",
+        "Édipo Rei",
+        "Orestes (Eurípides)",
+        "Alceste",
+        "Íon",
+        "Andrômaca",
+        "Ifigênia em Táuris"
+      ]
+    },
+    {
+      "id": "atena",
+      "label": "Atena",
+      "role": "Deusa da sabedoria e da guerra",
+      "group": "olimpico",
+      "x": 420,
+      "y": 120,
+      "desc": "Filha de Zeus, nascida armada de sua cabeça. Protetora de Atenas e dos heróis. Nos dramas é a voz da razão e da lei: preside o julgamento de Orestes nas Eumênides, inventa o voto de minerva e transforma as Fúrias em guardiãs da justiça. Em As Troianas vira-se contra os gregos pelo sacrilégio no seu templo.",
+      "obras": [
+        "As Eumênides (Ésquilo)",
+        "As Troianas",
+        "As Suplicantes",
+        "Orestes",
+        "Ájax",
+        "Íon",
+        "Ifigênia em Táuris"
+      ]
+    },
+    {
+      "id": "hermes",
+      "label": "Hermes",
+      "role": "Mensageiro / guia dos mortos",
+      "group": "olimpico",
+      "x": 980,
+      "y": 380,
+      "desc": "Mensageiro dos deuses, guia das almas ao mundo dos mortos (psicopompo), deus dos ladrões e viajantes. Aparece como interlocutor divino que transmite ordens de Zeus ou conduz almas. Em As Rãs de Aristófanes é parodiado; em Pluto dialoga com os mortais.",
+      "obras": [
+        "As Eumênides (Ésquilo)",
+        "Prometeu Acorrentado",
+        "Íon (Eurípides)",
+        "A Paz (Aristófanes)",
+        "Pluto (Aristófanes)"
+      ]
+    },
+    {
+      "id": "afrodite",
+      "label": "Afrodite",
+      "role": "Deusa do amor e da beleza",
+      "group": "olimpico",
+      "x": 380,
+      "y": 420,
+      "desc": "Deusa do amor nascida do mar. Causou a Guerra de Troia ao prometer Helena a Páris no Julgamento das Deusas. Em Hipólito de Eurípides abre a peça declarando que vai destruir Hipólito por ele desprezar o amor — e cumpre a ameaça com precisão fria.",
+      "obras": [
+        "Hipólito (Eurípides)",
+        "referenciada em As Troianas",
+        "Os Pássaros (Aristófanes)"
+      ]
+    },
+    {
+      "id": "artemis",
+      "label": "Ártemis",
+      "role": "Deusa da caça e da lua",
+      "group": "olimpico",
+      "x": 840,
+      "y": 40,
+      "desc": "Irmã gêmea de Apolo, deusa da caça, da lua e da virgindade. Exigiu o sacrifício de Ifigênia em Áulis e depois a salvou levando-a à Táuris. Em Hipólito é a protetora do jovem caçador virgem — e assiste impotente à sua destruição por Afrodite.",
+      "obras": [
+        "Ifigênia em Áulis",
+        "Ifigênia em Táuris (Eurípides)",
+        "Hipólito (Eurípides)"
+      ]
+    },
+    {
+      "id": "dionisio",
+      "label": "Dionísio",
+      "role": "Deus do vinho, teatro e êxtase",
+      "group": "olimpico",
+      "x": 520,
+      "y": 40,
+      "desc": "Filho de Zeus e da mortal Sêmele. Deus do vinho, do teatro, da loucura sagrada e da fertilidade. Protagonista único em As Bacantes, onde se vinga brutalmente de Penteu por rejeitar seu culto. Em As Rãs de Aristófanes desce ao Hades para trazer de volta Eurípides — e é comicamente covarde.",
+      "obras": [
+        "As Bacantes (Eurípides)",
+        "As Rãs (Aristófanes)",
+        "referenciado em As Tesmoforiantes"
+      ]
+    },
+    {
+      "id": "hefesto",
+      "label": "Hefesto",
+      "role": "Deus do fogo e da forja",
+      "group": "olimpico",
+      "x": 580,
+      "y": 560,
+      "desc": "Deus da forja e do fogo, filho de Zeus e Hera (ou só de Hera). Acorrentou Prometeu ao rochedo por ordem de Zeus em Prometeu Acorrentado — tarefa que executa com visível relutância e piedade. Esposo de Afrodite, eternamente traído.",
+      "obras": [
+        "Prometeu Acorrentado (Ésquilo)"
+      ]
+    },
+    {
+      "id": "poseidon",
+      "label": "Posêidon",
+      "role": "Deus do mar e dos terremotos",
+      "group": "olimpico",
+      "x": 780,
+      "y": 560,
+      "desc": "Irmão de Zeus, senhor dos mares e dos terremotos. Em As Troianas dialoga com Atena logo após a queda de Troia — de protetor da cidade torna-se seu co-destruidor. Construiu as muralhas de Troia junto com Apolo.",
+      "obras": [
+        "As Troianas (Eurípides)",
+        "Os Pássaros (Aristófanes)",
+        "referenciado em Ájax"
+      ]
+    },
+    {
+      "id": "ares",
+      "label": "Ares",
+      "role": "Deus da guerra",
+      "group": "olimpico",
+      "x": 1060,
+      "y": 220,
+      "desc": "Deus da guerra e da violência bruta. Raramente aparece em cena nos dramas, mas é invocado e temido. Em Os Sete Contra Tebas é a força que impulsiona ambos os lados. Em As Rãs é mencionado como adversário.",
+      "obras": [
+        "Os Sete Contra Tebas (Ésquilo)",
+        "referenciado em Andrômaca",
+        "Orestes"
+      ]
+    },
+    {
+      "id": "hades",
+      "label": "Hades",
+      "role": "Deus do mundo dos mortos",
+      "group": "chthon",
+      "x": 480,
+      "y": 720,
+      "desc": "Irmão de Zeus e Posêidon, senhor do mundo subterrâneo. Não aparece em cena na maior parte dos dramas, mas sua presença é constante: é para onde vão os mortos, é quem retém ou libera almas. Em Alceste de Eurípides, Tânatos (a Morte personificada) age como seu agente.",
+      "obras": [
+        "Alceste (Eurípides — indiretamente)",
+        "As Rãs (Aristófanes)",
+        "referenciado em As Eumênides"
+      ]
+    },
+    {
+      "id": "persephone",
+      "label": "Perséfone",
+      "role": "Rainha do Hades",
+      "group": "chthon",
+      "x": 880,
+      "y": 720,
+      "desc": "Filha de Zeus e Deméter, rainha do mundo subterrâneo e esposa de Hades. Nos dramas aparece raramente em cena mas é invocada em rituais fúnebres e contextos de morte. Em As Rãs de Aristófanes, Dionísio chega ao seu reino em busca de Eurípides.",
+      "obras": [
+        "As Rãs (Aristófanes)",
+        "referenciada em Hécuba (Eurípides)"
+      ]
+    },
+    {
+      "id": "tanatos",
+      "label": "Tânatos",
+      "role": "Personificação da Morte",
+      "group": "chthon",
+      "x": 300,
+      "y": 640,
+      "desc": "Personificação da morte, irmão gêmeo de Hipnos (o sono). Em Alceste de Eurípides aparece como antagonista concreto — Héracles luta fisicamente com ele junto ao túmulo de Alceste e o vence, devolvendo a heroína ao marido.",
+      "obras": [
+        "Alceste (Eurípides)"
+      ]
+    },
+    {
+      "id": "caronte",
+      "label": "Caronte",
+      "role": "Barqueiro dos mortos",
+      "group": "chthon",
+      "x": 1060,
+      "y": 640,
+      "desc": "O barqueiro que transporta as almas dos mortos pelo rio Estige ao Hades. Em As Rãs de Aristófanes é personagem cômico que obriga Dionísio a remar — e recebe o famoso coro das rãs. Uma das raras aparições em cena desta figura.",
+      "obras": [
+        "As Rãs (Aristófanes)"
+      ]
+    },
+    {
+      "id": "erinias",
+      "label": "Erínias / Eumênides",
+      "role": "Deusas da vingança familiar",
+      "group": "chthon",
+      "x": 680,
+      "y": 760,
+      "desc": "As Fúrias — Alecto, Megera e Tisífone. Nascidas do sangue de Urano. Perseguem quem derrama sangue de parentes. São as protagonistas coletivas das Eumênides de Ésquilo, onde perseguem Orestes até Atenas. Transformadas por Atena nas \"Eumênides\" — as benevolentes — tornam-se guardiãs da justiça ateniense.",
+      "obras": [
+        "As Eumênides (Ésquilo)",
+        "As Coéforas",
+        "Orestes (Eurípides)"
+      ]
+    },
+    {
+      "id": "prometeu",
+      "label": "Prometeu",
+      "role": "Titã — roubou o fogo para os homens",
+      "group": "natureza",
+      "x": 220,
+      "y": 420,
+      "desc": "Titã que roubou o fogo dos deuses e o deu aos humanos. Punido por Zeus com o suplício eterno — acorrentado a uma rocha enquanto uma águia lhe devora o fígado. Protagonista de Prometeu Acorrentado. Em Os Pássaros de Aristófanes aparece secretamente como aliado dos mortais contra Zeus.",
+      "obras": [
+        "Prometeu Acorrentado (Ésquilo)",
+        "Os Pássaros (Aristófanes)"
+      ]
+    },
+    {
+      "id": "iris",
+      "label": "Íris",
+      "role": "Mensageira dos deuses / arco-íris",
+      "group": "natureza",
+      "x": 1140,
+      "y": 420,
+      "desc": "Deusa do arco-íris e mensageira dos deuses (especialmente de Hera). Em Herácles de Eurípides aparece junto de Lissa para entregar Héracles à loucura a mando de Hera — uma das cenas mais perturbadoras da tragédia grega.",
+      "obras": [
+        "Herácles (Eurípides)",
+        "Os Pássaros (Aristófanes)"
+      ]
+    },
+    {
+      "id": "lissa",
+      "label": "Lissa",
+      "role": "Personificação da Loucura",
+      "group": "natureza",
+      "x": 1140,
+      "y": 540,
+      "desc": "Personificação da loucura e da raiva. Aparece ao lado de Íris em Herácles de Eurípides, enviada por Hera para enlouquecer o herói. Reluta em cumprir a missão — sua hesitação torna o mal ainda mais impactante quando se concretiza.",
+      "obras": [
+        "Herácles (Eurípides)"
+      ]
+    },
+    {
+      "id": "eos",
+      "label": "Éos",
+      "role": "Personificação da Aurora",
+      "group": "natureza",
+      "x": 220,
+      "y": 540,
+      "desc": "Deusa da aurora que traz o dia. Referenciada em várias peças como marcador temporal. Mãe de Mêmnon, herói troiano aliado de Troia. Aparece na poética do coro em várias tragédias.",
+      "obras": [
+        "referenciada em As Troianas",
+        "Agamêmnon (Ésquilo)"
+      ]
+    },
+    {
+      "id": "pan",
+      "label": "Pã",
+      "role": "Deus dos campos e dos pastores",
+      "group": "natureza",
+      "x": 220,
+      "y": 280,
+      "desc": "Deus dos campos, florestas e pastores, meio homem meio bode. Em O Misantropo de Menandro aparece no prólogo como narrador — uma das mais raras e charmosas aparições do deus na comédia. Associado ao pânico e à música rústica.",
+      "obras": [
+        "O Misantropo (Menandro)",
+        "referenciado em As Rãs"
+      ]
+    },
+    {
+      "id": "nike",
+      "label": "Nike",
+      "role": "Personificação da Vitória",
+      "group": "person",
+      "x": 1140,
+      "y": 160,
+      "desc": "Deusa alada da vitória. Filha do Titã Palas e da oceânide Estige. Nos dramas aparece como símbolo invocado antes das batalhas e como companheira de Atena. Em Os Pássaros de Aristófanes é mencionada na criação da nova cidade celeste.",
+      "obras": [
+        "Os Pássaros (Aristófanes)",
+        "referenciada em Os Sete Contra Tebas"
+      ]
+    },
+    {
+      "id": "eirene",
+      "label": "Eirene (Paz)",
+      "role": "Personificação da Paz",
+      "group": "person",
+      "x": 220,
+      "y": 160,
+      "desc": "Personificação da paz, uma das Horas filhas de Zeus e Têmis. Em A Paz de Aristófanes é literalmente enterrada pela Guerra e libertada pelos camponeses gregos numa comédia política brilhante — uma das alegorias mais potentes do teatro antigo.",
+      "obras": [
+        "A Paz (Aristófanes)"
+      ]
+    },
+    {
+      "id": "kratos",
+      "label": "Cratos",
+      "role": "Personificação da Força",
+      "group": "person",
+      "x": 320,
+      "y": 560,
+      "desc": "Personificação da força e do poder. Junto com Bia (a Violência), aparece em Prometeu Acorrentado executando as ordens de Zeus — acorrentando Prometeu à rocha. Figuras que encarnam o poder bruto do governo tirano, em contraste com a piedade de Hefesto.",
+      "obras": [
+        "Prometeu Acorrentado (Ésquilo)"
+      ]
+    },
+    {
+      "id": "bia",
+      "label": "Bia",
+      "role": "Personificação da Violência",
+      "group": "person",
+      "x": 320,
+      "y": 460,
+      "desc": "Personificação da violência e da força bruta. Irmã de Cratos, Níke e Zelo. Em Prometeu Acorrentado aparece ao lado de Cratos como executora silenciosa das ordens de Zeus — nunca fala uma palavra, o que a torna ainda mais aterrorizante.",
+      "obras": [
+        "Prometeu Acorrentado (Ésquilo)"
+      ]
+    },
+    {
+      "id": "oceano",
+      "label": "Oceano",
+      "role": "Titã / deus do rio primordial",
+      "group": "natureza",
+      "x": 200,
+      "y": 320,
+      "desc": "Titã primordial, personificação do grande rio que circunda o mundo. Em Prometeu Acorrentado visita o herói acorrentado tentando convencê-lo a se reconciliar com Zeus — em tom de conselho pragmático que Prometeu rejeita com desdém.",
+      "obras": [
+        "Prometeu Acorrentado (Ésquilo)"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "s": "zeus",
+      "t": "apolo",
+      "type": "familia",
+      "label": "pai/filho (com Leto)"
+    },
+    {
+      "s": "zeus",
+      "t": "atena",
+      "type": "familia",
+      "label": "pai/filha (nasceu de sua cabeça)"
+    },
+    {
+      "s": "zeus",
+      "t": "hermes",
+      "type": "familia",
+      "label": "pai/filho (com Maia)"
+    },
+    {
+      "s": "zeus",
+      "t": "artemis",
+      "type": "familia",
+      "label": "pai/filha (com Leto)"
+    },
+    {
+      "s": "zeus",
+      "t": "dionisio",
+      "type": "familia",
+      "label": "pai/filho (com Sêmele)"
+    },
+    {
+      "s": "zeus",
+      "t": "ares",
+      "type": "familia",
+      "label": "pai/filho (com Hera)"
+    },
+    {
+      "s": "zeus",
+      "t": "hefesto",
+      "type": "familia",
+      "label": "pai/filho (com Hera)"
+    },
+    {
+      "s": "zeus",
+      "t": "hera",
+      "type": "amor",
+      "label": "casamento / eterno conflito"
+    },
+    {
+      "s": "zeus",
+      "t": "persephone",
+      "type": "familia",
+      "label": "pai/filha (com Deméter)"
+    },
+    {
+      "s": "zeus",
+      "t": "nike",
+      "type": "familia",
+      "label": "protegida / companheira de Atena"
+    },
+    {
+      "s": "zeus",
+      "t": "eirene",
+      "type": "familia",
+      "label": "pai/filha (com Têmis)"
+    },
+    {
+      "s": "zeus",
+      "t": "kratos",
+      "type": "divino",
+      "label": "agente do seu poder"
+    },
+    {
+      "s": "zeus",
+      "t": "bia",
+      "type": "divino",
+      "label": "agente do seu poder"
+    },
+    {
+      "s": "zeus",
+      "t": "prometeu",
+      "type": "conflito",
+      "label": "puniu com o suplício eterno"
+    },
+    {
+      "s": "zeus",
+      "t": "iris",
+      "type": "divino",
+      "label": "mensageira"
+    },
+    {
+      "s": "zeus",
+      "t": "hades",
+      "type": "familia",
+      "label": "irmãos / dividiram o cosmos"
+    },
+    {
+      "s": "zeus",
+      "t": "poseidon",
+      "type": "familia",
+      "label": "irmãos / dividiram o cosmos"
+    },
+    {
+      "s": "hades",
+      "t": "persephone",
+      "type": "amor",
+      "label": "rapto / casamento"
+    },
+    {
+      "s": "apolo",
+      "t": "artemis",
+      "type": "familia",
+      "label": "gêmeos (mãe Leto)"
+    },
+    {
+      "s": "hera",
+      "t": "dionisio",
+      "type": "conflito",
+      "label": "perseguiu por ser filho bastardo de Zeus"
+    },
+    {
+      "s": "hera",
+      "t": "iris",
+      "type": "divino",
+      "label": "Íris serve Hera"
+    },
+    {
+      "s": "hera",
+      "t": "lissa",
+      "type": "divino",
+      "label": "enviou para enlouquecer Héracles"
+    },
+    {
+      "s": "apolo",
+      "t": "erinias",
+      "type": "conflito",
+      "label": "conflito no julgamento de Orestes"
+    },
+    {
+      "s": "atena",
+      "t": "erinias",
+      "type": "divino",
+      "label": "transformou em Eumênides"
+    },
+    {
+      "s": "afrodite",
+      "t": "artemis",
+      "type": "conflito",
+      "label": "destruiu Hipólito protegido de Ártemis"
+    },
+    {
+      "s": "artemis",
+      "t": "tanatos",
+      "type": "conflito",
+      "label": "Ártemis não pode salvar Alceste da Morte"
+    },
+    {
+      "s": "tanatos",
+      "t": "hades",
+      "type": "familia",
+      "label": "agente / servo"
+    },
+    {
+      "s": "caronte",
+      "t": "hades",
+      "type": "familia",
+      "label": "barqueiro a serviço do Hades"
+    },
+    {
+      "s": "erinias",
+      "t": "hades",
+      "type": "familia",
+      "label": "habitam o submundo"
+    },
+    {
+      "s": "persephone",
+      "t": "erinias",
+      "type": "divino",
+      "label": "rainha sobre as Fúrias"
+    },
+    {
+      "s": "prometeu",
+      "t": "hefesto",
+      "type": "conflito",
+      "label": "Hefesto o acorrentou com pesar"
+    },
+    {
+      "s": "prometeu",
+      "t": "kratos",
+      "type": "conflito",
+      "label": "Cratos o entregou acorrentado"
+    },
+    {
+      "s": "prometeu",
+      "t": "bia",
+      "type": "conflito",
+      "label": "Bia o forçou em silêncio"
+    },
+    {
+      "s": "prometeu",
+      "t": "oceano",
+      "type": "familia",
+      "label": "titãs / Oceano tenta aconselhar"
+    },
+    {
+      "s": "hermes",
+      "t": "caronte",
+      "type": "divino",
+      "label": "ambos guiam os mortos"
+    },
+    {
+      "s": "pan",
+      "t": "dionisio",
+      "type": "familia",
+      "label": "ambos deuses da natureza selvagem"
+    },
+    {
+      "s": "iris",
+      "t": "lissa",
+      "type": "divino",
+      "label": "viajaram juntas à missão de Hera"
+    },
+    {
+      "s": "eirene",
+      "t": "ares",
+      "type": "conflito",
+      "label": "paz × guerra — opostos absolutos"
+    }
+  ]
+}
