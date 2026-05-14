@@ -1,0 +1,46 @@
+# Fofocas Gregas — Git Ignore
+
+# Dependências e pacotes
+node_modules/
+package-lock.json
+yarn.lock
+npm-debug.log*
+
+# Builds e dists
+dist/
+build/
+*.min.js
+*.min.css
+.cache/
+
+# IDE
+.vscode/*
+!.vscode/settings.json  # Permitir settings compartilhadas
+.idea/
+*.sublime-*
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+access.log
+error.log
+
+# Temporários
+*.tmp
+*.bak
+*.backup
+.temp/
+.tmp/
+
+# Específico do projeto
+/assets/css/ (será preenchido com extracted CSS)
+screenshots/

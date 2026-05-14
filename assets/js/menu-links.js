@@ -1,3 +1,9 @@
+/**
+ * Menu compartilhado — carrega links de navegação dinamicamente
+ * Mantém o item ativo conforme a página atual
+ * Localização: assets/js/menu-links.js
+ */
+
 (() => {
     const menuLinks = [
         { href: "index.html", label: "Início" },

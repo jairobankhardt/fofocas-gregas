@@ -1,0 +1,78 @@
+{
+    "project": {
+        "title": "Fofocas Gregas",
+        "subtitle": "Onde os mitos da Grécia Antiga viram fofoca",
+        "description": "Guia completo das personagens, relações e dramas das tragédias e comédias gregas antigas"
+    },
+    "navigation": {
+        "main": [
+            { "href": "index.html", "label": "Início", "icon": "🎭" },
+            {
+                "href": "catalogo-geral.html",
+                "label": "Catálogo Geral",
+                "icon": "📜"
+            },
+            {
+                "href": "ciclo-troiano-mapa.html",
+                "label": "Ciclo Troiano",
+                "icon": "⚓"
+            },
+            { "href": "atridas-mapa.html", "label": "Atridas", "icon": "🗡️" },
+            {
+                "href": "familia-edipo-mapa.html",
+                "label": "Édipo",
+                "icon": "👑"
+            },
+            { "href": "deuses-mapa.html", "label": "Deuses", "icon": "⚡" },
+            { "href": "herois-mapa.html", "label": "Heróis", "icon": "⚔️" }
+        ]
+    },
+    "maps": {
+        "ciclo-troiano": {
+            "title": "Ciclo Troiano",
+            "characters": 22,
+            "class": "card-troiano"
+        },
+        "atridas": {
+            "title": "Os Atridas",
+            "characters": 22,
+            "class": "card-atridas",
+            "generations": 5
+        },
+        "edipo": {
+            "title": "A Casa de Édipo",
+            "characters": 20,
+            "class": "card-edipo",
+            "generations": 5
+        },
+        "deuses": {
+            "title": "O Olimpo",
+            "divinities": 26,
+            "class": "card-deuses"
+        },
+        "herois": {
+            "title": "Os Heróis",
+            "characters": 25,
+            "clusters": 5,
+            "class": "card-herois"
+        }
+    },
+    "dramatists": {
+        "tragic": {
+            "Ésquilo": 7,
+            "Sófocles": 7,
+            "Eurípides": 19
+        },
+        "comic": {
+            "Aristófanes": 11,
+            "Menandro": 4
+        }
+    },
+    "statistics": {
+        "tragedies": 33,
+        "comedies": 15,
+        "dramatists": 5,
+        "mythicCycles": 5,
+        "characters": 100
+    }
+}

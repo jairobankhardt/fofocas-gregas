@@ -1,0 +1,149 @@
+```
+📁 Fofocas Gregas — Estrutura Profissional
+═══════════════════════════════════════════
+
+📂 /
+├── 📜 HTML Pages (7 files)
+│   ├── index.html                    🏠 Portal inicial
+│   ├── catalogo-geral.html           📜 Tabela com 48 obras
+│   ├── ciclo-troiano-mapa.html       ⚓ Mapa: 22 personagens
+│   ├── atridas-mapa.html             👑 Mapa: 5 gerações (Atridas)
+│   ├── familia-edipo-mapa.html       ☠️  Mapa: Maldição de Édipo
+│   ├── deuses-mapa.html              ⚡ Mapa: 26 divindades
+│   └── herois-mapa.html              ⚔️  Mapa: 25 heróis
+│
+├── 📁 assets/ (Recursos compartilhados)
+│   ├── 📁 css/
+│   │   ├── .gitkeep                   (CSS será extraído aqui — WIP)
+│   │   └── STYLES.md                  Guia de estilização
+│   ├── 📁 js/
+│   │   └── menu-links.js              ✅ Menu dinâmico (IIFE)
+│   └── 📁 data/
+│       ├── .gitkeep
+│       └── config.json                ✅ Configuração central (JSON)
+│
+├── 📁 pages/ (Componentes de layout — reservado para futuro)
+│   └── .gitkeep
+│
+├── 📚 DOCUMENTAÇÃO
+│   ├── README.md                      ✅ Overview + links principais
+│   ├── ARCHITECTURE.md                ✅ Organização e princípios
+│   ├── CONVENTIONS.md                 ✅ Padrões de código
+│   ├── MAINTENANCE.md                 ✅ Guia prático de manutenção
+│   └── ROADMAP.md                     ✅ Roadmap de evolução (P0-P3)
+│
+├── .gitignore                         ✅ Config de versão
+└── .git/                              🐙 Histórico de commits
+```
+
+## 📊 ESTATÍSTICAS
+
+| Aspecto | Status | Valor |
+|---------|--------|-------|
+| **Documentação** | ✅ Completa | 5 guides |
+| **Organização** | ✅ Profissional | 4 pastas |
+| **Menu centralizado** | ✅ Pronto | `assets/js/menu-links.js` |
+| **Configuração central** | ✅ Pronto | `assets/data/config.json` |
+| **Páginas funcionais** | ✅ Todas | 7 arquivos |
+| **CSS separado** | 🔴 TODO | 0 arquivos |
+| **Dados em JSON** | 🔴 TODO | 0 arquivos |
+
+## ✅ O QUE FOI FEITO
+
+### 1. **Estrutura de Pastas**
+   - ✅ `assets/css/` — Preparado para CSS modular
+   - ✅ `assets/js/` — Menu centralizado aqui
+   - ✅ `assets/data/` — Config JSON centralizada
+   - ✅ `pages/` — Reservado para componentes
+
+### 2. **Documentação Completa**
+   - ✅ **ARCHITECTURE.md** — Como o projeto está organizado
+   - ✅ **CONVENTIONS.md** — Padrões de código CSS/JS/HTML
+   - ✅ **MAINTENANCE.md** — Tarefas comuns + troubleshooting
+   - ✅ **ROADMAP.md** — Timeline de P0 (crítico) até P3 (futuro)
+   - ✅ **README.md** — Overview + estatísticas
+
+### 3. **Configuração Central**
+   - ✅ `assets/data/config.json` — Um arquivo JSON com todas as informações do projeto
+   - ✅ `assets/js/menu-links.js** — Menu dinâmico reutilizável
+
+### 4. **Boas Práticas**
+   - ✅ `.gitignore` melhorado
+   - ✅ `.gitkeep` para manter pastas vazias
+   - ✅ Nomes descritivos e autoexplicativos
+   - ✅ Comentários úteis em documentação
+
+---
+
+## 🚀 PRÓXIMAS AÇÕES (Por Prioridade)
+
+### 🔴 P0 — CRÍTICO (Semana 1-2)
+1. **Extrair CSS inline para `assets/css/`**
+   - Ganho: Código 40% mais limpo, temas fáceis
+   - Tempo: 6-8 horas
+   
+2. **Migrar dados de mapas para JSON em `assets/data/maps/`**
+   - Ganho: Separação conteúdo/apresentação
+   - Tempo: 20 horas (5 mapas)
+
+### 🟠 P1 — IMPORTANTE (Semana 3-4)
+- Busca por personagem (4h)
+- Sistema de temas claro/escuro (3h)
+- Otimizar para mobile (5h)
+
+### 🟡 P2 — DESEJÁVEL (Mês 2)
+- Exportar dados (3h)
+- Internacionalização (8-10h)
+
+### 🔵 P3 — FUTURO (Mês 3+)
+- Sistema de build (Webpack/Vite)
+- Testes automatizados
+- PWA support
+- CI/CD
+
+---
+
+## 🎓 COMO USAR ESTE NOVO SETUP
+
+### Para Desenvolvedores
+```bash
+# Consultar documentação
+cat ARCHITECTURE.md    # Entender organização
+cat CONVENTIONS.md     # Seguir padrões de código
+cat MAINTENANCE.md     # Executar tarefas comuns
+
+# Adicionar novo link ao menu
+vim assets/js/menu-links.js
+# Editar o array menuLinks
+
+# Criar nova página
+# 1. Copiar template de HTML existente
+# 2. Adicionar link em assets/js/menu-links.js
+# 3. Incluir <nav data-shared-menu></nav>
+# 4. Incluir <script src="assets/js/menu-links.js">
+```
+
+### Para Gestores/Não-técnicos
+```
+Quer adicionar novo link ao menu?
+→ Pedir: "Adicione novo-mapa.html ao menu"
+→ Técnico edita: assets/js/menu-links.js (1 linha)
+→ Pronto! Menu atualiza em TODAS as 7 páginas
+```
+
+---
+
+## 💡 BENEFÍCIOS ENTREGUES
+
+✅ **Manutenibilidade** — Menu centralizado (1 arquivo, 7 páginas)
+✅ **Escalabilidade** — Estrutura preparada para crescimento
+✅ **Documentação** — 5 guias técnicos completos
+✅ **Profissionalismo** — Padrões de código + convenções
+✅ **Roadmap claro** — Sabe exatamente o que fazer depois
+
+---
+
+**Arquitetura criada:** Maio 2026  
+**Status:** Pronta para produção + evolução planejada  
+**Próximo passo:** Extrair CSS (P0) — comece por [MAINTENANCE.md](MAINTENANCE.md)
+```
