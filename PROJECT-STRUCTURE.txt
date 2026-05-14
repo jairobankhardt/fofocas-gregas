@@ -1,5 +1,5 @@
 ```
-📁 Fofocas Gregas — Estrutura Profissional
+📁 Fofocas Gregas — Estrutura do Projeto
 ═══════════════════════════════════════════
 
 📂 /
@@ -14,23 +14,24 @@
 │
 ├── 📁 assets/ (Recursos compartilhados)
 │   ├── 📁 css/
-│   │   ├── .gitkeep                   (CSS será extraído aqui — WIP)
+│   │   ├── index.css                  ✅ Estilos do portal (cards, hero, stats)
+│   │   ├── catalogo-geral.css         ✅ Catálogo: tabelas, topnav, seções
+│   │   ├── mapa-crimson.css           ✅ Tema crimson — Atridas + Ciclo Troiano
+│   │   ├── mapa-gold.css              ✅ Tema dourado — Deuses
+│   │   ├── mapa-purple.css            ✅ Tema púrpura — Família de Édipo
+│   │   ├── mapa-bronze.css            ✅ Tema bronze — Heróis
 │   │   └── STYLES.md                  Guia de estilização
 │   ├── 📁 js/
 │   │   └── menu-links.js              ✅ Menu dinâmico (IIFE)
 │   └── 📁 data/
-│       ├── .gitkeep
 │       └── config.json                ✅ Configuração central (JSON)
-│
-├── 📁 pages/ (Componentes de layout — reservado para futuro)
-│   └── .gitkeep
 │
 ├── 📚 DOCUMENTAÇÃO
 │   ├── README.md                      ✅ Overview + links principais
 │   ├── ARCHITECTURE.md                ✅ Organização e princípios
 │   ├── CONVENTIONS.md                 ✅ Padrões de código
 │   ├── MAINTENANCE.md                 ✅ Guia prático de manutenção
-│   └── ROADMAP.md                     ✅ Roadmap de evolução (P0-P3)
+│   └── ROADMAP.md                     ✅ Roadmap de evolução (P0-P2)
 │
 ├── .gitignore                         ✅ Config de versão
 └── .git/                              🐙 Histórico de commits
@@ -40,12 +41,13 @@
 
 | Aspecto | Status | Valor |
 |---------|--------|-------|
-| **Documentação** | ✅ Completa | 5 guides |
-| **Organização** | ✅ Profissional | 4 pastas |
+| **Documentação** | ✅ Completa | 5 guias |
+| **Organização** | ✅ Profissional | 3 pastas |
 | **Menu centralizado** | ✅ Pronto | `assets/js/menu-links.js` |
 | **Configuração central** | ✅ Pronto | `assets/data/config.json` |
 | **Páginas funcionais** | ✅ Todas | 7 arquivos |
-| **CSS separado** | 🔴 TODO | 0 arquivos |
+| **CSS externo** | ✅ Concluído | 6 arquivos em `assets/css/` |
+| **Responsivo (mobile)** | ✅ Concluído | 2 breakpoints em todos os CSS |
 | **Dados em JSON** | 🔴 TODO | 0 arquivos |
 
 ## ✅ O QUE FOI FEITO

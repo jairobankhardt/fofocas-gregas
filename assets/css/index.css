@@ -265,7 +265,30 @@ body {
     .cards-featured,
     .cards-grid {
         grid-template-columns: 1fr;
+        padding: 0 16px 20px;
+        gap: 14px;
     }
+    .hero { padding: 60px 20px 44px; }
+    .hero-masks { font-size: 2.4rem; gap: 10px; margin-bottom: 20px; }
+    .ornament { width: 50px; height: 50px; opacity: 0.08; }
+    .stats { padding: 0 16px 60px; }
+}
+
+@media (max-width: 480px) {
+    .hero { padding: 44px 16px 36px; }
+    .hero-masks { font-size: 2rem; gap: 8px; margin-bottom: 14px; }
+    .hero-divider { margin-top: 28px; }
+    .intro { padding: 0 16px 36px; font-size: 0.92rem; }
+    .section-title { padding: 0 16px 24px; }
+    .card-header { padding: 18px 18px 0; gap: 12px; }
+    .card-body { padding: 12px 18px 18px; }
+    .card-icon { font-size: 2.2rem; }
+    .card-title { font-size: 1rem; }
+    .card-desc { font-size: 0.82rem; }
+    .stat { padding: 18px 12px; }
+    .stat-num { font-size: 1.8rem; }
+    .ornament { display: none; }
+    .footer { padding: 32px 16px 44px; }
 }
 
 /* ── CARD ── */

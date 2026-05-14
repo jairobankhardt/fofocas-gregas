@@ -4,15 +4,16 @@
 
 ✅ **PRONTO PARA PRODUÇÃO**
 
-- Menu centralizado e dinâmico (assets/js/menu-links.js)
-- Configuração central (assets/data/config.json)
-- Documentação técnica completa (ARCHITECTURE.md, CONVENTIONS.md)
-- Estrutura de pastas profissional (assets/_, pages/_, docs/)
+- Menu centralizado e dinâmico (`assets/js/menu-links.js`)
+- Configuração central (`assets/data/config.json`)
+- Documentação técnica completa (ARCHITECTURE.md, CONVENTIONS.md, MAINTENANCE.md)
+- Estrutura de pastas profissional (`assets/css/`, `assets/js/`, `assets/data/`)
 - 7 páginas funcionais com mapas interativos
+- **CSS externo** — 6 arquivos em `assets/css/` (por tema), zero CSS inline
+- **Mobile-first** — media queries em todos os CSS (480px, 768px, 700px)
 
 ❌ **NÃO IMPLEMENTADO AINDA**
 
-- CSS em arquivos separados (atualmente inline)
 - Dados de mapas em JSON (atualmente em HTML)
 - Sistema de build (webpack/vite)
 - Testes automatizados
@@ -22,78 +23,50 @@
 
 ## 🎯 PRIORIDADES DE DESENVOLVIMENTO
 
-### 🔴 P0 — CRÍTICO (Semana 1-2)
+### ✅ P0 — CONCLUÍDO
 
-Se não fizer, o projeto fica quebrado ou inviável de manter.
+#### ~~Extrair CSS para `assets/css/`~~ ✅ FEITO
 
-#### ✋ [BLOQUEADO] Extrair CSS para `assets/css/`
+- ✅ `assets/css/index.css` — Portal principal
+- ✅ `assets/css/catalogo-geral.css` — Catálogo de obras
+- ✅ `assets/css/mapa-crimson.css` — Atridas + Ciclo Troiano (tema compartilhado)
+- ✅ `assets/css/mapa-gold.css` — Deuses
+- ✅ `assets/css/mapa-purple.css` — Família de Édipo
+- ✅ `assets/css/mapa-bronze.css` — Heróis
+- ✅ `<style>` inline removido de todos os 7 HTMLs
+- ✅ `<link rel="stylesheet">` adicionado em cada HTML
 
-**Por quê?** CSS inline torna difícil reutilizar estilos e atualizar o tema.
+#### ~~Otimizar para mobile~~ ✅ FEITO
 
-**Checklist:**
-
-- [ ] Crear `assets/css/variables.css` (cores, fontes, espaçamento)
-- [ ] Criar `assets/css/base.css` (reset, tipografia)
-- [ ] Criar `assets/css/components.css` (cards, tags, navegação)
-- [ ] Criar `assets/css/maps.css` (SVG styling)
-- [ ] Criar `assets/css/responsive.css` (media queries)
-- [ ] Remover `<style>` de cada HTML
-- [ ] Adicionar `<link rel="stylesheet" href="assets/css/...">` em cada HTML
-- [ ] Testar em 3 breakpoints (mobile/tablet/desktop)
-
-**Tempo estimado:** 6-8 horas
-
-**Ganho:**
-
-- -500 linhas de código duplicado
-- +1 single source of truth para cores/fonts
-- Facilita temas (claro/escuro no futuro)
+- ✅ Breakpoints `@media (max-width: 768px)` e `@media (max-width: 480px)` em todos os CSS
+- ✅ Info panel dos mapas desliza do fundo em mobile
+- ✅ `.site-nav` com scroll horizontal em telas pequenas
+- ✅ Tabelas com `overflow-x: auto` + colunas adaptadas
+- ✅ Topnav do catálogo com scroll horizontal
 
 ---
 
-#### 📋 [PLANEJADO] Migrar dados de mapas para JSON
+### 🔴 P0 — CRÍTICO (Próximo sprint)
+
+#### 📋 Migrar dados de mapas para JSON
 
 **Por quê?** Dados no HTML = edições tocam código de renderização.
 
-**Fase 1 — Atridas Map:**
+- [ ] Criar `assets/data/maps/atridas-nodes.json` + `atridas-edges.json`
+- [ ] Reescrever cada mapa para carregar JSON dinamicamente
+- [ ] Testar renderização idêntica à versão atual
 
-- [ ] Criar `assets/data/maps/atridas-nodes.json`
-- [ ] Criar `assets/data/maps/atridas-edges.json`
-- [ ] Reescrever `atridas-mapa.html` para carregar JSON
-- [ ] Testar renderização idêntica à versão anterior
-
-**Estrutura JSON esperada:**
-
-```json
-{
-  "nodes": [
-    { "id": 1, "label": "Tântalo", "x": 100, "y": 100, "role": "cursed", "group": "generation-1" },
-    ...
-  ],
-  "edges": [
-    { "source": 1, "target": 2, "type": "amor", "label": "matrimônio" },
-    ...
-  ]
-}
-```
-
-**Tempo estimado:** 4 horas por mapa × 5 mapas = 20 horas
-
-**Ganho:**
-
-- Conteúdo separado de apresentação
-- Facilita atualizações futuras
-- Suporta múltiplas versões/idiomas
+**Tempo estimado:** 4 h por mapa × 5 mapas = 20 h
 
 ---
 
-### 🟠 P1 — IMPORTANTE (Semana 3-4)
+### 🟠 P1 — IMPORTANTE
 
 Melhora drasticamente manutenibilidade e funcionalidades.
 
 #### 🔍 Implementar busca por personagem
 
-**Feature:** Campo de busca busca em todos os mapas simultaneamente.
+**Feature:** Campo de busca em todos os mapas simultaneamente.
 
 **Escopo:**
 
@@ -124,18 +97,12 @@ Melhora drasticamente manutenibilidade e funcionalidades.
 
 ---
 
-#### 📱 Otimizar para mobile
+#### ~~📱 Otimizar para mobile~~ ✅ CONCLUÍDO
 
-**Problemas:** Mapas SVG quebram em telas pequenas.
-
-**Escopo:**
-
-- [ ] Escala SVG responsivo
-- [ ] Menu colapsável em mobile
-- [ ] Tabelas scrolláveis horizontalmente
-- [ ] Testar em iOS Safari + Chrome Android
-
-**Tempo estimado:** 5 horas
+- ✅ Media queries em todos os 6 CSS (`@media max-width: 768px` e `480px`)
+- ✅ Info panel desliza do fundo em mobile
+- ✅ Nav e topnav com scroll horizontal
+- ✅ Tabelas scrolláveis; chips e colunas adaptados
 
 ---
 

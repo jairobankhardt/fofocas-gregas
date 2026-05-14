@@ -12,19 +12,26 @@ fofocas-gregas/
 ├── deuses-mapa.html              # Mapa interativo — Deuses Olimpo
 ├── herois-mapa.html              # Mapa interativo — Os Heróis
 │
-├── assets/                       # Recursos compartilhados
-│   ├── css/                      # Estilos (futuros)
-│   │   └── (CSS será extraído aqui)
-│   ├── 📁 js/                       # Scripts reutilizáveis
-│   │   └── menu-links.js         # ✅ Menu compartilhado dinâmico (centralizado)
-│   └── 📁 data/                     # Dados estruturados
+├── assets/
+│   ├── css/
+│   │   ├── index.css             # ✅ Estilos da página inicial
+│   │   ├── catalogo-geral.css    # ✅ Estilos do catálogo
+│   │   ├── mapa-crimson.css      # ✅ Tema crimson (Atridas + Ciclo Troiano)
+│   │   ├── mapa-gold.css         # ✅ Tema dourado (Deuses)
+│   │   ├── mapa-purple.css       # ✅ Tema púrpura (Família de Édipo)
+│   │   ├── mapa-bronze.css       # ✅ Tema bronze (Os Heróis)
+│   │   └── STYLES.md             # Guia de estilização
+│   ├── js/
+│   │   └── menu-links.js         # ✅ Menu compartilhado dinâmico
+│   └── data/
 │       └── config.json           # ✅ Configuração central do projeto
-│
-├── pages/                        # Arquivos de layout/componentes (reservado para expansão)
 │
 ├── ARCHITECTURE.md               # Este arquivo
 ├── README.md                     # Documentação geral
-└── .git/                         # Controle de versão
+├── CONVENTIONS.md                # Padrões de código
+├── MAINTENANCE.md                # Guia de manutenção
+├── ROADMAP.md                    # Evolução do projeto
+└── .git/
 ```
 
 ## Princípios de Design
@@ -32,7 +39,7 @@ fofocas-gregas/
 ### 1. **Separação de Responsabilidades**
 
 - **HTML**: Estrutura semântica e conteúdo
-- **CSS**: Estilos (inline por página, consolidáveis em `assets/css/`)
+- **CSS**: Estilos externos em `assets/css/` (um arquivo por tema)
 - **JavaScript**: Comportamento dinâmico e interatividade
 - **JSON**: Dados estruturados e configuração
 
@@ -40,13 +47,17 @@ fofocas-gregas/
 
 - Menu compartilhado via `assets/js/menu-links.js`
 - Configuração centralizada em `assets/data/config.json`
-- CSS consistente com variáveis de cor (`:root`)
+- CSS com variáveis de cor (`:root`) por tema
+- `mapa-crimson.css` compartilhado entre Atridas e Ciclo Troiano (CSS idêntico)
 
-### 3. **Manutenibilidade**
+### 3. **Responsividade**
 
-- Um único ponto de edição para o menu (menu-links.js)
-- Dados do projeto em JSON facilitam atualizações
-- Nomes de arquivo descritivos e autoexplicativos
+- Dois breakpoints em todos os arquivos CSS:
+  - `@media (max-width: 768px)` — tablet / landscape mobile
+  - `@media (max-width: 480px)` — mobile portrait
+- Mapas: info panel desliza do fundo em mobile; nav com scroll horizontal
+- Catálogo: tabela com `overflow-x: auto`; nav scrollável
+- Portal: cards em coluna única abaixo de 700px
 
 ## Fluxo de Dados
 
@@ -64,40 +75,31 @@ Menu atualizado dinamicamente (com classe "active" inteligente)
 
 ### Curto Prazo
 
-- [ ] Extrair CSS para `assets/css/` (separar por tema: base.css, maps.css, cards.css)
-- [ ] Criar `assets/css/variables.css` para cores e tipografia reutilizáveis
-- [ ] Adicionar manifest.json para PWA (se necessário)
+- [ ] Extrair dados de mapas (nodes/edges) para JSON em `assets/data/maps/`
+- [ ] Criar `assets/css/variables.css` para cores e tipografia reutilizáveis entre temas
+- [ ] Adicionar `manifest.json` + service worker para suporte offline (PWA)
 
 ### Médio Prazo
 
-- [ ] Extrair dados de mapas (nodes/edges) para JSON em `assets/data/maps/`
-- [ ] Criar `assets/js/utils.js` para funções compartilhadas
-- [ ] Sistema de build (webpack/vite) para minificação e otimização
+- [ ] Criar `assets/js/utils.js` para funções compartilhadas entre mapas
+- [ ] Sistema de build (vite) para minificação e bundling
 
 ### Longo Prazo
 
-- [ ] Framework frontend (React/Vue) para renderização dinâmica
-- [ ] API backend para servir dados
-- [ ] Testes automatizados (Jest para JS, Cypress para E2E)
+- [ ] Testes automatizados (Cypress para E2E)
 - [ ] CI/CD pipeline (GitHub Actions)
-- [ ] Documentation site gerado automaticamente
 
 ## Boas Práticas Atuais
 
 ✅ Menu centralizado e dinâmico
+✅ CSS externo por tema (6 arquivos em `assets/css/`)
+✅ Responsividade implementada (mobile/tablet/desktop)
 ✅ Configuração em JSON (fácil de editar)
 ✅ Nomeação consistente de classes CSS
 ✅ Estrutura HTML semântica
-✅ Responsividade implementada
-
-## Próximos Passos Recomendados
-
-1. **Extrair CSS global** para `assets/css/global.css`
-2. **Migrar dados de cards** (index.html) para `assets/data/cards.json`
-3. **Criar `assets/js/init.js`** para inicializar componentes
-4. **Documentar convenções CSS** (naming, variáveis, media queries)
 
 ---
+
 
 **Última atualização**: Maio 2026  
 **Responsável**: Arquitetura modular reutilizável

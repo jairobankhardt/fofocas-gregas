@@ -6,13 +6,15 @@ Catálogo completo das tragédias e comédias da Grécia Antiga — autores, dat
 
 ## Páginas
 
-| Arquivo                                              | Conteúdo                                                                            |
-| ---------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| [`index.html`](index.html)                           | Página inicial — tabelas de tragédias e comédias gregas com autores, datas e elenco |
-| [`deuses-mapa.html`](deuses-mapa.html)               | Mapa interativo dos deuses gregos (Olimpianos, Ctônicos, Semideuses)                |
-| [`atridas-mapa.html`](atridas-mapa.html)             | Árvore genealógica e mapa da Casa dos Átridas                                       |
-| [`familia-edipo-mapa.html`](familia-edipo-mapa.html) | Mapa da Casa de Édipo e a maldição de Tebas                                         |
-| [`ciclo-troiano-mapa.html`](ciclo-troiano-mapa.html) | Personagens e relações do Ciclo Troiano                                             |
+| Arquivo | Conteúdo |
+| --- | --- |
+| [`index.html`](index.html) | Página inicial — portal com cards para todas as seções |
+| [`catalogo-geral.html`](catalogo-geral.html) | Tabelas de tragédias e comédias com autores, datas e elenco |
+| [`deuses-mapa.html`](deuses-mapa.html) | Mapa interativo dos deuses gregos (Olimpianos, Ctônicos, Semideuses) |
+| [`atridas-mapa.html`](atridas-mapa.html) | Árvore genealógica e mapa da Casa dos Átridas |
+| [`familia-edipo-mapa.html`](familia-edipo-mapa.html) | Mapa da Casa de Édipo e a maldição de Tebas |
+| [`ciclo-troiano-mapa.html`](ciclo-troiano-mapa.html) | Personagens e relações do Ciclo Troiano |
+| [`herois-mapa.html`](herois-mapa.html) | Mapa dos grandes heróis gregos e seus ciclos |
 
 ## Conteúdo
 
@@ -24,7 +26,9 @@ Catálogo completo das tragédias e comédias da Grécia Antiga — autores, dat
 ## Tecnologias
 
 - HTML5 + CSS3 puro (sem frameworks)
+- CSS externo em `assets/css/` — um arquivo por tema
 - JavaScript vanilla para os mapas interativos
+- Responsivo: otimizado para mobile, tablet e desktop
 - Fontes: [Cinzel Decorative](https://fonts.google.com/specimen/Cinzel+Decorative), [Cinzel](https://fonts.google.com/specimen/Cinzel), [IM Fell English](https://fonts.google.com/specimen/IM+Fell+English) via Google Fonts
 
 ## Como usar
