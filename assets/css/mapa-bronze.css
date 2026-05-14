@@ -1,0 +1,282 @@
+/* =============================================================
+   mapa-bronze.css — Tema Bronze: Os Heróis
+   Usado por: herois-mapa.html
+   ============================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #080a04;
+    --bronze: #8a5a1a;
+    --bronze-l: #d4903a;
+    --bronze-p: #f5e0c0;
+    --leaf-l: #6aad3a;
+    --iron-l: #7a9abd;
+    --fire-l: #d45a3a;
+    --parch: #f0ead8;
+}
+
+body {
+    background: var(--bg);
+    font-family: "IM Fell English", Georgia, serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(
+            ellipse at 15% 20%,
+            rgba(138, 90, 26, 0.12) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 85% 20%,
+            rgba(106, 173, 58, 0.08) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 50% 85%,
+            rgba(138, 42, 26, 0.1) 0%,
+            transparent 45%
+        );
+    pointer-events: none;
+}
+
+/* HEADER */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 10px 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: linear-gradient(
+        to bottom,
+        rgba(8, 10, 4, 0.98),
+        rgba(8, 10, 4, 0.65)
+    );
+    border-bottom: 1px solid rgba(212, 144, 58, 0.28);
+}
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+}
+.header-left h1 {
+    font-family: "Cinzel Decorative", serif;
+    font-size: 1.1rem;
+    color: var(--bronze-l);
+    line-height: 1;
+}
+.header-left p {
+    font-family: "Cinzel", serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--bronze);
+    opacity: 0.85;
+    margin-top: 3px;
+    text-transform: uppercase;
+}
+.header-controls {
+    display: flex;
+    gap: 8px;
+}
+
+/* BUTTON */
+.btn {
+    font-family: "Cinzel", serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 5px 12px;
+    border: 1px solid rgba(212, 144, 58, 0.35);
+    background: rgba(138, 90, 26, 0.12);
+    color: var(--bronze-l);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn:hover {
+    background: rgba(138, 90, 26, 0.28);
+    border-color: var(--bronze-l);
+}
+
+/* NAV */
+.site-nav {
+    display: flex;
+    border-top: 1px solid rgba(212, 144, 58, 0.2);
+    padding: 4px 0;
+}
+.site-nav a {
+    font-family: "Cinzel", serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(212, 144, 58, 0.5);
+    padding: 4px 10px;
+    transition: color 0.2s;
+}
+.site-nav a:hover,
+.site-nav a.active {
+    color: var(--bronze-l);
+}
+
+/* LEGEND */
+#legend {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    background: rgba(8, 10, 4, 0.93);
+    border: 1px solid rgba(212, 144, 58, 0.22);
+    border-radius: 4px;
+    padding: 12px 16px;
+    min-width: 195px;
+}
+#legend h3 {
+    font-family: "Cinzel", serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--bronze-l);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+.leg-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 0.75rem;
+    color: var(--parch);
+    opacity: 0.8;
+}
+.leg-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.leg-line {
+    width: 24px;
+    height: 2px;
+    flex-shrink: 0;
+    border-radius: 2px;
+}
+
+/* INFO PANEL */
+#info-panel {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 100;
+    width: 275px;
+    background: rgba(8, 10, 4, 0.97);
+    border: 1px solid rgba(212, 144, 58, 0.28);
+    border-radius: 4px;
+    padding: 18px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+#info-panel.visible {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+}
+#info-name {
+    font-family: "Cinzel", serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--bronze-l);
+    margin-bottom: 4px;
+}
+#info-role {
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--bronze);
+    opacity: 0.95;
+    margin-bottom: 10px;
+}
+#info-desc {
+    font-size: 0.8rem;
+    color: var(--parch);
+    opacity: 0.85;
+    line-height: 1.65;
+    margin-bottom: 10px;
+}
+#info-obras {
+    border-top: 1px solid rgba(212, 144, 58, 0.18);
+    padding-top: 10px;
+}
+#info-obras h4 {
+    font-family: "Cinzel", serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: var(--bronze);
+    opacity: 0.7;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+.obra-tag {
+    display: inline-block;
+    background: rgba(138, 90, 26, 0.16);
+    border: 1px solid rgba(212, 144, 58, 0.28);
+    border-radius: 2px;
+    padding: 2px 7px;
+    font-size: 0.7rem;
+    color: var(--parch);
+    margin: 2px;
+}
+#info-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 1rem;
+    color: var(--bronze-l);
+    opacity: 0.5;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: serif;
+}
+#info-close:hover {
+    opacity: 1;
+}
+
+/* HINT */
+#hint {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    font-family: "Cinzel", serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--bronze);
+    opacity: 0.4;
+    text-align: right;
+    line-height: 1.8;
+}
+
+/* CANVAS SVG */
+#canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
